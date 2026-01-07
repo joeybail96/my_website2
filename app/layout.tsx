@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import NavBar from "./components/NavBar";
+import Link from "next/link";
+import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Joey | Portfolio",
   description: "Personal site and project portfolio",
 };
@@ -17,18 +16,44 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} bg-zinc-50 text-zinc-900 dark:bg-black dark:text-zinc-50`}
-      >
-        <div className="min-h-screen flex flex-col">
-          <NavBar />
+      <body className={`${inter.className} bg-zinc-50 dark:bg-black`}>
+        {/* STICKY NAVBAR */}
+        <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/90 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/90">
+          <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
+            {/* LEFT — NAME */}
+            <Link
+              href="/"
+              className="text-lg font-semibold tracking-tight hover:opacity-80"
+            >
+              Joey Bail
+            </Link>
 
-          <main className="flex-1">{children}</main>
+            {/* RIGHT — LINKS */}
+            <div className="flex items-center gap-6">
+              <Link
+                href="/"
+                className="text-sm text-zinc-600 transition hover:text-black dark:text-zinc-400 dark:hover:text-white"
+              >
+                Home
+              </Link>
+              <Link
+                href="/about"
+                className="text-sm text-zinc-600 transition hover:text-black dark:text-zinc-400 dark:hover:text-white"
+              >
+                About
+              </Link>
+              <Link
+                href="/projects"
+                className="text-sm text-zinc-600 transition hover:text-black dark:text-zinc-400 dark:hover:text-white"
+              >
+                Projects
+              </Link>
+            </div>
+          </nav>
+        </header>
 
-          <footer className="border-t border-zinc-200/60 bg-white/80 py-4 text-center text-xs text-zinc-500 dark:border-zinc-800 dark:bg-black/60">
-            © {new Date().getFullYear()} Joey. All rights reserved.
-          </footer>
-        </div>
+        {/* CONTENT AREA — add padding so content doesn't hug navbar */}
+        <main className="pt-6">{children}</main>
       </body>
     </html>
   );

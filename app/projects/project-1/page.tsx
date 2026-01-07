@@ -4,7 +4,7 @@ export default function Project1Page() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-10">
       <h1 className="text-3xl font-semibold tracking-tight">
-        Example Project 1
+        Design & Deployment of a Remote Aerosol Research Facility
       </h1>
       <p className="mt-2 text-sm font-medium text-zinc-500">
         Design & Analysis
@@ -13,7 +13,7 @@ export default function Project1Page() {
       <div className="relative mt-6 h-64 w-full overflow-hidden rounded-xl bg-zinc-200 dark:bg-zinc-800">
         <Image
           src="/photos/project1.jpg"
-          alt="Example Project 1"
+          alt="Design & Deployment of a Remote Aerosol Research Facility"
           fill
           className="object-cover"
         />
