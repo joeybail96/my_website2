@@ -9,7 +9,7 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-3">
             <div className="relative h-40 w-full overflow-hidden rounded-xl bg-zinc-200 dark:bg-zinc-800">
               <Image
-                src="/photos/joey-1.jpg"
+                src="/photos/ski-profile.jpg"
                 alt="Joey outdoors"
                 fill
                 className="object-cover"
@@ -25,7 +25,7 @@ export default function Home() {
             </div>
             <div className="relative h-40 w-full overflow-hidden rounded-xl bg-zinc-200 dark:bg-zinc-800">
               <Image
-                src="/photos/joey-3.jpg"
+                src="/photos/climbing-profile.jpg"
                 alt="Mountains or trail"
                 fill
                 className="object-cover"
