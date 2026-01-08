@@ -33,7 +33,7 @@ export default function Home() {
             </div>
             <div className="relative h-40 w-full overflow-hidden rounded-xl bg-zinc-200 dark:bg-zinc-800">
               <Image
-                src="/photos/joey-4.jpg"
+                src="/photos/snowclime-profile.jpg"
                 alt="Lab or hardware setup"
                 fill
                 className="object-cover"
