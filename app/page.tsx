@@ -83,7 +83,7 @@ export default function HomePage() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-zinc-200 dark:bg-zinc-800">
               <Image
                 src="/photos/home-profile.jpg"
-                alt="Joey Bail"
+                alt="Joey Bail asdf"
                 fill
                 className="object-cover object-top"
                 sizes="(min-width: 1024px) 320px, 60vw"
