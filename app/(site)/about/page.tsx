@@ -293,9 +293,9 @@ export default function AboutPage() {
             <Subheading>Programming Languages</Subheading>
 
             <div className="space-y-2">
-              <LabeledLine label="Proficient:">Python, MATLAB</LabeledLine>
+              <LabeledLine label="Proficient:">Python, MATLAB, R</LabeledLine>
               <LabeledLine label="Familiar:">
-                Fortran, R, Bash, Arduino (C++), G-Code, C
+                Fortran, Bash, JavaScript, HTML, Arduino (C++), G-Code, C
               </LabeledLine>
             </div>
           </div>
@@ -444,83 +444,143 @@ export default function AboutPage() {
 
           <SectionHeading title="Work Experience" />
 
-<div className="space-y-6 text-base leading-relaxed text-black dark:text-black">
-  <div>
-    <p>
-      <span className="font-semibold">Graduate Researcher | University of Utah</span>{" "}
-      | Department of Atmospheric Sciences | Aug 2023 to December 2025
-    </p>
+          <div className="space-y-6 text-base leading-relaxed text-black dark:text-black">
+            <div>
+              <p>
+                <span className="font-semibold">
+                  Graduate Researcher | University of Utah
+                </span>{" "}
+                | Department of Atmospheric Sciences | Aug 2023 to December 2025
+              </p>
 
-    <ul className="mt-2 list-disc space-y-1 pl-6 italic">
-      <li>
-        Designed and led construction of a remote instrumentation lab at Powder
-        Mountain, including a 30-foot inlet manifold, internal framing, external
-        support structures, and mechanical integration of the inlet system.
-      </li>
-      <li>
-        Installed and maintained atmospheric measurement instruments at remote
-        field sites in the Wasatch Mountains, Ogden Valley, and Steamboat Ski
-        Resort.
-      </li>
-      <li>
-        Authored a master’s thesis identifying chlorine emissions from desiccating
-        saline lakebeds and simulating their atmospheric impacts across the U.S.
-        using GEOS-Chem.
-      </li>
-    </ul>
-  </div>
+              <ul className="mt-2 list-disc space-y-1 pl-6 italic">
+                <li>
+                  Designed and led construction of a remote instrumentation lab at
+                  Powder Mountain, including a 30-foot inlet manifold, internal
+                  framing, external support structures, and mechanical integration of
+                  the inlet system.
+                </li>
+                <li>
+                  Installed and maintained atmospheric measurement instruments at
+                  remote field sites in the Wasatch Mountains, Ogden Valley, and
+                  Steamboat Ski Resort.
+                </li>
+                <li>
+                  Authored a master’s thesis identifying chlorine emissions from
+                  desiccating saline lakebeds and simulating their atmospheric impacts
+                  across the U.S. using GEOS-Chem.
+                </li>
+              </ul>
+            </div>
 
-  <div>
-    <p>
-      <span className="font-semibold">Graduate Researcher | University of Utah</span>{" "}
-      | Department of Mechanical Engineering | Aug 2021 to Dec 2023
-    </p>
+            <div>
+              <p>
+                <span className="font-semibold">
+                  Graduate Researcher | University of Utah
+                </span>{" "}
+                | Department of Mechanical Engineering | Aug 2021 to Dec 2023
+              </p>
 
-    <ul className="mt-2 list-disc space-y-1 pl-6 italic">
-      <li>
-        Authored a master’s thesis on mechanical failure of brain vessels by
-        dissecting and mechanically testing middle cerebral arteries using custom
-        test setups and imaging systems.
-      </li>
-      <li>
-        Developed MATLAB scripts and an interactive application to automatically
-        process and organize raw mechanical test data from LabView.
-      </li>
-      <li>
-        Designed and fabricated a microscope fixture to position and secure
-        cerebral arteries for precise wall-thickness measurements.
-      </li>
-    </ul>
-  </div>
+              <ul className="mt-2 list-disc space-y-1 pl-6 italic">
+                <li>
+                  Authored a master’s thesis on mechanical failure of brain vessels
+                  by dissecting and mechanically testing middle cerebral arteries
+                  using custom test setups and imaging systems.
+                </li>
+                <li>
+                  Developed MATLAB scripts and an interactive application to
+                  automatically process and organize raw mechanical test data from
+                  LabView.
+                </li>
+                <li>
+                  Designed and fabricated a microscope fixture to position and secure
+                  cerebral arteries for precise wall-thickness measurements.
+                </li>
+              </ul>
+            </div>
 
-  <div>
-    <p>
-      <span className="font-semibold">
-        Mechanical Project Engineer | Carlisle Construction Materials
-      </span>{" "}
-      | Central Engineering | Jan 2019 to May 2021
-    </p>
+            <div>
+              <p>
+                <span className="font-semibold">
+                  Mechanical Project Engineer | Carlisle Construction Materials
+                </span>{" "}
+                | Central Engineering | Jan 2019 to May 2021
+              </p>
 
-    <ul className="mt-2 list-disc space-y-1 pl-6 italic">
-      <li>
-        Owned capex projects end-to-end, including budget proposals and
-        coordination with OEM suppliers, millwrights, electricians, maintenance
-        teams, engineers, operators, and plant leadership across OH, OR, UT, and
-        the Netherlands.
-      </li>
-      <li>
-        Implemented a $1.4M automation project replacing a hazardous six-operator
-        process for shearing and stacking 200-pound rubber mats.
-      </li>
-      <li>
-        Implemented a $1.2M equipment upgrade for large-roll rubber flooring
-        manufacturing, increasing throughput and reducing scrap.
-      </li>
-    </ul>
-  </div>
-</div>
+              <ul className="mt-2 list-disc space-y-1 pl-6 italic">
+                <li>
+                  Owned capex projects end-to-end, including budget proposals and
+                  coordination with OEM suppliers, millwrights, electricians,
+                  maintenance teams, engineers, operators, and plant leadership
+                  across OH, OR, UT, and the Netherlands.
+                </li>
+                <li>
+                  Implemented a $1.4M automation project replacing a hazardous
+                  six-operator process for shearing and stacking 200-pound rubber
+                  mats.
+                </li>
+                <li>
+                  Implemented a $1.2M equipment upgrade for large-roll rubber flooring
+                  manufacturing, increasing throughput and reducing scrap.
+                </li>
+              </ul>
+            </div>
+          </div>
 
+          <Divider />
 
+          {/* ADDITIONAL ENGINEERING EXPERIENCE */}
+          <SectionHeading
+            title="Additional Engineering Experience"
+            subtitle="Teaching, internships, and early research experiences."
+          />
+
+          <div className="space-y-6 text-base leading-relaxed text-black dark:text-black">
+            <div>
+              <p>
+                <span className="font-semibold">
+                  Teaching Assistant | University of Utah
+                </span>{" "}
+                | Department of Mechanical Engineering | Aug 2021 to May 2023
+              </p>
+              <ul className="mt-2 list-disc space-y-1 pl-6 italic">
+                <li>
+                  Supported undergraduate mechanical engineering coursework through
+                  instruction, grading, and student mentorship.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p>
+                <span className="font-semibold">
+                  Undergraduate Researcher | Pennsylvania State University
+                </span>{" "}
+                | Department of Mechanical Engineering | Dec 2017 to Dec 2018
+              </p>
+              <ul className="mt-2 list-disc space-y-1 pl-6 italic">
+                <li>
+                  Conducted hands-on research in a mechanical engineering lab setting,
+                  contributing to experimental work and documentation.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p>
+                <span className="font-semibold">
+                  Mechanical Engineer Intern | Carlisle Construction Materials
+                </span>{" "}
+                | Research &amp; Development | Summers 2017 &amp; 2018
+              </p>
+              <ul className="mt-2 list-disc space-y-1 pl-6 italic">
+                <li>
+                  Assisted R&amp;D engineering efforts with prototyping, testing, and
+                  technical support for product and process development.
+                </li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         <div className="h-10" />
