@@ -50,11 +50,35 @@ function LabeledLine({
   );
 }
 
-function Photo({ src, alt }: { src: string; alt: string }) {
+function Photo({
+  src,
+  alt,
+  overlay,
+}: {
+  src: string;
+  alt: string;
+  overlay?: string;
+}) {
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-zinc-200 dark:bg-zinc-800">
+    <div className="group relative overflow-hidden rounded-2xl bg-zinc-200 dark:bg-zinc-800">
       <div className="relative aspect-[4/3] w-full">
-        <Image src={src} alt={alt} fill className="object-cover" />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover transition duration-300 group-hover:scale-[1.02]"
+        />
+
+        {/* Hover overlay */}
+        {overlay ? (
+          <div className="pointer-events-none absolute inset-0 flex items-end bg-black/0 opacity-0 transition duration-300 group-hover:bg-black/45 group-hover:opacity-100">
+            <div className="w-full p-4">
+              <p className="text-sm font-medium leading-snug text-white">
+                {overlay}
+              </p>
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );
@@ -117,9 +141,21 @@ export default function AboutPage() {
 
           {/* 3x1 PHOTO STRIP */}
           <div className="grid gap-4 sm:grid-cols-3">
-            <Photo src="/photos/snowclime-profile.jpg" alt="Installing a cloud droplet probe" />
-            <Photo src="/photos/cncplotter-profile.jpg" alt="Working on a home project" />
-            <Photo src="/photos/climbing-profile.jpg" alt="Outdoors" />
+            <Photo
+              src="/photos/snowclime-profile.jpg"
+              alt="Installing a cloud droplet probe"
+              overlay="Deploying an imaging probe at Storm Peak Lab (located at Mt Werner summit in Steamboat, CO) on a custom mount I designed"
+            />
+            <Photo
+              src="/photos/cncplotter-profile.jpg"
+              alt="Working on a home project"
+              overlay="Custom built and programmed CNC Plotter - a COVID home project"
+            />
+            <Photo
+              src="/photos/climbing-profile.jpg"
+              alt="Outdoors"
+              overlay="Climbing at The Pile in Big Cottonwood, Utah"
+            />
           </div>
 
           {/* Minimal links */}
@@ -151,11 +187,7 @@ export default function AboutPage() {
               </svg>
             </IconLink>
 
-            <IconLink
-              href="https://github.com/joeybail96"
-              label="GitHub"
-              color="#181717"
-            >
+            <IconLink href="https://github.com/joeybail96" label="GitHub" color="#181717">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.5 1.1 3.1.8.1-.7.4-1.1.7-1.4-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.3 1.1-3.2-.1-.3-.5-1.5.1-3.2 0 0 .9-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.7.9 1.1 2 1.1 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.65 18.35.5 12 .5z" />
               </svg>
@@ -183,7 +215,6 @@ export default function AboutPage() {
                 <circle cx="17" cy="12" r="5" />
               </svg>
             </IconLink>
-
           </div>
         </header>
 
@@ -246,7 +277,7 @@ export default function AboutPage() {
 
               <LabeledLine label="Functional Expertise:">
                 Experimental Design, Scientific Communication, Technical Writing,
-                Cross-Functional Collaboration, Project Management, Research & Development
+                Cross-Functional Collaboration, Project Management, Research &amp; Development
               </LabeledLine>
             </div>
           </div>
@@ -254,44 +285,68 @@ export default function AboutPage() {
 
         <Divider />
 
-        {/* BACKGROUND (WITH PHOTOS WOVEN IN) */}
+        {/* BACKGROUND (TEXT -> 1x2 PHOTOS -> TEXT -> 1x2 PHOTOS) */}
         <section className="space-y-8">
           <SectionHeading
             title="Background"
             subtitle="A little more about who I am outside of school and work."
           />
 
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-            <div className="space-y-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              <p>
-                I grew up in{" "}
-                <span className="font-medium text-zinc-900 dark:text-zinc-100">
-                  [your hometown/region]
-                </span>
-                , and I’ve always been drawn to building things and learning how systems
-                work. Over time, that turned into mechanical engineering—and eventually
-                into environmental work where weather and real-world constraints matter.
-              </p>
+          {/* Chunk 1 */}
+          <div className="space-y-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+            <p>
+              I grew up in{" "}
+              <span className="font-medium text-zinc-900 dark:text-zinc-100">
+                [your hometown/region]
+              </span>
+              , and I’ve always been drawn to building things and learning how systems
+              work. Over time, that turned into mechanical engineering—and eventually
+              into environmental work where weather and real-world constraints matter.
+            </p>
 
-              <p>
-                Outside of work, I spend a lot of time in the mountains. Trail running,
-                climbing, skiing, and being outdoors are a big part of my life, and
-                they’re a big reason I care about environment-related problems in the
-                first place.
-              </p>
+            <p>
+              Outside of work, I spend a lot of time in the mountains. Trail running,
+              climbing, skiing, and being outdoors are a big part of my life, and
+              they’re a big reason I care about environment-related problems in the
+              first place.
+            </p>
+          </div>
 
-              <p>
-                I also like hands-on projects at home—fixing, building, and iterating on
-                small designs. That same mindset shows up in how I approach engineering
-                work: practical, detail-oriented, and focused on what actually works.
-              </p>
-            </div>
+          {/* Photos row 1 (1x2) */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Photo
+              src="/photos/app-backpacking.jpg"
+              alt="Backpacking"
+              overlay="My first multi-day backpacking trip along PA's Appalachian Trail in 2014. Scrappy, ill-prepared, and stoked!"
+            />
+            <Photo
+              src="/photos/mountain-profile.jpg"
+              alt="Mountain profile"
+              overlay="The summit of Mt. Rainier up Disappointment Cleaver in 2021. 3rd bagged peak of the trip!"
+            />
+          </div>
 
-            {/* Photos woven into Background */}
-            <div className="space-y-4">
-              <Photo src="/photos/app-backpacking.jpg" alt="Background photo 1" />
-              <Photo src="/photos/mountain-profile.jpg" alt="Background photo 2" />
-            </div>
+          {/* Chunk 2 */}
+          <div className="space-y-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+            <p>
+              I also like hands-on projects at home—fixing, building, and iterating on
+              small designs. That same mindset shows up in how I approach engineering
+              work: practical, detail-oriented, and focused on what actually works.
+            </p>
+          </div>
+
+          {/* Photos row 2 (1x2) */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Photo
+              src="/photos/cncdesign-profile.jpg"
+              alt="CNC design work"
+              overlay="Rendered CAD model of CNC Plotter"
+            />
+            <Photo
+              src="/photos/cncplotter-profile.jpg"
+              alt="CNC plotter project"
+              overlay="Completed prototype of CNC Plotter"
+            />
           </div>
         </section>
 
@@ -299,10 +354,7 @@ export default function AboutPage() {
 
         {/* EDUCATION & WORK EXPERIENCES */}
         <section className="space-y-10">
-          <SectionHeading
-            title="Education"
-            subtitle="A quick overview (details in my resume/CV)."
-          />
+          <SectionHeading title="Education" subtitle="A quick overview (details in my resume/CV)." />
 
           <div className="space-y-6 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
             <p>
