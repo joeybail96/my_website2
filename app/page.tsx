@@ -188,7 +188,7 @@ export default function HomePage() {
           <div className="grid gap-6">
             <SectionCard
               eyebrow="About"
-              title="Engineer, scientist, and hands-on builder"
+              title="Background and Career Objectives"
               ctaHref="/about"
               ctaText="More about me"
             >
@@ -202,7 +202,7 @@ export default function HomePage() {
 
             <SectionCard
               eyebrow="Portfolio"
-              title="Field systems, modeling work, and personal builds"
+              title="Academic and Personal Projects"
               ctaHref="/projects"
               ctaText="View projects"
             >
@@ -210,21 +210,19 @@ export default function HomePage() {
                 My portfolio includes field-deployable instrumentation and remote
                 lab work, atmospheric modeling and analysis, and personal builds.
                 Each project write-up focuses on what I owned, what tools I used,
-                and what shipped.
+                and project outcomes.
               </p>
             </SectionCard>
 
             <SectionCard
-              eyebrow="Now"
-              title="Looking for roles where I can build real systems"
+              eyebrow="Contact Me"
+              title="Career Outreach"
               ctaHref="/contact"
               ctaText="Contact me"
             >
               <p>
-                I’m interested in roles that combine engineering execution with
-                environmental or atmospheric applications — instrumentation,
-                hardware development, test and deployment, or applied modeling
-                and data workflows.
+                I am seeking design-focused mechanical engineering roles where I can contribute to the development and execution of real, 
+                physical products and systems.
               </p>
             </SectionCard>
           </div>
