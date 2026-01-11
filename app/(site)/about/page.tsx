@@ -1,7 +1,8 @@
 import Image from "next/image";
 
 function Divider() {
-  return <div className="my-14 h-px w-full bg-zinc-200 dark:bg-zinc-800" />;
+  // was: bg-zinc-200 dark:bg-zinc-800
+  return <div className="my-14 h-px w-full bg-black dark:bg-black" />;
 }
 
 function SectionHeading({
@@ -13,11 +14,13 @@ function SectionHeading({
 }) {
   return (
     <div className="space-y-2">
-      <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+      {/* was: text-zinc-900 dark:text-zinc-100 */}
+      <h2 className="text-2xl font-semibold tracking-tight text-black dark:text-black">
         {title}
       </h2>
       {subtitle ? (
-        <p className="max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+        /* was: text-zinc-700 dark:text-zinc-300 */
+        <p className="max-w-3xl text-sm leading-relaxed text-black dark:text-black">
           {subtitle}
         </p>
       ) : null}
@@ -27,7 +30,8 @@ function SectionHeading({
 
 function Subheading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-800 dark:text-zinc-200">
+    // was: text-zinc-800 dark:text-zinc-200
+    <h3 className="text-base font-semibold uppercase tracking-wider text-black dark:text-black">
       {children}
     </h3>
   );
@@ -41,10 +45,10 @@ function LabeledLine({
   children: React.ReactNode;
 }) {
   return (
-    <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-      <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-        {label}
-      </span>{" "}
+    // was: text-zinc-700 dark:text-zinc-300
+    <p className="text-base leading-relaxed text-black dark:text-black">
+      {/* was: text-zinc-900 dark:text-zinc-100 */}
+      <span className="font-semibold text-black dark:text-black">{label}</span>{" "}
       {children}
     </p>
   );
@@ -60,7 +64,7 @@ function Photo({
   overlay?: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl bg-zinc-200 dark:bg-zinc-800">
+    <div className="group relative overflow-hidden rounded-2xl border border-black bg-zinc-200 dark:bg-zinc-800">
       <div className="relative aspect-[4/3] w-full">
         <Image
           src={src}
@@ -101,13 +105,14 @@ function IconLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex items-center gap-2 text-base font-semibold underline decoration-zinc-300 underline-offset-4 transition hover:decoration-zinc-500 dark:decoration-zinc-700 dark:hover:decoration-zinc-400"
+      className="inline-flex items-center gap-2 text-base font-semibold underline decoration-black underline-offset-4 transition hover:decoration-black dark:decoration-black dark:hover:decoration-black"
       style={{ color }}
     >
       <span className="inline-flex h-5 w-5 items-center justify-center">
         {children}
       </span>
-      <span>{label}</span>
+      {/* ensure label text is black */}
+      <span className="text-black dark:text-black">{label}</span>
     </a>
   );
 }
@@ -118,24 +123,54 @@ export default function AboutPage() {
       <main className="w-full max-w-4xl">
         {/* TOP SUMMARY */}
         <header className="space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
+          {/* was: text-zinc-600 dark:text-zinc-400 */}
+          <p className="text-xs font-semibold uppercase tracking-wider text-black dark:text-black">
             About
           </p>
 
-          <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-            Hello!
+          {/* was: text-zinc-900 dark:text-zinc-100 */}
+          <h1 className="text-3xl font-semibold tracking-tight text-black dark:text-black sm:text-4xl">
+            Hello! Thanks for visting my site!
           </h1>
 
-          <div className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 sm:text-base">
+          {/* was: text-zinc-700 dark:text-zinc-300 */}
+          <div className="space-y-3 text-sm leading-relaxed text-black dark:text-black sm:text-base">
             <p>
-              I am a mechanical engineer with a background in atmospheric science and
-              environmental systems. I enjoy work that blends modeling and analysis with
-              prototyping and execution—building real hardware and workflows that hold up
-              outside the lab.
+              I am a mechanical engineer with undergraduate and master’s degrees in
+              Mechanical Engineering and a strong background in industry, modeling,
+              and field systems. I also recently earned a master’s degree in
+              Atmospheric Sciences, where I applied engineering principles to
+              environmental and air quality problems.
             </p>
+
             <p>
-              I’m based in Salt Lake City and I’m most energized by projects tied to the
-              environment: air quality, weather, and field-ready instrumentation.
+              My recent, academic research focused on extending GEOS-Chem, a global
+              atmospheric chemistry model, to represent chloride rich dust emissions
+              from shrinking saline lakes across the western United States. This work
+              combined physical modeling, environmental data analysis, and software
+              development in Python and Fortran, managed through Git based
+              collaboration.
+            </p>
+
+            <p>
+              Alongside my modeling work, I was deeply involved in multiple field
+              campaigns through the Department of Atmospheric Sciences, applying my
+              mechanical engineering and industry experience to real-world
+              instrumentation challenges. I led the design, fabrication, and
+              installation of a 30 foot aerosol inlet and support structure for a
+              remote field site in the Wasatch Mountains. Using SolidWorks, machining,
+              and civil and mechanical construction methods, I helped build and
+              install a field ready system that is now collecting aerosol and
+              meteorological data for cloud seeding and air quality studies.
+            </p>
+
+            <p>
+              I am strongly driven by creative engineering design and hands-on
+              execution. Whether at work or on personal projects, I am always looking
+              for ways to apply and grow my technical skills by solving real
+              problems. The outdoors is also a big part of my life, which is why I
+              have been especially drawn to projects that connect engineering with
+              environmental understanding, protection, and exploration.
             </p>
           </div>
 
@@ -164,7 +199,7 @@ export default function AboutPage() {
               href="/files/Bail-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-semibold text-zinc-900 underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-500 dark:text-zinc-100 dark:decoration-zinc-700 dark:hover:decoration-zinc-400"
+              className="text-base font-semibold text-black underline decoration-black underline-offset-4 hover:decoration-black dark:text-black dark:decoration-black dark:hover:decoration-black"
             >
               Resume (PDF)
             </a>
@@ -172,7 +207,7 @@ export default function AboutPage() {
               href="/files/Bail-CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-semibold text-zinc-900 underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-500 dark:text-zinc-100 dark:decoration-zinc-700 dark:hover:decoration-zinc-400"
+              className="text-base font-semibold text-black underline decoration-black underline-offset-4 hover:decoration-black dark:text-black dark:decoration-black dark:hover:decoration-black"
             >
               CV (PDF)
             </a>
@@ -187,7 +222,11 @@ export default function AboutPage() {
               </svg>
             </IconLink>
 
-            <IconLink href="https://github.com/joeybail96" label="GitHub" color="#181717">
+            <IconLink
+              href="https://github.com/joeybail96"
+              label="GitHub"
+              color="#181717"
+            >
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.5 1.1 3.1.8.1-.7.4-1.1.7-1.4-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.3 1.1-3.2-.1-.3-.5-1.5.1-3.2 0 0 .9-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.7.9 1.1 2 1.1 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.65 18.35.5 12 .5z" />
               </svg>
@@ -222,18 +261,30 @@ export default function AboutPage() {
 
         {/* CAREER OBJECTIVE */}
         <section className="space-y-8">
-          <SectionHeading
-            title="Career Objective"
-            subtitle="My goal is to build a career where I can continue to grow as an engineer—especially in modeling, prototyping, and execution—while contributing to environment-related work in a practical, measurable way."
-          />
+          <SectionHeading title="Career Objective" />
 
-          <div className="space-y-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+          {/* was: text-zinc-700 dark:text-zinc-300 */}
+          <div className="space-y-4 text-base leading-relaxed text-black dark:text-black">
             <p>
-              I’m seeking opportunities where I can take ownership of systems end-to-end:
-              define requirements, build and validate prototypes, deploy in real
-              conditions, and iterate based on performance. I’m especially interested in
-              roles connected to air quality, weather, remote sensing, and field
-              instrumentation.
+              I am seeking an engineering role where I have the freedom and
+              responsibility to tackle complex technical problems through creative
+              design and hands-on execution. I’m motivated by work that allows me to
+              apply and grow my core engineering skills while taking ownership of real
+              systems from concept through deployment/execution.
+            </p>
+
+            <p>
+              While I am especially drawn to projects connected to the environment,
+              nature, and field-deployed systems, I am not limited to any single
+              industry. I am most interested in teams that value thoughtful design,
+              strong technical foundations, and practical problem solving, whether the
+              application is environmental, industrial, or product focused.
+            </p>
+
+            <p>
+              My background spans modeling, prototyping, and field deployment, and I
+              enjoy working on tight, cross-functional teams that take systems from
+              concept through build and on-site operation.
             </p>
           </div>
 
@@ -242,8 +293,10 @@ export default function AboutPage() {
             <Subheading>Programming Languages</Subheading>
 
             <div className="space-y-2">
-              <LabeledLine label="Proficient:">Python, MATLAB, Bash</LabeledLine>
-              <LabeledLine label="Familiar:">R, JavaScript/TypeScript, SQL</LabeledLine>
+              <LabeledLine label="Proficient:">Python, MATLAB</LabeledLine>
+              <LabeledLine label="Familiar:">
+                Fortran, R, Bash, Arduino (C++), G-Code, C
+              </LabeledLine>
             </div>
           </div>
 
@@ -252,14 +305,21 @@ export default function AboutPage() {
             <Subheading>Tools and Software</Subheading>
 
             <div className="space-y-2">
-              <LabeledLine label="CAD Tools:">SolidWorks, Fusion 360, Inventor</LabeledLine>
+              <LabeledLine label="CAD Tools:">
+                SolidWorks, Inventor, Fusion 360
+              </LabeledLine>
+
+              <LabeledLine label="FE Modeling:">
+                Inventor NASTRAN, Inventor CFD, SolidWorks FEA, ANSYS, Abaqus
+              </LabeledLine>
 
               <LabeledLine label="Data Analysis & Visualization:">
                 Pandas, NumPy, Xarray, Rasterio, Matplotlib, Cartopy
               </LabeledLine>
 
               <LabeledLine label="Development Tools:">
-                VS Code, Jupyter Notebook, Anaconda, RStudio, Git/GitHub, Linux
+                Spyder, VS Code, Jupyter Notebook, Anaconda, RStudio, Git/GitHub,
+                Linux
               </LabeledLine>
 
               <LabeledLine label="Atmospheric Modeling:">
@@ -267,8 +327,8 @@ export default function AboutPage() {
               </LabeledLine>
 
               <LabeledLine label="Remote Sensing:">
-                Optical Particle Counters, Nephelometer, PINE, SMPS, Droplet/Imaging Probes,
-                Radiosonde
+                Optical Particle Counters, Nephelometer, PINE, SMPS,
+                Droplet/Imaging Probes, Radiosonde
               </LabeledLine>
 
               <LabeledLine label="Machining:">
@@ -277,7 +337,8 @@ export default function AboutPage() {
 
               <LabeledLine label="Functional Expertise:">
                 Experimental Design, Scientific Communication, Technical Writing,
-                Cross-Functional Collaboration, Project Management, Research &amp; Development
+                Cross-Functional Collaboration, Project Management, Research &amp;
+                Development
               </LabeledLine>
             </div>
           </div>
@@ -285,34 +346,39 @@ export default function AboutPage() {
 
         <Divider />
 
-        {/* BACKGROUND (TEXT -> 1x2 PHOTOS -> TEXT -> 1x2 PHOTOS) */}
+        {/* BACKGROUND */}
         <section className="space-y-8">
-          <SectionHeading
-            title="Background"
-            subtitle="A little more about who I am outside of school and work."
-          />
+          <SectionHeading title="Background" />
 
-          {/* Chunk 1 */}
-          <div className="space-y-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+          {/* was: text-zinc-700 dark:text-zinc-300 */}
+          <div className="space-y-4 text-base leading-relaxed text-black dark:text-black">
             <p>
-              I grew up in{" "}
-              <span className="font-medium text-zinc-900 dark:text-zinc-100">
-                [your hometown/region]
-              </span>
-              , and I’ve always been drawn to building things and learning how systems
-              work. Over time, that turned into mechanical engineering—and eventually
-              into environmental work where weather and real-world constraints matter.
+              I grew up in Carlisle, Pennsylvania, where I was always building things,
+              first with Legos and later with woodworking and Arduino projects. I
+              studied Mechanical Engineering at Penn State University, where I was
+              also involved in 3D modeling and machining through the Formula SAE race
+              car team. After college, I worked as an engineer for Carlisle
+              Construction Materials, managing large capital projects focused on
+              automating and upgrading manufacturing processes. I later returned to
+              graduate school at the University of Utah, first to study biomechanics
+              and then atmospheric science, where I researched air quality, dust, and
+              climate impacts across the western United States. Across both industry
+              and research, my path has always centered on using engineering to
+              understand and improve complex, real-world systems.
             </p>
 
             <p>
-              Outside of work, I spend a lot of time in the mountains. Trail running,
-              climbing, skiing, and being outdoors are a big part of my life, and
-              they’re a big reason I care about environment-related problems in the
-              first place.
+              The outdoors has been a constant thread throughout my life. Growing up
+              near the Appalachian Trail, I spent much of my time exploring creeks,
+              forests, and local climbing areas, and that early connection to nature
+              never faded. Over time it grew into a love for longer and more ambitious
+              adventures, from my first backpacking trip to my first mountaineering
+              adventure. Whether I am trail running, climbing, skiing, or camping, I
+              am happiest when I am outside, and that connection to wild places is a
+              big reason I care so deeply about the environment.
             </p>
           </div>
 
-          {/* Photos row 1 (1x2) */}
           <div className="grid gap-4 sm:grid-cols-2">
             <Photo
               src="/photos/app-backpacking.jpg"
@@ -326,16 +392,17 @@ export default function AboutPage() {
             />
           </div>
 
-          {/* Chunk 2 */}
-          <div className="space-y-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+          <div className="space-y-4 text-base leading-relaxed text-black dark:text-black">
             <p>
-              I also like hands-on projects at home—fixing, building, and iterating on
-              small designs. That same mindset shows up in how I approach engineering
-              work: practical, detail-oriented, and focused on what actually works.
+              What I love most about engineering is the process of thoughtfully
+              planning a design and then bringing it to life. I enjoy taking an idea,
+              modeling it, refining the details, and finally turning it into something
+              that actually works. That cycle of design, build, test, and improve is
+              what keeps me excited about engineering, whether I am working on large
+              field systems, research equipment, or personal projects in my own shop.
             </p>
           </div>
 
-          {/* Photos row 2 (1x2) */}
           <div className="grid gap-4 sm:grid-cols-2">
             <Photo
               src="/photos/cncdesign-profile.jpg"
@@ -354,64 +421,106 @@ export default function AboutPage() {
 
         {/* EDUCATION & WORK EXPERIENCES */}
         <section className="space-y-10">
-          <SectionHeading title="Education" subtitle="A quick overview (details in my resume/CV)." />
+          <SectionHeading title="Education" />
 
-          <div className="space-y-6 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+          <div className="space-y-6 text-base leading-relaxed text-black dark:text-black">
             <p>
-              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                University of Utah
-              </span>{" "}
-              — PhD track (in progress / winding down)
+              <span className="font-semibold">M.S. Atmospheric Sciences</span> (Dec
+              2025) | University of Utah | GPA: 4.00
             </p>
+
             <p>
-              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                M.S. Atmospheric Sciences
-              </span>{" "}
-              — air quality research, modeling, field campaign involvement
+              <span className="font-semibold">M.S. Mechanical Engineering</span>{" "}
+              (May 2023) | University of Utah | GPA: 4.00
             </p>
+
             <p>
-              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                M.S. Mechanical Engineering
-              </span>{" "}
-              — design, manufacturing, testing, hands-on engineering foundations
+              <span className="font-semibold">B.S. Mechanical Engineering</span> (Dec
+              2018) | Penn State University | GPA: 3.61
             </p>
           </div>
 
           <Divider />
 
-          <SectionHeading
-            title="Work Experience"
-            subtitle="Selected experience (we can format as a clean list with dates once you paste roles)."
-          />
+          <SectionHeading title="Work Experience" />
 
-          <div className="space-y-6 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-            <p>
-              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                [Role / Company]
-              </span>{" "}
-              — [Dates]
-              <br />
-              Short 1–2 sentence description of what you did and what you owned.
-            </p>
+<div className="space-y-6 text-base leading-relaxed text-black dark:text-black">
+  <div>
+    <p>
+      <span className="font-semibold">Graduate Researcher | University of Utah</span>{" "}
+      | Department of Atmospheric Sciences | Aug 2023 to December 2025
+    </p>
 
-            <p>
-              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                [Role / Company]
-              </span>{" "}
-              — [Dates]
-              <br />
-              Short 1–2 sentence description of what you did and what you owned.
-            </p>
+    <ul className="mt-2 list-disc space-y-1 pl-6 italic">
+      <li>
+        Designed and led construction of a remote instrumentation lab at Powder
+        Mountain, including a 30-foot inlet manifold, internal framing, external
+        support structures, and mechanical integration of the inlet system.
+      </li>
+      <li>
+        Installed and maintained atmospheric measurement instruments at remote
+        field sites in the Wasatch Mountains, Ogden Valley, and Steamboat Ski
+        Resort.
+      </li>
+      <li>
+        Authored a master’s thesis identifying chlorine emissions from desiccating
+        saline lakebeds and simulating their atmospheric impacts across the U.S.
+        using GEOS-Chem.
+      </li>
+    </ul>
+  </div>
 
-            <p>
-              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                [Role / Company]
-              </span>{" "}
-              — [Dates]
-              <br />
-              Short 1–2 sentence description of what you did and what you owned.
-            </p>
-          </div>
+  <div>
+    <p>
+      <span className="font-semibold">Graduate Researcher | University of Utah</span>{" "}
+      | Department of Mechanical Engineering | Aug 2021 to Dec 2023
+    </p>
+
+    <ul className="mt-2 list-disc space-y-1 pl-6 italic">
+      <li>
+        Authored a master’s thesis on mechanical failure of brain vessels by
+        dissecting and mechanically testing middle cerebral arteries using custom
+        test setups and imaging systems.
+      </li>
+      <li>
+        Developed MATLAB scripts and an interactive application to automatically
+        process and organize raw mechanical test data from LabView.
+      </li>
+      <li>
+        Designed and fabricated a microscope fixture to position and secure
+        cerebral arteries for precise wall-thickness measurements.
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <p>
+      <span className="font-semibold">
+        Mechanical Project Engineer | Carlisle Construction Materials
+      </span>{" "}
+      | Central Engineering | Jan 2019 to May 2021
+    </p>
+
+    <ul className="mt-2 list-disc space-y-1 pl-6 italic">
+      <li>
+        Owned capex projects end-to-end, including budget proposals and
+        coordination with OEM suppliers, millwrights, electricians, maintenance
+        teams, engineers, operators, and plant leadership across OH, OR, UT, and
+        the Netherlands.
+      </li>
+      <li>
+        Implemented a $1.4M automation project replacing a hazardous six-operator
+        process for shearing and stacking 200-pound rubber mats.
+      </li>
+      <li>
+        Implemented a $1.2M equipment upgrade for large-roll rubber flooring
+        manufacturing, increasing throughput and reducing scrap.
+      </li>
+    </ul>
+  </div>
+</div>
+
+
         </section>
 
         <div className="h-10" />
