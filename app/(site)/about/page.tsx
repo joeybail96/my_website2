@@ -531,8 +531,7 @@ export default function AboutPage() {
 
           {/* ADDITIONAL ENGINEERING EXPERIENCE */}
           <SectionHeading
-            title="Additional Engineering Experience"
-            subtitle="Teaching, internships, and early research experiences."
+            title="Additional Experience"
           />
 
           <div className="space-y-6 text-base leading-relaxed text-black dark:text-black">
