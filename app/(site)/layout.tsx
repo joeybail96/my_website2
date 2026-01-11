@@ -8,35 +8,38 @@ export default function SiteLayout({
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black">
       {/* STICKY NAVBAR */}
-      <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/90 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/90">
+      <header className="sticky top-0 z-50 bg-blue-200/90 text-zinc-900 shadow-sm backdrop-blur-md dark:bg-blue-900/60 dark:text-zinc-100">
         <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
-          {/* LEFT — NAME */}
+          {/* LEFT — NAME / HOME LINK */}
           <Link
             href="/"
             className="text-lg font-semibold tracking-tight hover:opacity-80"
           >
-            Joey Bail
+            Joey Bail{" "}
+            <span className="ml-1 text-xs font-normal text-zinc-600 dark:text-zinc-300">
+              (homepage)
+            </span>
           </Link>
 
           {/* RIGHT — LINKS */}
           <div className="flex items-center gap-6">
             <Link
-              href="/"
-              className="text-sm text-zinc-600 transition hover:text-black dark:text-zinc-400 dark:hover:text-white"
-            >
-              Home
-            </Link>
-            <Link
               href="/about"
-              className="text-sm text-zinc-600 transition hover:text-black dark:text-zinc-400 dark:hover:text-white"
+              className="text-sm transition hover:text-blue-800 dark:hover:text-blue-300"
             >
               About
             </Link>
             <Link
               href="/projects"
-              className="text-sm text-zinc-600 transition hover:text-black dark:text-zinc-400 dark:hover:text-white"
+              className="text-sm transition hover:text-blue-800 dark:hover:text-blue-300"
             >
               Projects
+            </Link>
+            <Link
+              href="/contact"
+              className="text-sm transition hover:text-blue-800 dark:hover:text-blue-300"
+            >
+              Contact
             </Link>
           </div>
         </nav>
