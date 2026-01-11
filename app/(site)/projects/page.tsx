@@ -24,8 +24,32 @@ const projects = [
     title: "(Thesis) Analyzing the Softening Behavior of Brain Vessels",
     role: "Data & Visualization",
     description:
-      "High-level description of the data processing, modeling, or visualization you handled.",
+      "Developed data processing and modeling tools to quantify softening behavior of cerebral vessels from experimental and imaging-based measurements.",
     image: "/photos/vessel-profile.jpg",
+  },
+  {
+    slug: "subaru-camper",
+    title: "Subaru Camper",
+    role: "Mechanical Design & Fabrication",
+    description:
+      "Designed and built a modular camper system inside a Subaru, including a raised sleeping platform, integrated storage, and vehicle-safe mounting hardware for extended road trips and field travel.",
+    image: "/photos/camper-profile.jpg",
+  },
+  {
+    slug: "cnc-plotter",
+    title: "CNC Plotter",
+    role: "Mechatronics & Prototyping",
+    description:
+      "Built a desktop CNC plotter using stepper motors, belt drives, and a microcontroller to convert digital vector drawings into precise physical motion.",
+    image: "/photos/cncplotter-profile.jpg",
+  },
+  {
+    slug: "glass-autoloader",
+    title: "(Capstone) Glass Autoloader",
+    role: "Mechanical Engineering & Automation",
+    description:
+      "Designed and implemented an automated system for safely handling and loading large glass sheets in an industrial manufacturing environment.",
+    image: "/photos/glass-profile.jpg",
   },
 ];
 
@@ -49,7 +73,6 @@ export default function ProjectsPage() {
               href={`/projects/${project.slug}`}
               className="group flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-zinc-50 shadow transition hover:-translate-y-1 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
             >
-              {/* SAME aspect ratio, SAME behavior */}
               <div className="relative w-full aspect-[800/578] overflow-hidden bg-zinc-200 dark:bg-zinc-800">
                 <Image
                   src={project.image}
