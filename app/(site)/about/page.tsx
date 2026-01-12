@@ -109,6 +109,25 @@ function IconLink({
   );
 }
 
+function InlineOrgLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-semibold text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition hover:decoration-zinc-900 dark:text-zinc-100 dark:decoration-zinc-700 dark:hover:decoration-zinc-100"
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function AboutPage() {
   return (
     <div className="flex justify-center bg-zinc-50 px-3 py-8 dark:bg-black">
@@ -201,7 +220,10 @@ export default function AboutPage() {
               CV (PDF)
             </a>
 
-            <IconLink href="https://www.linkedin.com/in/josephbail2018/" label="LinkedIn">
+            <IconLink
+              href="https://www.linkedin.com/in/josephbail2018/"
+              label="LinkedIn"
+            >
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zm7.5 0h3.8v2.1h.1c.5-.9 1.8-2.1 3.8-2.1 4 0 4.7 2.6 4.7 5.9V24h-4v-7.5c0-1.8 0-4.1-2.5-4.1s-2.9 1.9-2.9 4v7.6h-4V8.5z" />
               </svg>
@@ -224,7 +246,10 @@ export default function AboutPage() {
               </svg>
             </IconLink>
 
-            <IconLink href="https://www.flickr.com/photos/204000233@N02/albums" label="Flickr">
+            <IconLink
+              href="https://www.flickr.com/photos/204000233@N02/albums"
+              label="Flickr"
+            >
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <circle cx="7" cy="12" r="5" />
                 <circle cx="17" cy="12" r="5" />
@@ -276,7 +301,9 @@ export default function AboutPage() {
           <div className="space-y-3">
             <Subheading>Tools and Software</Subheading>
             <div className="space-y-2">
-              <LabeledLine label="CAD Tools:">SolidWorks, Inventor, Fusion 360</LabeledLine>
+              <LabeledLine label="CAD Tools:">
+                SolidWorks, Inventor, Fusion 360
+              </LabeledLine>
               <LabeledLine label="FE Modeling:">
                 Inventor NASTRAN, Inventor CFD, SolidWorks FEA, ANSYS, Abaqus
               </LabeledLine>
@@ -284,20 +311,23 @@ export default function AboutPage() {
                 Pandas, NumPy, Xarray, Rasterio, Matplotlib, Cartopy
               </LabeledLine>
               <LabeledLine label="Development Tools:">
-                Spyder, VS Code, Jupyter Notebook, Anaconda, RStudio, Git/GitHub, Linux
+                Spyder, VS Code, Jupyter Notebook, Anaconda, RStudio, Git/GitHub,
+                Linux
               </LabeledLine>
               <LabeledLine label="Atmospheric Modeling:">
                 GEOS-Chem, STILT, HYSPLIT, FENGSHA
               </LabeledLine>
               <LabeledLine label="Remote Sensing:">
-                Optical Particle Counters, Nephelometer, PINE, SMPS, Droplet/Imaging Probes, Radiosonde
+                Optical Particle Counters, Nephelometer, PINE, SMPS, Droplet/Imaging
+                Probes, Radiosonde
               </LabeledLine>
               <LabeledLine label="Machining:">
                 Woodworking, Manual Lathe, Manual Mill, Power Tools
               </LabeledLine>
               <LabeledLine label="Functional Expertise:">
-                Experimental Design, Scientific Communication, Technical Writing, Cross-Functional Collaboration,
-                Project Management, Research &amp; Development
+                Experimental Design, Scientific Communication, Technical Writing,
+                Cross-Functional Collaboration, Project Management, Research &amp;
+                Development
               </LabeledLine>
             </div>
           </div>
@@ -412,7 +442,14 @@ export default function AboutPage() {
             <div>
               <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
-                  Graduate Researcher | University of Utah
+                  Graduate Researcher | University of Utah:{" "}
+                  <InlineOrgLink href="https://www.jessicahaskinsphd.com/research/">
+                    Haskins Lab
+                  </InlineOrgLink>{" "}
+                  and{" "}
+                  <InlineOrgLink href="https://atmos.utah.edu/hart-lab/home.php">
+                    HART Lab
+                  </InlineOrgLink>
                 </span>{" "}
                 <span className="text-zinc-600 dark:text-zinc-400">
                   | Department of Atmospheric Sciences | Aug 2023 to December 2025
@@ -442,7 +479,7 @@ export default function AboutPage() {
             <div>
               <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
-                  Graduate Researcher | University of Utah
+                  Graduate Researcher | University of Utah: Vessel Mechanics Lab
                 </span>{" "}
                 <span className="text-zinc-600 dark:text-zinc-400">
                   | Department of Mechanical Engineering | Aug 2021 to Dec 2023
@@ -470,7 +507,10 @@ export default function AboutPage() {
             <div>
               <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
-                  Mechanical Project Engineer | Carlisle Construction Materials
+                  Mechanical Project Engineer |{" "}
+                  <InlineOrgLink href="https://www.linkedin.com/company/carlisle-construction-materials">
+                    Carlisle Construction Materials
+                  </InlineOrgLink>
                 </span>{" "}
                 <span className="text-zinc-600 dark:text-zinc-400">
                   | Central Engineering | Jan 2019 to May 2021
@@ -522,7 +562,10 @@ export default function AboutPage() {
             <div>
               <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
-                  Undergraduate Researcher | Pennsylvania State University
+                  Undergraduate Researcher | Pennsylvania State University:{" "}
+                  <InlineOrgLink href="https://sites.psu.edu/byronlab/">
+                    Environmental and Biological Fluid Mechanics Lab
+                  </InlineOrgLink>
                 </span>{" "}
                 <span className="text-zinc-600 dark:text-zinc-400">
                   | Department of Mechanical Engineering | Dec 2017 to Dec 2018
@@ -539,7 +582,10 @@ export default function AboutPage() {
             <div>
               <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
-                  Mechanical Engineer Intern | Carlisle Construction Materials
+                  Mechanical Engineer Intern |{" "}
+                  <InlineOrgLink href="https://www.linkedin.com/company/carlisle-construction-materials">
+                    Carlisle Construction Materials
+                  </InlineOrgLink>
                 </span>{" "}
                 <span className="text-zinc-600 dark:text-zinc-400">
                   | Research &amp; Development | Summers 2017 &amp; 2018
