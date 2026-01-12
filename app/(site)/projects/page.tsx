@@ -5,7 +5,7 @@ const projects = [
   {
     slug: "project-1",
     title: "Design & Deployment of a Remote Aerosol Research Facility",
-    role: "Design & Analysis",
+    role: "Design, Machining, & Field Install Work",
     description:
       "End-to-end development of a remote aerosol research facility, including design and fabrication of a custom inlet system, construction of a container-based lab, and installation of the inlet, structural supports, and instruments at a remote site in the Wasatch Mountains.",
     image: "/photos/snowscape-profile.jpg",
@@ -14,7 +14,7 @@ const projects = [
     slug: "project-2",
     title:
       "(Thesis) Modeling Secondary Air Quality Impacts of Shrinking Saline Lakes",
-    role: "Instrumentation & Field Work",
+    role: "Fortran programming, Chemistry Modeling, & Analysis",
     description:
       "Extended the GEOS-Chem global air-quality model to simulate chloride-rich dust from shrinking saline lakes, and used the framework I developed to quantify how chloride-rich dust from shrinking saline lakes might be altering regional air-quality in the western United States.",
     image: "/photos/geoschem-profile.jpg",
@@ -22,7 +22,7 @@ const projects = [
   {
     slug: "project-3",
     title: "(Thesis) Analyzing the Softening Behavior of Brain Vessels",
-    role: "Data & Visualization",
+    role: "Experimental Design, Data, & Visualization",
     description:
       "Developed data processing and modeling tools to quantify softening behavior of cerebral vessels from experimental and imaging-based measurements.",
     image: "/photos/vessel-profile.jpg",
@@ -62,7 +62,7 @@ export default function ProjectsPage() {
         </h1>
 
         <p className="mt-3 max-w-3xl text-sm text-zinc-600 dark:text-zinc-400 sm:text-base">
-          A sample of things I&apos;ve worked on. Click any project to read more
+          Click any project to read more
           about it.
         </p>
 
