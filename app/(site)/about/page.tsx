@@ -145,42 +145,25 @@ export default function AboutPage() {
 
           <div className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 sm:text-base">
             <p>
-              I am a mechanical engineer with undergraduate and master’s degrees in
-              Mechanical Engineering and a strong background in industry, modeling,
-              and field systems. I also recently earned a master’s degree in
-              Atmospheric Sciences, where I applied engineering principles to
-              environmental and air quality problems.
+              I am a mechanical engineer with bachelor’s and master’s degrees in Mechanical
+              Engineering and a master’s degree in Atmospheric Sciences, focused on applying
+              engineering to environmental and air-quality problems. My recent research
+              extended the GEOS-Chem global atmospheric chemistry model to simulate
+              chloride-rich dust emissions from shrinking saline lakes across the western
+              United States using Python and Fortran.
             </p>
 
             <p>
-              My recent, academic research focused on extending GEOS-Chem, a global
-              atmospheric chemistry model, to represent chloride rich dust emissions
-              from shrinking saline lakes across the western United States. This work
-              combined physical modeling, environmental data analysis, and software
-              development in Python and Fortran, managed through Git based
-              collaboration.
+              I bring several years of industry experience as a project engineer leading
+              large-scale, capital engineering projects, and I apply that same rigor to
+              scientific and field-based systems. Most recently, I led the design,
+              fabrication, and installation of a 30-foot aerosol inlet and support structure
+              for a remote mountain field site using SolidWorks, machining, and field
+              construction — a system now operating in the field collecting aerosol and
+              meteorological data. I’m driven by hands-on engineering, creative problem
+              solving, and projects that connect technology with the natural environment.
             </p>
 
-            <p>
-              Alongside my modeling work, I was deeply involved in multiple field
-              campaigns through the Department of Atmospheric Sciences, applying my
-              mechanical engineering and industry experience to real-world
-              instrumentation challenges. I led the design, fabrication, and
-              installation of a 30 foot aerosol inlet and support structure for a
-              remote field site in the Wasatch Mountains. Using SolidWorks, machining,
-              and civil and mechanical construction methods, I helped build and
-              install a field ready system that is now collecting aerosol and
-              meteorological data for cloud seeding and air quality studies.
-            </p>
-
-            <p>
-              I am strongly driven by creative engineering design and hands-on
-              execution. Whether at work or on personal projects, I am always looking
-              for ways to apply and grow my technical skills by solving real
-              problems. The outdoors is also a big part of my life, which is why I
-              have been especially drawn to projects that connect engineering with
-              environmental understanding, protection, and exploration.
-            </p>
           </div>
 
           {/* 3x1 PHOTO STRIP */}
