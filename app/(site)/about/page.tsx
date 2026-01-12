@@ -566,7 +566,7 @@ export default function AboutPage() {
             <div>
               <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
-                  Undergraduate Researcher | Pennsylvania State University:{" "}
+                  Undergraduate Researcher | Penn State University:{" "}
                   <InlineOrgLink href="https://sites.psu.edu/byronlab/">
                     Environmental and Biological Fluid Mechanics Lab
                   </InlineOrgLink>
