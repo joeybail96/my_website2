@@ -117,7 +117,7 @@ export default function Project2Page() {
           form nitryl chloride (ClNO₂) and alter oxidant budgets and air quality.
         </Card>
 
-        <Card title="Why it matters">
+        <Card title="Impact">
           As saline lakes shrink, chloride-rich lakebeds are exposed and emit dust.
           Laboratory studies show playa dust can efficiently produce ClNO₂ when mixed with
           urban NOₓ pollution. Large-scale atmospheric impacts remain poorly constrained—this work

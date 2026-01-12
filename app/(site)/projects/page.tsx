@@ -28,7 +28,7 @@ const projects = [
     image: "/photos/vessel-profile.jpg",
   },
   {
-    slug: "subaru-camper",
+    slug: "project-4",
     title: "Subaru Camper",
     role: "Mechanical Design & Fabrication",
     description:
@@ -36,7 +36,7 @@ const projects = [
     image: "/photos/camper-profile.jpg",
   },
   {
-    slug: "cnc-plotter",
+    slug: "project-5",
     title: "CNC Plotter",
     role: "Mechatronics & Prototyping",
     description:
@@ -44,7 +44,7 @@ const projects = [
     image: "/photos/cncplotter-profile.jpg",
   },
   {
-    slug: "glass-autoloader",
+    slug: "project-6",
     title: "(Capstone) Glass Autoloader",
     role: "Mechanical Engineering & Automation",
     description:
