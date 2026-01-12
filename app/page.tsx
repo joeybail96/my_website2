@@ -83,7 +83,7 @@ export default function HomePage() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-zinc-200 dark:bg-zinc-800">
               <Image
                 src="/photos/home-profile.jpg"
-                alt="Joey Bail asdf"
+                alt="Joey Bail"
                 fill
                 className="object-cover object-top"
                 sizes="(min-width: 1024px) 320px, 60vw"
@@ -91,7 +91,7 @@ export default function HomePage() {
             </div>
 
             <h1 className="mt-5 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-              Joey Bail
+              Joey Bail test
             </h1>
 
             <p className="mt-2 text-base font-medium text-black dark:text-white">
