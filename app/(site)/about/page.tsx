@@ -1,8 +1,7 @@
 import Image from "next/image";
 
 function Divider() {
-  // was: bg-zinc-200 dark:bg-zinc-800
-  return <div className="my-14 h-px w-full bg-black dark:bg-black" />;
+  return <div className="my-14 h-px w-full bg-black" />;
 }
 
 function SectionHeading({
@@ -14,13 +13,11 @@ function SectionHeading({
 }) {
   return (
     <div className="space-y-2">
-      {/* was: text-zinc-900 dark:text-zinc-100 */}
-      <h2 className="text-2xl font-semibold tracking-tight text-black dark:text-black">
+      <h2 className="text-2xl font-semibold tracking-tight text-black">
         {title}
       </h2>
       {subtitle ? (
-        /* was: text-zinc-700 dark:text-zinc-300 */
-        <p className="max-w-3xl text-sm leading-relaxed text-black dark:text-black">
+        <p className="max-w-3xl text-sm leading-relaxed text-black">
           {subtitle}
         </p>
       ) : null}
@@ -30,8 +27,7 @@ function SectionHeading({
 
 function Subheading({ children }: { children: React.ReactNode }) {
   return (
-    // was: text-zinc-800 dark:text-zinc-200
-    <h3 className="text-base font-semibold uppercase tracking-wider text-black dark:text-black">
+    <h3 className="text-base font-semibold uppercase tracking-wider text-black">
       {children}
     </h3>
   );
@@ -45,11 +41,8 @@ function LabeledLine({
   children: React.ReactNode;
 }) {
   return (
-    // was: text-zinc-700 dark:text-zinc-300
-    <p className="text-base leading-relaxed text-black dark:text-black">
-      {/* was: text-zinc-900 dark:text-zinc-100 */}
-      <span className="font-semibold text-black dark:text-black">{label}</span>{" "}
-      {children}
+    <p className="text-base leading-relaxed text-black">
+      <span className="font-semibold text-black">{label}</span> {children}
     </p>
   );
 }
@@ -64,7 +57,7 @@ function Photo({
   overlay?: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-black bg-zinc-200 dark:bg-zinc-800">
+    <div className="group relative overflow-hidden rounded-2xl border border-black bg-zinc-200">
       <div className="relative aspect-[4/3] w-full">
         <Image
           src={src}
@@ -73,7 +66,6 @@ function Photo({
           className="object-cover transition duration-300 group-hover:scale-[1.02]"
         />
 
-        {/* Hover overlay */}
         {overlay ? (
           <div className="pointer-events-none absolute inset-0 flex items-end bg-black/0 opacity-0 transition duration-300 group-hover:bg-black/45 group-hover:opacity-100">
             <div className="w-full p-4">
@@ -105,36 +97,32 @@ function IconLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex items-center gap-2 text-base font-semibold underline decoration-black underline-offset-4 transition hover:decoration-black dark:decoration-black dark:hover:decoration-black"
+      className="inline-flex items-center gap-2 text-base font-semibold underline decoration-black underline-offset-4 transition hover:decoration-black"
       style={{ color }}
     >
       <span className="inline-flex h-5 w-5 items-center justify-center">
         {children}
       </span>
-      {/* ensure label text is black */}
-      <span className="text-black dark:text-black">{label}</span>
+      <span className="text-black">{label}</span>
     </a>
   );
 }
 
 export default function AboutPage() {
   return (
-    <div className="flex justify-center bg-zinc-50 px-4 py-12 dark:bg-black">
+    <div className="flex justify-center bg-white px-4 py-12">
       <main className="w-full max-w-4xl">
         {/* TOP SUMMARY */}
         <header className="space-y-6">
-          {/* was: text-zinc-600 dark:text-zinc-400 */}
-          <p className="text-xs font-semibold uppercase tracking-wider text-black dark:text-black">
+          <p className="text-xs font-semibold uppercase tracking-wider text-black">
             About
           </p>
 
-          {/* was: text-zinc-900 dark:text-zinc-100 */}
-          <h1 className="text-3xl font-semibold tracking-tight text-black dark:text-black sm:text-4xl">
+          <h1 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl">
             Hello! Thanks for visting my site!
           </h1>
 
-          {/* was: text-zinc-700 dark:text-zinc-300 */}
-          <div className="space-y-3 text-sm leading-relaxed text-black dark:text-black sm:text-base">
+          <div className="space-y-3 text-sm leading-relaxed text-black sm:text-base">
             <p>
               I am a mechanical engineer with undergraduate and master’s degrees in
               Mechanical Engineering and a strong background in industry, modeling,
@@ -199,7 +187,7 @@ export default function AboutPage() {
               href="/files/Bail-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-semibold text-black underline decoration-black underline-offset-4 hover:decoration-black dark:text-black dark:decoration-black dark:hover:decoration-black"
+              className="text-base font-semibold text-black underline decoration-black underline-offset-4 hover:decoration-black"
             >
               Resume (PDF)
             </a>
@@ -207,7 +195,7 @@ export default function AboutPage() {
               href="/files/Bail-CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-semibold text-black underline decoration-black underline-offset-4 hover:decoration-black dark:text-black dark:decoration-black dark:hover:decoration-black"
+              className="text-base font-semibold text-black underline decoration-black underline-offset-4 hover:decoration-black"
             >
               CV (PDF)
             </a>
@@ -263,8 +251,7 @@ export default function AboutPage() {
         <section className="space-y-8">
           <SectionHeading title="Career Objective" />
 
-          {/* was: text-zinc-700 dark:text-zinc-300 */}
-          <div className="space-y-4 text-base leading-relaxed text-black dark:text-black">
+          <div className="space-y-4 text-base leading-relaxed text-black">
             <p>
               I am seeking an engineering role where I have the freedom and
               responsibility to tackle complex technical problems through creative
@@ -288,10 +275,8 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Programming Languages */}
           <div className="space-y-3">
             <Subheading>Programming Languages</Subheading>
-
             <div className="space-y-2">
               <LabeledLine label="Proficient:">Python, MATLAB, R</LabeledLine>
               <LabeledLine label="Familiar:">
@@ -300,10 +285,8 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Tools and Software */}
           <div className="space-y-3">
             <Subheading>Tools and Software</Subheading>
-
             <div className="space-y-2">
               <LabeledLine label="CAD Tools:">
                 SolidWorks, Inventor, Fusion 360
@@ -350,8 +333,7 @@ export default function AboutPage() {
         <section className="space-y-8">
           <SectionHeading title="Background" />
 
-          {/* was: text-zinc-700 dark:text-zinc-300 */}
-          <div className="space-y-4 text-base leading-relaxed text-black dark:text-black">
+          <div className="space-y-4 text-base leading-relaxed text-black">
             <p>
               I grew up in Carlisle, Pennsylvania, where I was always building things,
               first with Legos and later with woodworking and Arduino projects. I
@@ -392,7 +374,7 @@ export default function AboutPage() {
             />
           </div>
 
-          <div className="space-y-4 text-base leading-relaxed text-black dark:text-black">
+          <div className="space-y-4 text-base leading-relaxed text-black">
             <p>
               What I love most about engineering is the process of thoughtfully
               planning a design and then bringing it to life. I enjoy taking an idea,
@@ -423,7 +405,7 @@ export default function AboutPage() {
         <section className="space-y-10">
           <SectionHeading title="Education" />
 
-          <div className="space-y-6 text-base leading-relaxed text-black dark:text-black">
+          <div className="space-y-6 text-base leading-relaxed text-black">
             <p>
               <span className="font-semibold">M.S. Atmospheric Sciences</span> (Dec
               2025) | University of Utah | GPA: 4.00
@@ -444,7 +426,7 @@ export default function AboutPage() {
 
           <SectionHeading title="Work Experience" />
 
-          <div className="space-y-6 text-base leading-relaxed text-black dark:text-black">
+          <div className="space-y-6 text-base leading-relaxed text-black">
             <div>
               <p>
                 <span className="font-semibold">
@@ -529,12 +511,9 @@ export default function AboutPage() {
 
           <Divider />
 
-          {/* ADDITIONAL ENGINEERING EXPERIENCE */}
-          <SectionHeading
-            title="Additional Experience"
-          />
+          <SectionHeading title="Additional Experience" />
 
-          <div className="space-y-6 text-base leading-relaxed text-black dark:text-black">
+          <div className="space-y-6 text-base leading-relaxed text-black">
             <div>
               <p>
                 <span className="font-semibold">
