@@ -109,6 +109,7 @@ function IconLink({
   );
 }
 
+/** Inline link style for labs/companies in experience sections */
 function InlineOrgLink({
   href,
   children,
@@ -121,7 +122,7 @@ function InlineOrgLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="font-semibold text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition hover:decoration-zinc-900 dark:text-zinc-100 dark:decoration-zinc-700 dark:hover:decoration-zinc-100"
+      className="font-semibold text-blue-700 underline decoration-blue-300 underline-offset-4 transition hover:text-blue-900 hover:decoration-blue-900 dark:text-blue-400 dark:decoration-blue-700 dark:hover:text-blue-300 dark:hover:decoration-blue-300"
     >
       {children}
     </a>
@@ -479,7 +480,10 @@ export default function AboutPage() {
             <div>
               <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
-                  Graduate Researcher | University of Utah: Vessel Mechanics Lab
+                  Graduate Researcher | University of Utah:{" "}
+                  <InlineOrgLink href="https://vesselmechanics.mech.utah.edu/">
+                    Head Injury and Vessel Biomechanics Lab
+                  </InlineOrgLink>
                 </span>{" "}
                 <span className="text-zinc-600 dark:text-zinc-400">
                   | Department of Mechanical Engineering | Aug 2021 to Dec 2023
