@@ -268,7 +268,7 @@ export default function AboutPage() {
             </p>
 
             <p>
-              My background spans coding, modeling, prototyping, and field deployment, and I
+              My industry, research, and educational background spans coding, modeling, prototyping, and field deployment, and I
               enjoy working on tight, cross-functional teams that take systems from
               concept through build and on-site operation.
             </p>
