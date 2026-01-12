@@ -193,9 +193,11 @@ export default function HomePage() {
               ctaText="More about me"
             >
               <p>
-                I’m an engineer with a research background in air quality and
+                I am an engineer with a research background in air quality and
                 environmental systems. I am passionate about delivering solutions to complex 
-                engineering problems with creative and thoughtful designs.
+                engineering problems with creative and thoughtful designs. Outside of work,
+                I participate in a wide assortment of outdoor recreation, and I always 
+                looking for another excuse to be out in nature!
               </p>
             </SectionCard>
 
