@@ -396,12 +396,12 @@ export default function AboutPage() {
             <Photo
               src="/photos/cncdesign-profile.jpg"
               alt="CNC design work"
-              overlay="Rendered CAD model of CNC Plotter"
+              overlay="Rendered CAD model of CNC Plotter (personal project)"
             />
             <Photo
               src="/photos/cncplotter-profile.jpg"
               alt="CNC plotter project"
-              overlay="Completed prototype of CNC Plotter"
+              overlay="Completed prototype of CNC Plotter (personal project)"
             />
           </div>
         </section>
