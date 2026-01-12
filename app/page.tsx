@@ -91,7 +91,7 @@ export default function HomePage() {
             </div>
 
             <h1 className="mt-5 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-              Joey Bail test
+              Joey Bail
             </h1>
 
             <p className="mt-2 text-base font-medium text-black dark:text-white">

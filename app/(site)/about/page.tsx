@@ -381,7 +381,7 @@ export default function AboutPage() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <Photo
-              src="/photos/app-backpacking.jpg"
+              src="/photos/camper-profile.jpg"
               alt="Backpacking"
               overlay="My first multi-day backpacking trip along PA's Appalachian Trail in 2014. Scrappy, ill-prepared, and stoked!"
             />
