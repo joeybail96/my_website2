@@ -147,8 +147,10 @@ export default function AboutPage() {
             <p>
               I am a mechanical engineer with bachelor’s and master’s degrees in Mechanical
               Engineering and a master’s degree in Atmospheric Sciences, focused on applying
-              engineering to environmental and air-quality problems. My recent research
-              extended the GEOS-Chem global atmospheric chemistry model to simulate
+              engineering to environmental and air-quality problems. My mechanical engineering 
+              master's' focused on studying the mechancial failure properties of cerebral vessels, 
+              while my master's in Atmospheric Sciences mostly focused on 
+              extending the GEOS-Chem global atmospheric chemistry model to simulate
               chloride-rich dust emissions from shrinking saline lakes across the western
               United States using Python and Fortran.
             </p>
@@ -160,7 +162,7 @@ export default function AboutPage() {
               fabrication, and installation of a 30-foot aerosol inlet and support structure
               for a remote mountain field site using SolidWorks, machining, and field
               construction — a system now operating in the field collecting aerosol and
-              meteorological data. I’m driven by hands-on engineering, creative problem
+              meteorological data. I am driven by hands-on engineering, creative problem
               solving, and projects that connect technology with the natural environment.
             </p>
 
