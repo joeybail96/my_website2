@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 function Divider() {
-  return <div className="my-14 h-px w-full bg-black" />;
+  return <div className="my-14 h-px w-full bg-zinc-200 dark:bg-zinc-800" />;
 }
 
 function SectionHeading({
@@ -13,11 +13,11 @@ function SectionHeading({
 }) {
   return (
     <div className="space-y-2">
-      <h2 className="text-2xl font-semibold tracking-tight text-black">
+      <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
         {title}
       </h2>
       {subtitle ? (
-        <p className="max-w-3xl text-sm leading-relaxed text-black">
+        <p className="max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
           {subtitle}
         </p>
       ) : null}
@@ -27,7 +27,7 @@ function SectionHeading({
 
 function Subheading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-base font-semibold uppercase tracking-wider text-black">
+    <h3 className="text-base font-semibold uppercase tracking-wider text-zinc-800 dark:text-zinc-200">
       {children}
     </h3>
   );
@@ -41,8 +41,11 @@ function LabeledLine({
   children: React.ReactNode;
 }) {
   return (
-    <p className="text-base leading-relaxed text-black">
-      <span className="font-semibold text-black">{label}</span> {children}
+    <p className="text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+      <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+        {label}
+      </span>{" "}
+      {children}
     </p>
   );
 }
@@ -57,13 +60,14 @@ function Photo({
   overlay?: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-black bg-zinc-200">
+    <div className="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900">
       <div className="relative aspect-[4/3] w-full">
         <Image
           src={src}
           alt={alt}
           fill
           className="object-cover transition duration-300 group-hover:scale-[1.02]"
+          sizes="(min-width: 768px) 33vw, 100vw"
         />
 
         {overlay ? (
@@ -83,12 +87,10 @@ function Photo({
 function IconLink({
   href,
   label,
-  color,
   children,
 }: {
   href: string;
   label: string;
-  color: string;
   children: React.ReactNode;
 }) {
   return (
@@ -97,32 +99,31 @@ function IconLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex items-center gap-2 text-base font-semibold underline decoration-black underline-offset-4 transition hover:decoration-black"
-      style={{ color }}
+      className="inline-flex items-center gap-2 text-base font-semibold underline decoration-zinc-300 underline-offset-4 transition hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-zinc-100"
     >
-      <span className="inline-flex h-5 w-5 items-center justify-center">
+      <span className="inline-flex h-5 w-5 items-center justify-center text-zinc-900 dark:text-zinc-100">
         {children}
       </span>
-      <span className="text-black">{label}</span>
+      <span className="text-zinc-900 dark:text-zinc-100">{label}</span>
     </a>
   );
 }
 
 export default function AboutPage() {
   return (
-    <div className="flex justify-center bg-white px-4 py-12">
-      <main className="w-full max-w-4xl">
+    <div className="flex justify-center bg-zinc-50 px-3 py-8 dark:bg-black">
+      <main className="w-full max-w-4xl rounded-2xl bg-white p-6 shadow-sm dark:bg-zinc-950 sm:p-8">
         {/* TOP SUMMARY */}
         <header className="space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-wider text-black">
+          <p className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
             About
           </p>
 
-          <h1 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl">
+          <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
             Hello! Thanks for visting my site!
           </h1>
 
-          <div className="space-y-3 text-sm leading-relaxed text-black sm:text-base">
+          <div className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 sm:text-base">
             <p>
               I am a mechanical engineer with undergraduate and master’s degrees in
               Mechanical Engineering and a strong background in industry, modeling,
@@ -187,7 +188,7 @@ export default function AboutPage() {
               href="/files/Bail-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-semibold text-black underline decoration-black underline-offset-4 hover:decoration-black"
+              className="text-base font-semibold text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition hover:decoration-zinc-900 dark:text-zinc-100 dark:decoration-zinc-700 dark:hover:decoration-zinc-100"
             >
               Resume (PDF)
             </a>
@@ -195,26 +196,18 @@ export default function AboutPage() {
               href="/files/Bail-CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-semibold text-black underline decoration-black underline-offset-4 hover:decoration-black"
+              className="text-base font-semibold text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition hover:decoration-zinc-900 dark:text-zinc-100 dark:decoration-zinc-700 dark:hover:decoration-zinc-100"
             >
               CV (PDF)
             </a>
 
-            <IconLink
-              href="https://www.linkedin.com/in/josephbail2018/"
-              label="LinkedIn"
-              color="#0A66C2"
-            >
+            <IconLink href="https://www.linkedin.com/in/josephbail2018/" label="LinkedIn">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zm7.5 0h3.8v2.1h.1c.5-.9 1.8-2.1 3.8-2.1 4 0 4.7 2.6 4.7 5.9V24h-4v-7.5c0-1.8 0-4.1-2.5-4.1s-2.9 1.9-2.9 4v7.6h-4V8.5z" />
               </svg>
             </IconLink>
 
-            <IconLink
-              href="https://github.com/joeybail96"
-              label="GitHub"
-              color="#181717"
-            >
+            <IconLink href="https://github.com/joeybail96" label="GitHub">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.5 1.1 3.1.8.1-.7.4-1.1.7-1.4-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.3 1.1-3.2-.1-.3-.5-1.5.1-3.2 0 0 .9-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.7.9 1.1 2 1.1 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.65 18.35.5 12 .5z" />
               </svg>
@@ -223,7 +216,6 @@ export default function AboutPage() {
             <IconLink
               href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=jc_bJg4AAAAJ"
               label="Google Scholar"
-              color="#4285F4"
             >
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
@@ -232,11 +224,7 @@ export default function AboutPage() {
               </svg>
             </IconLink>
 
-            <IconLink
-              href="https://www.flickr.com/photos/204000233@N02/albums"
-              label="Flickr"
-              color="#FF0084"
-            >
+            <IconLink href="https://www.flickr.com/photos/204000233@N02/albums" label="Flickr">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <circle cx="7" cy="12" r="5" />
                 <circle cx="17" cy="12" r="5" />
@@ -251,7 +239,7 @@ export default function AboutPage() {
         <section className="space-y-8">
           <SectionHeading title="Career Objective" />
 
-          <div className="space-y-4 text-base leading-relaxed text-black">
+          <div className="space-y-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
             <p>
               I am seeking an engineering role where I have the freedom and
               responsibility to tackle complex technical problems through creative
@@ -288,40 +276,28 @@ export default function AboutPage() {
           <div className="space-y-3">
             <Subheading>Tools and Software</Subheading>
             <div className="space-y-2">
-              <LabeledLine label="CAD Tools:">
-                SolidWorks, Inventor, Fusion 360
-              </LabeledLine>
-
+              <LabeledLine label="CAD Tools:">SolidWorks, Inventor, Fusion 360</LabeledLine>
               <LabeledLine label="FE Modeling:">
                 Inventor NASTRAN, Inventor CFD, SolidWorks FEA, ANSYS, Abaqus
               </LabeledLine>
-
               <LabeledLine label="Data Analysis & Visualization:">
                 Pandas, NumPy, Xarray, Rasterio, Matplotlib, Cartopy
               </LabeledLine>
-
               <LabeledLine label="Development Tools:">
-                Spyder, VS Code, Jupyter Notebook, Anaconda, RStudio, Git/GitHub,
-                Linux
+                Spyder, VS Code, Jupyter Notebook, Anaconda, RStudio, Git/GitHub, Linux
               </LabeledLine>
-
               <LabeledLine label="Atmospheric Modeling:">
                 GEOS-Chem, STILT, HYSPLIT, FENGSHA
               </LabeledLine>
-
               <LabeledLine label="Remote Sensing:">
-                Optical Particle Counters, Nephelometer, PINE, SMPS,
-                Droplet/Imaging Probes, Radiosonde
+                Optical Particle Counters, Nephelometer, PINE, SMPS, Droplet/Imaging Probes, Radiosonde
               </LabeledLine>
-
               <LabeledLine label="Machining:">
                 Woodworking, Manual Lathe, Manual Mill, Power Tools
               </LabeledLine>
-
               <LabeledLine label="Functional Expertise:">
-                Experimental Design, Scientific Communication, Technical Writing,
-                Cross-Functional Collaboration, Project Management, Research &amp;
-                Development
+                Experimental Design, Scientific Communication, Technical Writing, Cross-Functional Collaboration,
+                Project Management, Research &amp; Development
               </LabeledLine>
             </div>
           </div>
@@ -333,7 +309,7 @@ export default function AboutPage() {
         <section className="space-y-8">
           <SectionHeading title="Background" />
 
-          <div className="space-y-4 text-base leading-relaxed text-black">
+          <div className="space-y-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
             <p>
               I grew up in Carlisle, Pennsylvania, where I was always building things,
               first with Legos and later with woodworking and Arduino projects. I
@@ -370,11 +346,11 @@ export default function AboutPage() {
             <Photo
               src="/photos/mountain-profile.jpg"
               alt="Mountain profile"
-              overlay="The summit of Mt. Rainier up Disappointment Cleaver in 2021. 3rd bagged peak of the trip!"
+              overlay="The summit of Mt. Rainier up Disappointment Cleaver in 2021. 3rd bagged peak of the trip! "
             />
           </div>
 
-          <div className="space-y-4 text-base leading-relaxed text-black">
+          <div className="space-y-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
             <p>
               What I love most about engineering is the process of thoughtfully
               planning a design and then bringing it to life. I enjoy taking an idea,
@@ -405,20 +381,26 @@ export default function AboutPage() {
         <section className="space-y-10">
           <SectionHeading title="Education" />
 
-          <div className="space-y-6 text-base leading-relaxed text-black">
+          <div className="space-y-6 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
             <p>
-              <span className="font-semibold">M.S. Atmospheric Sciences</span> (Dec
-              2025) | University of Utah | GPA: 4.00
+              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+                M.S. Atmospheric Sciences
+              </span>{" "}
+              (Dec 2025) | University of Utah | GPA: 4.00
             </p>
 
             <p>
-              <span className="font-semibold">M.S. Mechanical Engineering</span>{" "}
+              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+                M.S. Mechanical Engineering
+              </span>{" "}
               (May 2023) | University of Utah | GPA: 4.00
             </p>
 
             <p>
-              <span className="font-semibold">B.S. Mechanical Engineering</span> (Dec
-              2018) | Penn State University | GPA: 3.61
+              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+                B.S. Mechanical Engineering
+              </span>{" "}
+              (Dec 2018) | Penn State University | GPA: 3.61
             </p>
           </div>
 
@@ -426,13 +408,15 @@ export default function AboutPage() {
 
           <SectionHeading title="Work Experience" />
 
-          <div className="space-y-6 text-base leading-relaxed text-black">
+          <div className="space-y-6 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
             <div>
-              <p>
+              <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
                   Graduate Researcher | University of Utah
                 </span>{" "}
-                | Department of Atmospheric Sciences | Aug 2023 to December 2025
+                <span className="text-zinc-600 dark:text-zinc-400">
+                  | Department of Atmospheric Sciences | Aug 2023 to December 2025
+                </span>
               </p>
 
               <ul className="mt-2 list-disc space-y-1 pl-6 italic">
@@ -456,11 +440,13 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <p>
+              <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
                   Graduate Researcher | University of Utah
                 </span>{" "}
-                | Department of Mechanical Engineering | Aug 2021 to Dec 2023
+                <span className="text-zinc-600 dark:text-zinc-400">
+                  | Department of Mechanical Engineering | Aug 2021 to Dec 2023
+                </span>
               </p>
 
               <ul className="mt-2 list-disc space-y-1 pl-6 italic">
@@ -482,11 +468,13 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <p>
+              <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
                   Mechanical Project Engineer | Carlisle Construction Materials
                 </span>{" "}
-                | Central Engineering | Jan 2019 to May 2021
+                <span className="text-zinc-600 dark:text-zinc-400">
+                  | Central Engineering | Jan 2019 to May 2021
+                </span>
               </p>
 
               <ul className="mt-2 list-disc space-y-1 pl-6 italic">
@@ -513,13 +501,15 @@ export default function AboutPage() {
 
           <SectionHeading title="Additional Experience" />
 
-          <div className="space-y-6 text-base leading-relaxed text-black">
+          <div className="space-y-6 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
             <div>
-              <p>
+              <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
                   Teaching Assistant | University of Utah
                 </span>{" "}
-                | Department of Mechanical Engineering | Aug 2021 to May 2023
+                <span className="text-zinc-600 dark:text-zinc-400">
+                  | Department of Mechanical Engineering | Aug 2021 to May 2023
+                </span>
               </p>
               <ul className="mt-2 list-disc space-y-1 pl-6 italic">
                 <li>
@@ -530,11 +520,13 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <p>
+              <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
                   Undergraduate Researcher | Pennsylvania State University
                 </span>{" "}
-                | Department of Mechanical Engineering | Dec 2017 to Dec 2018
+                <span className="text-zinc-600 dark:text-zinc-400">
+                  | Department of Mechanical Engineering | Dec 2017 to Dec 2018
+                </span>
               </p>
               <ul className="mt-2 list-disc space-y-1 pl-6 italic">
                 <li>
@@ -545,11 +537,13 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <p>
+              <p className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold">
                   Mechanical Engineer Intern | Carlisle Construction Materials
                 </span>{" "}
-                | Research &amp; Development | Summers 2017 &amp; 2018
+                <span className="text-zinc-600 dark:text-zinc-400">
+                  | Research &amp; Development | Summers 2017 &amp; 2018
+                </span>
               </p>
               <ul className="mt-2 list-disc space-y-1 pl-6 italic">
                 <li>
