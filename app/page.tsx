@@ -194,9 +194,8 @@ export default function HomePage() {
             >
               <p>
                 I’m an engineer with a research background in air quality and
-                environmental systems. I like projects that start with messy
-                constraints and end with robust, documented systems — from CAD
-                and fabrication through deployment, data, and results.
+                environmental systems. I am passionate about delivering solutions to complex 
+                engineering problems with creative and thoughtful designs.
               </p>
             </SectionCard>
 
