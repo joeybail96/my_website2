@@ -540,7 +540,7 @@ export default function Project1Page() {
             aspect="9/16"
           />
           <ImageBlock
-            src="/photos/PROJECT1-support-final-cad.jpg"
+            src="/photos/wire_assembly.jpg"
             alt="Final support assembly design in SolidWorks"
             label="Final support assembly (CAD)"
             hoverText="Final design: fabrication-ready assembly with validated interfaces."
