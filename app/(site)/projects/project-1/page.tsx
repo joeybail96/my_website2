@@ -360,8 +360,8 @@ export default function Project1Page() {
           Design and Deployment of a Remote Aerosol Research Facility
         </h1>
         <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-          University of Utah × Rainmaker • Mechanical design • Field deployment •
-          Systems integration
+          Powder Mountain, Utah • Mechanical design • Project execution • Field
+          deployment • Systems integration
         </p>
       </header>
 
@@ -369,97 +369,106 @@ export default function Project1Page() {
       <section className="mt-8">
         <ImageBlock
           src="/photos/labcover-profile.jpg"
-          alt="Container lab and inlet deployed at mountain site"
-          label="Hero: container lab + inlet installed at site"
-          hoverText="Remote aerosol facility deployed at Powder Mountain: container lab + inlet system (field-ready integration)."
+          alt="Finished container lab at Powder Mountain with inlet system at sunset"
+          label="Finished container lab at Powder Mountain (sunset)"
+          hoverText="A field-ready, transportable aerosol research facility deployed on a tight timeline in a harsh alpine environment."
           aspect="16/9"
         />
       </section>
 
-      {/* Snapshot */}
-      <section className="mt-12 grid gap-6 sm:grid-cols-2">
-        <Card title="Goal">
-          Build a transportable aerosol monitoring lab that mimics permanent
-          research facilities, deployed in a remote mountain environment to
-          support cloud-seeding aerosol measurements.
+      {/* Snapshot (CONDENSED) */}
+      <section className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <Card title="Project snapshot">
+          <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+            Built a transportable aerosol monitoring lab that performs like a
+            permanent research facility—deployed at a remote mountain site for
+            long-duration winter operations and cloud-seeding aerosol
+            measurements.
+          </p>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
+                Scope
+              </p>
+              <ul className="mt-2 list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+                <li>Container-based lab buildout</li>
+                <li>~30 ft modular inlet + manifold</li>
+                <li>Support/anchoring + roof bulkhead seal</li>
+                <li>On-site install, alignment, commissioning</li>
+              </ul>
+            </div>
+
+            <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
+                Results
+              </p>
+              <ul className="mt-2 list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+                <li>Deployed on a compressed 3-month timeline</li>
+                <li>Stable inlet without concrete foundations</li>
+                <li>Commissioned instruments on ambient sampling</li>
+                <li>Serviceable layout for winter site visits</li>
+              </ul>
+            </div>
+          </div>
+
+          <details className="mt-4 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+            <summary className="cursor-pointer text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              Expand: skills & tools used
+            </summary>
+
+            <div className="mt-3 grid gap-4 sm:grid-cols-2">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
+                  Skills demonstrated
+                </p>
+                <ul className="mt-2 list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+                  <li>
+                    Systems engineering under constraints (wind/snow, access,
+                    land-use rules, schedule pressure)
+                  </li>
+                  <li>Design-for-manufacturability + rapid vendor iteration</li>
+                  <li>
+                    Structural load-path thinking (stability, anchoring, safety,
+                    maintainability)
+                  </li>
+                  <li>
+                    Requirements-driven aerosol sampling integrity (minimize
+                    obstructions/particle loss)
+                  </li>
+                  <li>Field execution + troubleshooting</li>
+                </ul>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
+                  Tools
+                </p>
+                <ul className="mt-2 list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+                  <li>SolidWorks (assemblies, drawings, interface control)</li>
+                  <li>Machine shop coordination (DFM reviews, quotes, revs)</li>
+                  <li>Hardware selection + BOM (Unistrut, anchors, rigging)</li>
+                  <li>Field fabrication/tool work (cutting, drilling, fit-up)</li>
+                </ul>
+              </div>
+            </div>
+          </details>
         </Card>
 
-        <Card title="My role">
-          Sole engineer responsible for inlet redesign, container modifications,
-          structural support strategy, instrument layout, and on-site
-          installation/troubleshooting.
-        </Card>
-
-        <Card title="Key contributions">
+        <Card title="My role (what I owned end-to-end)">
           <ul className="list-disc space-y-1.5 pl-4">
+            <li>Redesigned the inlet/manifold and drove design reviews</li>
             <li>
-              Redesigned a 30-ft inlet to meet new scientific criteria + fit a
-              shipping container.
+              Partnered with a machine shop to simplify and harden
+              manufacturability
             </li>
             <li>
-              Produced fabrication-ready drawings and coordinated rapid
-              machine-shop iteration.
+              Selected support strategy under site constraints; engineered
+              interfaces/anchors
             </li>
             <li>
-              Engineered a non-concrete support solution using guy wires + custom
-              interfaces.
-            </li>
-            <li>
-              Designed container cutouts, framing, and an ergonomic instrument
-              layout.
-            </li>
-            <li>
-              Led field installation under winter mountain conditions and solved
-              issues on-site.
-            </li>
-          </ul>
-        </Card>
-
-        <Card title="Outcomes">
-          <ul className="list-disc space-y-1.5 pl-4">
-            <li>
-              Deployed a functioning remote aerosol facility at Powder Mountain.
-            </li>
-            <li>
-              Installed a 30-ft inlet and structural support system without
-              concrete.
-            </li>
-            <li>
-              Integrated instruments into a serviceable, field-ready container
-              layout.
-            </li>
-          </ul>
-        </Card>
-      </section>
-
-      {/* ✅ SPACING FIX: match the “row gap” feel from Snapshot (gap-6) */}
-      <section className="mt-6 grid gap-6 sm:grid-cols-2">
-        <Card title="Skills demonstrated">
-          <ul className="list-disc space-y-1.5 pl-4">
-            <li>
-              Mechanical design under real constraints
-              (wind/snow/access/timeline/budget)
-            </li>
-            <li>Design for manufacturability + rapid vendor iteration</li>
-            <li>
-              Structural thinking (load paths, anchoring, stability without
-              foundations)
-            </li>
-            <li>
-              Systems integration (inlet + instruments + container modifications)
-            </li>
-            <li>Field execution (install leadership, troubleshooting, tool work)</li>
-          </ul>
-        </Card>
-
-        <Card title="Tools">
-          <ul className="list-disc space-y-1.5 pl-4">
-            <li>SolidWorks (3D modeling, assemblies, GD&amp;T, drawings)</li>
-            <li>Machine shop coordination (quotes, revisions, manufacturability)</li>
-            <li>Unistrut + hardware BOMs</li>
-            <li>
-              Power tools &amp; fabrication (drilling, cutting, grinding, metal/wood
-              work)
+              Managed on-site build: alignment, tensioning, commissioning, rapid
+              fixes
             </li>
           </ul>
         </Card>
@@ -470,33 +479,47 @@ export default function Project1Page() {
       {/* Inlet build highlights */}
       <section className="space-y-3">
         <Kicker>Inlet build highlights</Kicker>
-        <H2>Inlet design → machining drawings → finished hardware</H2>
+        <H2>Custom manifold design for high-integrity aerosol sampling</H2>
         <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-          A quick visual sequence showing concept ownership and fabrication-ready
-          deliverables.
+          The inlet manifold was designed to deliver ambient air to multiple
+          aerosol instruments while minimizing particle losses. The concept
+          intentionally mirrored proven research inlets at the University of Utah
+          (William Browning Building rooftop inlet) and Storm Peak Laboratory,
+          but was adapted for a remote container deployment and improved flow
+          distribution. A key enhancement was an alternating outlet pattern that
+          spreads flow more evenly—improving delivery efficiency across ports.
+          <br />
+          <br />
+          Because this project ran on a tight 3-month timeline, I partnered
+          closely with a machine shop to rework the design for fast, repeatable
+          manufacturing. Instead of complex fixtures and manual tooling that
+          could introduce obstructions, we used custom precision-machined
+          inserts welded to the pipe. That approach reduced internal
+          discontinuities, improved dimensional control, and protected sampling
+          quality.
         </p>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-3">
           <ImageBlock
             src="/photos/manifold_design.jpg"
-            alt="Inlet design CAD"
-            label="Placeholder: inlet design (CAD)"
-            hoverText="CAD inlet design: geometry, interfaces, and constraints for field deployment."
+            alt="CAD of manifold assembly showing geometry and port layout"
+            label="Manifold assembly design (CAD)"
+            hoverText="Design intent: a low-loss manifold supplying ambient air to multiple instruments, with geometry tuned for field deployment."
             aspect="9/16"
           />
 
           <STLViewer
             stlUrl="/models/manifold_insert.STL"
-            label="Interactive: inlet STL (rotate/zoom)"
-            hoverText="Interactive model: rotate/zoom the inlet assembly to inspect geometry and interfaces."
+            label="Interactive: precision-machined pickoff port (STL)"
+            hoverText="Rotate/zoom: the welded insert concept that improved manufacturability while minimizing internal obstructions."
             aspect="9/16"
           />
 
           <ImageBlock
             src="/photos/manifold_installed.jpg"
-            alt="Finished inlet hardware"
-            label="Placeholder: finished inlet hardware"
-            hoverText="Finished component: manufactured parts installed/validated in the field."
+            alt="Completed manifold installed in the lab"
+            label="Completed manifold installed in lab"
+            hoverText="Final hardware installed and integrated with the lab layout—ready for instrument connections and commissioning."
             aspect="9/16"
           />
         </div>
@@ -505,11 +528,26 @@ export default function Project1Page() {
         <div className="mt-6">
           <ImageBlock
             src="/photos/inlet_full_assembly_labeled.jpg"
-            alt="Long panoramic project photo"
-            label="Placeholder: long photo (3952×905)"
-            hoverText="Replace the old machining drawings with a single panoramic image that summarizes the build/fabrication story."
+            alt="Complete inlet assembly including manifold, bulkhead, modular inlets, and inlet head"
+            label="Complete inlet assembly (labeled)"
+            hoverText="System overview: manifold + roof bulkhead/support + two modular 10 ft exterior sections + inlet head with heating to prevent icing."
             aspect="3952/905"
           />
+        </div>
+
+        {/* short body text describing the panoramic assembly photo */}
+        <div className="pt-2">
+          <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+            This full assembly view shows how the inlet was engineered as a
+            modular system. The manifold distributes flow inside the container,
+            while a roof bulkhead fitting both seals the penetration against
+            snow/ice/water and supports the vertical load of the inlet. Above
+            the roof, two modular 10-foot inlet sections extend the sampling
+            point beyond local contamination near the container and into cleaner
+            atmospheric flow (and cloud/fog conditions). The inlet head pulls in
+            ambient air and incorporates heating features intended to prevent
+            icing during winter operations.
+          </p>
         </div>
       </section>
 
@@ -518,128 +556,138 @@ export default function Project1Page() {
       {/* Lab support assembly */}
       <section className="space-y-3">
         <Kicker>Lab support assembly</Kicker>
-        <H2>Design iterations → final assembly → build & install</H2>
+        <H2>Support strategy: concept iteration under real site constraints</H2>
         <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-          Support hardware evolved through multiple CAD iterations before a final
-          field-ready design was built and installed.
+          A tall inlet over a container lab needs a stable support strategy—but
+          the “best” engineering solution also had to fit site rules, schedule,
+          and how the interior instrument layout would be arranged. I led
+          multiple design reviews with the team to rapidly iterate concepts and
+          converge on a design that could be built quickly before winter.
         </p>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-3">
           <ImageBlock
             src="/photos/concrete_concept.jpg"
-            alt="Support assembly design iteration 1 in SolidWorks"
-            label="Support design — iteration 1"
-            hoverText="Iteration 1: early geometry and interface concepts."
+            alt="Design iteration 1: Rohn tower concept requiring concrete base"
+            label="Concept 1 — Rohn tower (concrete foundation)"
+            hoverText="Initial approach: leverage known Rohn tower installation practices to support the inlet."
             aspect="9/16"
           />
           <ImageBlock
             src="/photos/rohn_concept.jpg"
-            alt="Support assembly design iteration 2 in SolidWorks"
-            label="Support design — iteration 2"
-            hoverText="Iteration 2: refined load path, mounting strategy, and service access."
+            alt="Design iteration 2: above-ground ballast approach for tower support"
+            label="Concept 2 — tower + above-ground ballast"
+            hoverText="Constraint-driven iteration: alternative anchoring ideas when concrete was not allowed."
             aspect="9/16"
           />
           <ImageBlock
             src="/photos/wire_assembly.jpg"
-            alt="Final support assembly design in SolidWorks"
-            label="Final support assembly (CAD)"
-            hoverText="Final design: fabrication-ready assembly with validated interfaces."
+            alt="Design iteration 3: guy-wire concept with clean, self-contained load path"
+            label="Concept 3 — guy-wire system (final direction)"
+            hoverText="Final strategy: cleanest and least invasive to the site—self-contained anchoring to the container."
             aspect="9/16"
           />
         </div>
 
         <div className="pt-2">
           <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-            With the overall support concept locked in, I designed the critical
-            interfaces that made the system stable and serviceable in high winds:
-            guy-wire anchors on the container and inlet, and a sealing/connection
-            assembly that protected the inlet penetration while allowing reliable
-            maintenance. Below are side-by-side comparisons of the design intent
-            versus the hardware we installed in the field.
+            When we learned concrete footings were not permitted, the original
+            Rohn-tower concept became infeasible. I explored above-ground ballast
+            options, but the cleanest, most self-contained solution was a
+            guy-wire system anchored directly to the container. That decision
+            created three urgent engineering needs as the schedule tightened:
+            <span className="font-medium"> (1)</span> a container anchor system
+            that could load into corner castings,
+            <span className="font-medium"> (2)</span> a safe, non-slip clamp
+            interface for guy wires on an inlet pipe that was never designed for
+            this, and
+            <span className="font-medium"> (3)</span> a vertical load support
+            solution, since guy wires stabilize laterally but do not carry the
+            inlet’s weight.
           </p>
         </div>
 
         <div className="mt-6 grid gap-6">
           <DesignVsBuildRow
-            title="Guy-wire anchors — container interface"
+            title="Challenge 1: anchoring guy wires to the container"
             left={{
               src: "/photos/corner_anchor.jpg",
-              alt: "Guy wire anchor design on container (CAD/drawing)",
+              alt: "Container anchor design concept interfacing corner castings to turnbuckles",
               label: "Design (CAD/drawing)",
               hoverText:
-                "Container anchor design: load path into container framing and hardware selection.",
+                "Custom anchor concept: interface between container corner castings and guy-wire turnbuckles with a clean load path.",
               aspect: "4/5",
             }}
             right={{
               src: "/photos/corner_anchor_real.jpg",
-              alt: "Installed guy wire anchor on container",
+              alt: "Installed container anchor in the field",
               label: "Installed hardware",
               hoverText:
-                "Installed container anchor: field-fit hardware and finalized attachment points.",
+                "Executed quickly on-site: finalized anchor hardware installed and tension-ready.",
               aspect: "4/5",
             }}
           />
 
           <DesignVsBuildRowLeftStack
-            title="Guy-wire anchors — inlet interface"
+            title="Challenge 2: attaching guy wires to the inlet pipe"
             leftTop={{
               src: "/photos/guywire_sketchup.jpg",
-              alt: "Guy wire anchor design on inlet (CAD/drawing)",
-              label: "Design (CAD/drawing)",
+              alt: "Clamp concept for attaching guy wires to inlet",
+              label: "Clamp concept (design)",
               hoverText:
-                "Inlet anchor design: attachment geometry and service clearance around the inlet.",
+                "Rapid design: a clamp system to hold four guy wires evenly around the inlet while preserving service access.",
               aspect: "4/3",
             }}
             leftBottom={{
               src: "/photos/guywire_prototype.jpg",
-              alt: "Second inlet anchor photo (placeholder)",
-              label: "Additional view / detail",
+              alt: "Prototype or alternate view of the inlet clamp system",
+              label: "Prototype / alternate view",
               hoverText:
-                "Swap this for your second photo (close-up detail, alternate angle, or drawing excerpt).",
+                "Iterated quickly for simplicity and weight reduction while maintaining reliable grip and alignment.",
               aspect: "4/3",
             }}
             right={{
               src: "/photos/inlet_guy_wire_installed.jpg",
-              alt: "Installed guy wire anchor on inlet",
+              alt: "Installed clamp and guy wire attachment on inlet",
               label: "Installed hardware",
               hoverText:
-                "Installed inlet anchor: aligned and tension-ready for turnbuckles/guy wires.",
+                "Field-installed interface: clamp aligned for four guy wires; anti-slip strategy included weld beads below clamp locations.",
               aspect: "9/16",
             }}
           />
 
           <FourPhotoGridRow
-            title="Seal assembly"
+            title="Challenge 3: supporting inlet weight + sealing the roof penetration"
             a={{
               src: "/photos/seal_exploded.jpg",
-              alt: "Seal assembly design (CAD/drawing)",
-              label: "Design (CAD/drawing)",
+              alt: "Exploded view of seal assembly and bulkhead support",
+              label: "Seal/support concept (design)",
               hoverText:
-                "Seal assembly design: weather protection, alignment, and maintenance access.",
+                "Dual-purpose design: weather seal + a support surface for the bulkhead flange to carry vertical load.",
               aspect: "4/3",
             }}
             b={{
               src: "/photos/seal_assembly_design.jpg",
-              alt: "Seal assembly assembled onto the lab (fit-up / mock-up)",
-              label: "Assembled onto lab",
+              alt: "Seal assembly fit-up on the container roof",
+              label: "Fit-up on container",
               hoverText:
-                "Fit-up/assembly: seal assembly mounted to the container interface before field install.",
+                "Mock-up/fit-up: confirm interfaces before field installation to reduce surprises under time pressure.",
               aspect: "4/3",
             }}
             c={{
               src: "/photos/install_seal3.jpg",
-              alt: "Seal assembly being installed",
-              label: "Installing",
+              alt: "Seal assembly being installed in the field",
+              label: "Installing in field",
               hoverText:
-                "Installation: aligning the penetration interface and fastening/sealing in the field.",
+                "On-site execution: align, fasten, and seal while maintaining inlet alignment and serviceability.",
               aspect: "4/3",
             }}
             d={{
               src: "/photos/install_seal2.jpg",
-              alt: "Seal assembly installed",
+              alt: "Completed seal assembly installed on container roof",
               label: "Installed",
               hoverText:
-                "Installed seal assembly: final fit-up showing weather sealing and clean routing.",
+                "Final install: robust weather sealing and a reliable load-bearing interface for winter operations.",
               aspect: "4/3",
             }}
           />
@@ -648,13 +696,22 @@ export default function Project1Page() {
         {/* Heated inlet concept */}
         <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-start">
           <div className="space-y-2">
-            <Kicker>Optional add-on</Kicker>
+            <Kicker>Additional responsibility</Kicker>
             <H2>Standards-driven inlet heating concept</H2>
             <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-              Designed a future inlet heating approach aligned with WMO-GAW and
-              ACTRIS/EUSAAR guidance for sampling integrity (condensation
-              control). Not deployed initially due to lead times, but ready for
-              future upgrades.
+              I also developed a heating approach aligned with aerosol inlet
+              standards (e.g., WMO-GAW / ACTRIS-style guidance) to prevent icing
+              while protecting sampling integrity. Although we ultimately did
+              not execute this design initially—because tariffs and supply chain
+              disruptions pushed the preferred heating elements to long lead
+              times—I delivered a complete concept and analysis that could be
+              implemented later without redesigning the system from scratch.
+            </p>
+            <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+              In practice, this meant balancing three competing requirements:
+              keep the inlet ice-free, avoid creating hot spots that could alter
+              aerosol properties, and route power/controls safely in a harsh
+              environment with limited service windows.
             </p>
           </div>
 
@@ -663,14 +720,14 @@ export default function Project1Page() {
               src="/photos/heated_inlet.jpg"
               alt="Inlet heating concept — view 1"
               label="Heating concept — view 1"
-              hoverText="Concept view 1: heat trace routing + insulation strategy."
+              hoverText="Concept view: heat-trace routing + insulation approach intended for reliable winter operation."
               aspect="9/16"
             />
             <ImageBlock
               src="/photos/heated_inlet_head.jpg"
               alt="Inlet heating concept — view 2"
               label="Heating concept — view 2"
-              hoverText="Concept view 2: interface details + control/strain relief planning."
+              hoverText="Concept view: inlet head interface details, strain relief planning, and control placement."
               aspect="9/16"
             />
           </div>
@@ -682,20 +739,22 @@ export default function Project1Page() {
           <H2>On-site build, alignment, and commissioning</H2>
 
           <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-            Installation required rapid problem solving in winter conditions:
-            positioning the inlet, aligning interfaces, tensioning guy wires,
-            validating stability, and ensuring the system remained serviceable
-            for instrument access and long-duration operations.
+            This project was won or lost in execution. The field work required
+            fast, high-quality decisions in winter conditions: positioning and
+            aligning the inlet, tensioning guy wires safely, validating stability
+            in wind, and commissioning instruments while keeping the container
+            layout serviceable for future site visits.
           </p>
 
           <div className="mt-6 space-y-12">
             {/* Group 1 */}
             <div className="space-y-4">
               <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-                The exterior install happened in two phases: first getting the
-                inlet set through the roof penetration and aligned to the
-                container interface, then finishing the rooftop routing and
-                securing the system into its final operating configuration.
+                The rooftop install progressed in phases: first set the inlet
+                through the roof penetration and lock alignment, then complete
+                the final above-roof configuration. This sequencing reduced risk
+                and helped keep the team moving while weather windows were
+                limited.
               </p>
 
               <div className="grid gap-6 sm:grid-cols-2">
@@ -703,14 +762,14 @@ export default function Project1Page() {
                   src="/photos/installed_inlet.jpg"
                   alt="Inlet install above the roof (installation phase)"
                   label="Roof install — alignment & initial set"
-                  hoverText="Setting the inlet above the roof and dialing in alignment before final fastening/tensioning."
+                  hoverText="Set the inlet, align the roof penetration/bulkhead interface, and prepare for final fastening and guy-wire tensioning."
                   aspect="9/16"
                 />
                 <ImageBlock
                   src="/photos/inlet_exterior_done.jpg"
                   alt="Finished inlet above the roof (commissioned state)"
                   label="Roof install — finished/commissioned"
-                  hoverText="End-state above-roof configuration after fastening, tensioning, and readiness checks."
+                  hoverText="Final above-roof configuration after tensioning, verification checks, and readiness for operations."
                   aspect="9/16"
                 />
               </div>
@@ -719,11 +778,11 @@ export default function Project1Page() {
             {/* Group 2 */}
             <div className="space-y-4">
               <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-                In parallel, the shipping container was converted into a
-                serviceable lab space: cutting and framing penetrations, routing
-                the inlet through the interior, and integrating instruments so
-                the system could run unattended while still being easy to
-                maintain on-site.
+                In parallel, the shipping container was transformed into a
+                serviceable lab: planning instrument placement, cutting and
+                framing penetrations, routing the inlet through the interior,
+                and building an ergonomic layout that supports both performance
+                and maintenance.
               </p>
 
               <div className="flex justify-center">
@@ -733,28 +792,28 @@ export default function Project1Page() {
                       src="/photos/original_container.jpg"
                       alt="Original shipping container before modifications"
                       label="Container — original"
-                      hoverText="Baseline state prior to cutouts, framing, and instrument layout work."
+                      hoverText="Baseline: empty container before cutouts, framing, routing, and instrument layout work."
                       aspect="5/4"
                     />
                     <ImageBlock
                       src="/photos/trailer_moving.jpg"
                       alt="Shipping container being transported to the site"
                       label="Container — transport"
-                      hoverText="Logistics: moving the container lab to the field site for build-out and deployment."
+                      hoverText="Logistics: moving the container to the Powder Mountain summit for build-out and deployment."
                       aspect="5/4"
                     />
                     <ImageBlock
                       src="/photos/trailer_construction.jpg"
                       alt="Container under construction / modifications in progress"
                       label="Container — under construction"
-                      hoverText="Build phase: framing, cutouts, routing, and interior layout integration."
+                      hoverText="Build phase: framing, penetrations, inlet routing, and integrating mounting surfaces for instruments."
                       aspect="5/4"
                     />
                     <ImageBlock
                       src="/photos/inlet_interior_done.jpg"
                       alt="Instruments installed inside the container lab"
-                      label="Container — instruments installed"
-                      hoverText="Final interior layout: instruments mounted and wired for serviceable, long-term operation."
+                      label="Container — commissioned instruments"
+                      hoverText="Commissioned state: instruments installed and connected to the inlet/manifold with clean routing and service access."
                       aspect="5/4"
                     />
                   </div>
@@ -767,23 +826,23 @@ export default function Project1Page() {
               <div className="space-y-3">
                 <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
                   Final commissioning focused on integration details: confirming
-                  clearances, verifying stable mounting, validating flow paths,
-                  and ensuring the manifold and instruments were positioned for
-                  both performance and fast troubleshooting during winter field
-                  visits.
+                  flow paths, ensuring stable mounting, verifying clearances for
+                  service access, and placing the manifold relative to
+                  instruments so troubleshooting could happen quickly during
+                  winter site visits.
                 </p>
                 <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-                  This last view captures the “ready for operations”
-                  state—manifold placement relative to an instrument, with
-                  service access preserved and routing kept clean.
+                  The image on the right captures a key “done right” detail: an
+                  instrument (PINE) commissioned next to the manifold, with the
+                  manifold clearly visible and routing kept clean.
                 </p>
               </div>
 
               <ImageBlock
                 src="/photos/manifold_interior.jpg"
-                alt="Manifold installed next to an instrument (integration detail)"
-                label="Integration detail — manifold adjacent to instrument"
-                hoverText="Commissioned interior detail showing manifold placement and instrument adjacency for service access."
+                alt="PINE instrument commissioned next to manifold, with manifold visible"
+                label="Commissioning detail — PINE next to manifold"
+                hoverText="Operational layout: manifold clearly visible next to an instrument, with clear service access and tidy routing."
                 aspect="4/5"
               />
             </div>
@@ -792,23 +851,23 @@ export default function Project1Page() {
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             <ImageBlock
               src="/photos/shoveling.jpg"
-              alt="Team assembling support structure"
-              label="Support assembly build — photo 1"
-              hoverText="Build phase: assembling supports and hardware in the field."
+              alt="Shoveling snow off the container roof during field work"
+              label="Winter conditions — roof access"
+              hoverText="Reality of remote winter operations: clearing snow to access the roof and keep installation/maintenance moving."
               aspect="4/5"
             />
             <ImageBlock
               src="/photos/building_support.jpg"
-              alt="Support structure assembly detail"
-              label="Support assembly build — photo 2"
-              hoverText="Hardware detail: alignment, fasteners, and quick iteration on-site."
+              alt="Installing supplemental roof brace using Unistrut to stabilize inlet"
+              label="Supplemental support — Unistrut roof brace"
+              hoverText="On-site iteration: added a supplemental support/bracing concept to improve robustness and reduce risk."
               aspect="4/5"
             />
             <ImageBlock
               src="/photos/wiring.jpg"
-              alt="Support structure installed"
-              label="Support assembly build — photo 3"
-              hoverText="Installed state: support assembly integrated and field-validated."
+              alt="Wiring power cables for inlet heaters running down the inlet into a controller"
+              label="Heater wiring — power + controls"
+              hoverText="Execution detail: routing and wiring heater power down the inlet into a controller inside the container."
               aspect="4/5"
             />
           </div>
@@ -820,28 +879,25 @@ export default function Project1Page() {
       {/* References */}
       <section className="space-y-3">
         <Kicker>References</Kicker>
-        <H2>Partners, facilities &amp; standards</H2>
+        <H2>Facilities &amp; inspiration sources</H2>
+
+        <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+          The manifold concept drew from proven inlet designs used at established
+          atmospheric research facilities, then adapted for a container-based,
+          remote deployment and improved for efficient multi-port flow
+          distribution and manufacturability.
+        </p>
 
         <ul className="mt-2 list-disc space-y-2 pl-5 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
           <li>
             <a
-              href="https://atmos.utah.edu/"
+              href="https://www.researchgate.net/figure/Webcam-photos-from-the-roof-of-the-William-Browning-Building-at-the-University-of-Utah_fig11_258466586"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium underline underline-offset-2 hover:text-blue-600"
             >
-              University of Utah — Department of Atmospheric Sciences
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="https://www.rainmaker.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium underline underline-offset-2 hover:text-blue-600"
-            >
-              Rainmaker Technology
+              University of Utah — William Browning Building rooftop inlet
+              (reference photo)
             </a>
           </li>
 
@@ -858,12 +914,23 @@ export default function Project1Page() {
 
           <li>
             <a
+              href="https://atmos.utah.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium underline underline-offset-2 hover:text-blue-600"
+            >
+              University of Utah — Department of Atmospheric Sciences
+            </a>
+          </li>
+
+          <li>
+            <a
               href="https://community.wmo.int/en/programmes/global-atmosphere-watch-programme"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium underline underline-offset-2 hover:text-blue-600"
             >
-              WMO-GAW &amp; EUSAAR/ACTRIS Aerosol Inlet Guidelines
+              WMO Global Atmosphere Watch (GAW) programme (standards context)
             </a>
           </li>
         </ul>
