@@ -59,7 +59,7 @@ export default function ProjectsPage() {
     <div className="flex justify-center bg-transparent px-3 py-8">
       {/* ✅ Main container translucent + blur */}
       <main className="w-full max-w-4xl rounded-2xl border border-zinc-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/60 sm:p-8">
-        <h1 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-3xl">
+        <h1 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl">
           Project Portfolio
         </h1>
 

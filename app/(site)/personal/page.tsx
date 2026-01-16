@@ -8,7 +8,7 @@ function Divider() {
 
 function SectionHeading({ title }: { title: string }) {
   return (
-    <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+    <h2 className="text-2xl font-semibold tracking-tight text-black">
       {title}
     </h2>
   );
@@ -24,7 +24,7 @@ function Photo({
   overlay?: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-zinc-200/80 bg-white/70 shadow-sm backdrop-blur dark:border-zinc-800/80 dark:bg-zinc-950/55">
+    <div className="group relative overflow-hidden rounded-2xl border border-black bg-white/70 shadow-sm backdrop-blur">
       <div className="relative aspect-[4/3] w-full">
         <Image
           src={src}
@@ -54,14 +54,14 @@ function SocialLink({
   href: string;
   label: string;
   icon: React.ReactNode;
-  iconClassName?: string; // brand color hook
+  iconClassName?: string;
 }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center gap-3 rounded-lg border border-zinc-200/80 bg-white/75 px-4 py-2 text-sm font-medium text-zinc-800 shadow-sm backdrop-blur transition hover:border-zinc-400 hover:bg-white/90 dark:border-zinc-800/80 dark:bg-zinc-950/55 dark:text-zinc-200 dark:hover:border-zinc-600 dark:hover:bg-zinc-950/70"
+      className="group flex items-center gap-3 rounded-lg bg-white/75 px-4 py-2 text-sm font-medium text-black shadow-sm backdrop-blur transition hover:bg-white/90"
     >
       <span className={`h-5 w-5 ${iconClassName ?? ""}`}>{icon}</span>
       <span>{label}</span>
@@ -69,10 +69,10 @@ function SocialLink({
   );
 }
 
-/* Brand colors (approx. official) */
+/* Brand colors (unchanged) */
 const BRAND = {
   strava: "text-[#FC4C02]",
-  mountain: "text-emerald-600 dark:text-emerald-500",
+  mountain: "text-emerald-600",
   flickrBlue: "text-[#0063DC]",
   flickrPink: "text-[#FF0084]",
   youtube: "text-[#FF0000]",
@@ -91,20 +91,8 @@ const Icons = {
   ),
   flickr: (
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle
-        cx="7"
-        cy="12"
-        r="4"
-        fill="currentColor"
-        className={BRAND.flickrBlue}
-      />
-      <circle
-        cx="17"
-        cy="12"
-        r="4"
-        fill="currentColor"
-        className={BRAND.flickrPink}
-      />
+      <circle cx="7" cy="12" r="4" fill="currentColor" className={BRAND.flickrBlue} />
+      <circle cx="17" cy="12" r="4" fill="currentColor" className={BRAND.flickrPink} />
     </svg>
   ),
   youtube: (
@@ -118,18 +106,15 @@ const Icons = {
 
 export default function PersonalPage() {
   return (
-    // ✅ IMPORTANT: transparent so global layout background can show
     <div className="flex justify-center bg-transparent px-3 py-10">
-      {/* ✅ Translucent card + blur so background is visible but readable */}
-      <main className="w-full max-w-4xl rounded-2xl border border-zinc-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/60 sm:p-10">
-        {/* Header */}
+      <main className="w-full max-w-4xl rounded-2xl border border-zinc-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:p-10">
         <header className="space-y-8">
           <div className="space-y-4">
-            <h1 className="text-3xl font-semibold text-zinc-900 dark:text-zinc-100">
+            <h1 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl">
               Who am I?
             </h1>
 
-            <div className="space-y-4 text-base text-zinc-700 dark:text-zinc-300">
+            <div className="space-y-4 text-base text-black">
               <p>
                 I grew up in Carlisle, Pennsylvania. Like most budding engineers, a large
                 portion of my childhood was spent tinkering with Legos and slowly
@@ -162,33 +147,19 @@ export default function PersonalPage() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3">
-            <Photo
-              src="/photos/climbing-profile.jpg"
-              alt="Climbing"
-              overlay="Climbing — the place I reset and problem-solve."
-            />
-            <Photo
-              src="/photos/ski-profile.jpg"
-              alt="Skiing"
-              overlay="Skiing — chasing winter and big mountain days."
-            />
-            <Photo
-              src="/photos/camper-profile.jpg"
-              alt="Camping build"
-              overlay="Car-camping build — designing + building for adventure."
-            />
+            <Photo src="/photos/climbing-profile.jpg" alt="Climbing" overlay="Climbing — the place I reset and problem-solve." />
+            <Photo src="/photos/ski-profile.jpg" alt="Skiing" overlay="Skiing — chasing winter and big mountain days." />
+            <Photo src="/photos/sub_build.jpg" alt="Camping build" overlay="Car-camping build — designing + building for adventure." />
           </div>
         </header>
 
         <Divider />
 
-        {/* Body */}
         <section className="space-y-12">
-          {/* Outdoor */}
           <div className="space-y-5">
             <SectionHeading title="My Outdoor Hobbies" />
 
-            <div className="space-y-4 text-base text-zinc-700 dark:text-zinc-300">
+            <div className="space-y-4 text-base text-black">
               <p>
                 The outdoors has been a constant thread throughout my life.
                 Growing up near the Appalachian Trail, I spent much of my time
@@ -203,51 +174,22 @@ export default function PersonalPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <Photo
-                src="/photos/app-backpacking.jpg"
-                alt="Backpacking"
-                overlay="Backpacking — long days, simple systems, real learning."
-              />
-              <Photo
-                src="/photos/mountain-profile.jpg"
-                alt="Mountain"
-                overlay="Mountains — the backdrop for most of my favorite projects."
-              />
+              <Photo src="/photos/app-backpacking.jpg" alt="Backpacking" overlay="Backpacking — long days, simple systems, real learning." />
+              <Photo src="/photos/mountain-profile.jpg" alt="Mountain" overlay="Mountains — the backdrop for most of my favorite projects." />
             </div>
 
-            {/* Outdoor Social Links */}
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              <SocialLink
-                href="https://www.strava.com/athletes/88981982"
-                label="Strava"
-                icon={Icons.strava}
-                iconClassName={BRAND.strava}
-              />
-              <SocialLink
-                href="https://www.mountainproject.com/user/201189785/joey-b"
-                label="Mountain Project"
-                icon={Icons.mountain}
-                iconClassName={BRAND.mountain}
-              />
-              <SocialLink
-                href="https://www.flickr.com/photos/204000233@N02/albums"
-                label="Flickr"
-                icon={Icons.flickr}
-              />
-              <SocialLink
-                href="https://www.youtube.com/@nut_tool"
-                label="YouTube"
-                icon={Icons.youtube}
-                iconClassName={BRAND.youtube}
-              />
+              <SocialLink href="https://www.strava.com/athletes/88981982" label="Strava" icon={Icons.strava} iconClassName={BRAND.strava} />
+              <SocialLink href="https://www.mountainproject.com/user/201189785/joey-b" label="Mountain Project" icon={Icons.mountain} iconClassName={BRAND.mountain} />
+              <SocialLink href="https://www.flickr.com/photos/204000233@N02/albums" label="Flickr" icon={Icons.flickr} />
+              <SocialLink href="https://www.youtube.com/@nut_tool" label="YouTube" icon={Icons.youtube} iconClassName={BRAND.youtube} />
             </div>
           </div>
 
-          {/* Indoor */}
           <div className="space-y-5">
             <SectionHeading title="My Indoor Hobbies" />
 
-            <div className="space-y-4 text-base text-zinc-700 dark:text-zinc-300">
+            <div className="space-y-4 text-base text-black">
               <p>
                 When I am inside, I enjoy picking up random personal projects, in
                 which I can apply and expand my engineering design and
@@ -263,16 +205,8 @@ export default function PersonalPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <Photo
-                src="/photos/cncdesign-profile.jpg"
-                alt="CNC design"
-                overlay="CAD + planning — where good builds start."
-              />
-              <Photo
-                src="/photos/cncplotter-profile.jpg"
-                alt="CNC plotter"
-                overlay="Prototyping — turning models into working hardware."
-              />
+              <Photo src="/photos/cncdesign-profile.jpg" alt="CNC design" overlay="CAD + planning — where good builds start." />
+              <Photo src="/photos/cncplotter-profile.jpg" alt="CNC plotter" overlay="Prototyping — turning models into working hardware." />
             </div>
           </div>
         </section>
