@@ -131,7 +131,7 @@ export default function PersonalPage() {
 
             <div className="space-y-4 text-base text-zinc-700 dark:text-zinc-300">
               <p>
-                I grew up in Carlisle, Pennsylvania. Like most engineers, a large
+                I grew up in Carlisle, Pennsylvania. Like most budding engineers, a large
                 portion of my childhood was spent tinkering with Legos and slowly
                 evolving into more ambitious woodworking and Arduino projects.
                 This early curiosity led me to earn my Bachelor's degree in
