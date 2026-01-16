@@ -1,20 +1,54 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 export default function ContactPage() {
+  const router = useRouter();
+  const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === "submitting") return;
+
+    setStatus("submitting");
+
+    try {
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+
+      const res = await fetch("https://formspree.io/f/meeeoyjd", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (!res.ok) {
+        setStatus("error");
+        return;
+      }
+
+      form.reset();
+      setStatus("idle");
+      router.push("/contact/thanks");
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <main className="mx-auto max-w-3xl px-4 py-12">
       <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
         Contact
       </h1>
+
       <p className="mt-3 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
         If you’d like to reach out about roles, collaborations, or any of the work on this
         site, the form below will send me an email.
       </p>
 
       <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 sm:p-8">
-        <form
-          action="https://formspree.io/f/REPLACE_ME"
-          method="POST"
-          className="space-y-5"
-        >
+        <form onSubmit={onSubmit} className="space-y-5">
           <div>
             <label
               htmlFor="name"
@@ -78,19 +112,19 @@ export default function ContactPage() {
             />
           </div>
 
-          {/* Optional: redirects to a thank-you page you can create */}
-          {/* <input type="hidden" name="_redirect" value="https://yourdomain.com/contact/thanks" /> */}
-
           <button
             type="submit"
-            className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-6 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+            disabled={status === "submitting"}
+            className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-6 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
           >
-            Send message
+            {status === "submitting" ? "Sending..." : "Send message"}
           </button>
 
-          <p className="text-xs text-zinc-600 dark:text-zinc-400">
-            (Replace the Formspree URL with your own form endpoint.)
-          </p>
+          {status === "error" ? (
+            <p className="text-sm text-red-600 dark:text-red-400">
+              Something went wrong. Please try again.
+            </p>
+          ) : null}
         </form>
       </div>
     </main>
