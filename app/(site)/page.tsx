@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 function SocialIcon({
   href,
@@ -58,6 +59,31 @@ function MiniPhoto({
   );
 }
 
+/* ---------------- Degree Logo (circle wrapper) ---------------- */
+
+function CircleLogo({
+  src,
+  alt,
+  scale = 1,
+}: {
+  src: string;
+  alt: string;
+  scale?: number;
+}) {
+  return (
+    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-black bg-white overflow-hidden">
+      <Image
+        src={src}
+        alt={alt}
+        width={14}
+        height={14}
+        className="object-contain"
+        style={{ transform: `scale(${scale})` }}
+      />
+    </span>
+  );
+}
+
 export default function HomePage() {
   return (
     <div className="bg-transparent">
@@ -91,10 +117,31 @@ export default function HomePage() {
 
             {/* Degrees — vertically centered, left-biased */}
             <div className="flex flex-1 items-center">
-              <ul className="space-y-1 pl-6 text-[15px] text-black">
-                <li>MS Atmospheric Sciences</li>
-                <li>MS Mechanical Engineering</li>
-                <li>BS Mechanical Engineering</li>
+              <ul className="space-y-2 pl-6 text-[15px] text-black">
+                <li className="flex items-center gap-3">
+                  <CircleLogo
+                    src="/logos/university-of-utah.jpg"
+                    alt="University of Utah"
+                  />
+                  <span>MS Atmospheric Sciences</span>
+                </li>
+
+                <li className="flex items-center gap-3">
+                  <CircleLogo
+                    src="/logos/university-of-utah.jpg"
+                    alt="University of Utah"
+                  />
+                  <span>MS Mechanical Engineering</span>
+                </li>
+
+                <li className="flex items-center gap-3">
+                  <CircleLogo
+                    src="/logos/penn-state.jpg"
+                    alt="Penn State University"
+                    scale={1.2}
+                  />
+                  <span>BS Mechanical Engineering</span>
+                </li>
               </ul>
             </div>
 
@@ -106,10 +153,7 @@ export default function HomePage() {
                 </svg>
               </SocialIcon>
 
-              <SocialIcon
-                href="https://www.linkedin.com/in/josephbail2018/"
-                label="LinkedIn"
-              >
+              <SocialIcon href="https://www.linkedin.com/in/josephbail2018/" label="LinkedIn">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="text-[#0A66C2]">
                   <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zm7.5 0h3.8v2.1h.1c.5-.9 1.8-2.1 3.8-2.1 4 0 4.7 2.6 4.7 5.9V24h-4v-7.5c0-1.8 0-4.1-2.5-4.1s-2.9 1.9-2.9 4v7.6h-4V8.5z" />
                 </svg>
