@@ -226,9 +226,9 @@ export default function ProfessionalPage() {
               </p>
 
               <p>
-                While I’m especially drawn to projects connected to the environment,
-                nature, and field-deployed systems, I’m not limited to any single
-                industry. I’m most interested in teams that value strong technical
+                While I am especially drawn to projects connected to the environment,
+                nature, and field-deployed systems, I am not limited to any single
+                industry. I am most interested in teams that value strong technical
                 foundations, practical problem solving, and building things that work
                 in the real world.
               </p>

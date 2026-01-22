@@ -147,9 +147,9 @@ export default function PersonalPage() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3">
-            <Photo src="/photos/climbing-profile.jpg" alt="Climbing" overlay="Climbing — the place I reset and problem-solve." />
-            <Photo src="/photos/ski-profile.jpg" alt="Skiing" overlay="Skiing — chasing winter and big mountain days." />
-            <Photo src="/photos/sub_build.jpg" alt="Camping build" overlay="Car-camping build — designing + building for adventure." />
+            <Photo src="/photos/climbing-profile.jpg" alt="Climbing" overlay="climbing up Pile Left in Big Cottonwood, Utah" />
+            <Photo src="/photos/ski-profile.jpg" alt="Skiing" overlay="skiing down from Mt Werner to a beautiful sunset" />
+            <Photo src="/photos/sub_build.jpg" alt="Camping build" overlay="using my custom-built Subaru camper in the Winds, WY" />
           </div>
         </header>
 
@@ -174,8 +174,8 @@ export default function PersonalPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <Photo src="/photos/app-backpacking.jpg" alt="Backpacking" overlay="Backpacking — long days, simple systems, real learning." />
-              <Photo src="/photos/mountain-profile.jpg" alt="Mountain" overlay="Mountains — the backdrop for most of my favorite projects." />
+              <Photo src="/photos/app-backpacking.jpg" alt="Backpacking" overlay="First multi-day backpacking trip on the App trail in 2015. Ill-prepared, scrappy, and stoked." />
+              <Photo src="/photos/mountain-profile.jpg" alt="Mountain" overlay="Summit of Mt Rainier in 2021 up Disappointment Cleaver. 3rd bagged peak of the trip!" />
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -205,8 +205,8 @@ export default function PersonalPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <Photo src="/photos/cncdesign-profile.jpg" alt="CNC design" overlay="CAD + planning — where good builds start." />
-              <Photo src="/photos/cncplotter-profile.jpg" alt="CNC plotter" overlay="Prototyping — turning models into working hardware." />
+              <Photo src="/photos/cncdesign-profile.jpg" alt="CNC design" overlay="One of my COVID projects: a custom CNC plotter." />
+              <Photo src="/photos/cncplotter-profile.jpg" alt="CNC plotter" overlay="My favorite part of engineering is seeing a design come to fruition!" />
             </div>
           </div>
         </section>
