@@ -55,26 +55,26 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    // ✅ IMPORTANT: transparent wrapper so global layout background can show
-    <div className="flex justify-center bg-transparent px-3 py-8">
-      {/* ✅ Main container translucent + blur */}
-      <main className="w-full max-w-4xl rounded-2xl border border-zinc-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/60 sm:p-8">
-        <h1 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl">
-          Project Portfolio
-        </h1>
+    <div className="flex justify-center bg-transparent px-3 py-10">
+      <main className="w-full max-w-4xl rounded-2xl border border-zinc-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:p-10">
+        <header className="space-y-4">
+          <h1 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl">
+            Project Portfolio
+          </h1>
 
-        <p className="mt-3 max-w-3xl text-sm text-zinc-600 dark:text-zinc-400 sm:text-base">
-          Click any project to read more about it.
-        </p>
+          <p className="max-w-3xl text-base text-black">
+            Click any project to read more about it.
+          </p>
+        </header>
 
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {projects.map((project) => (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200/80 bg-white/70 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-zinc-300 hover:shadow-md dark:border-zinc-800/80 dark:bg-zinc-950/55 dark:hover:border-zinc-700"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-black bg-white/70 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-md"
             >
-              <div className="relative aspect-[800/578] w-full overflow-hidden bg-zinc-200/70 dark:bg-zinc-800/60">
+              <div className="relative aspect-[800/578] w-full overflow-hidden bg-zinc-200/70">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -85,15 +85,15 @@ export default function ProjectsPage() {
               </div>
 
               <div className="flex flex-1 flex-col gap-2 p-4">
-                <h2 className="text-base font-semibold leading-snug text-zinc-900 group-hover:underline dark:text-zinc-100 sm:text-lg">
+                <h2 className="text-base font-semibold leading-snug text-black group-hover:underline sm:text-lg">
                   {project.title}
                 </h2>
 
-                <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                <p className="text-xs font-medium text-zinc-600">
                   {project.role}
                 </p>
 
-                <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                <p className="text-sm leading-relaxed text-zinc-700">
                   {project.description}
                 </p>
               </div>
