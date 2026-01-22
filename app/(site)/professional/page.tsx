@@ -124,21 +124,22 @@ export default function ProfessionalPage() {
 
             <div className="space-y-4 text-base text-black">
               <p>
-                I’m a mechanical engineer with bachelor’s and master’s degrees in
+                I am a mechanical engineer with bachelor’s (Penn State) and master’s degrees (U of Utah) in
                 Mechanical Engineering and a master’s degree in Atmospheric Sciences.
-                I’m motivated by work where strong fundamentals, practical design,
-                and hands-on execution matter—especially when systems have to operate
-                reliably outside a lab.
+                I also have several years of industry experience as a project mechanical engineer
+                leading large-scale capital engineering projects, and I apply that
+                same rigor to scientific and field-based systems. 
               </p>
 
               <p>
-                I bring several years of industry experience as a project engineer
-                leading large-scale capital engineering projects, and I apply that
-                same rigor to scientific and field-based systems. Most recently, I
-                led the design, fabrication, and installation of a 30-foot aerosol
-                inlet and support structure for a remote mountain field site using
-                SolidWorks, machining, and on-site construction—now operating in the
-                field collecting aerosol and meteorological data.
+                I am most motivated by engineering work that combines strong fundamentals with
+                thoughtful planning, practical design, and hands-on execution. My proudest
+                accomplishments have involved taking complex systems from concept through
+                fabrication and field deployment. Most recently, I led the design,
+                fabrication, and installation of a 30-foot aerosol inlet and support
+                structure for a remote mountain field site, using SolidWorks, machining,
+                and on-site construction. The lab is now operating in the field and
+                collecting aerosol and meteorological data.
               </p>
             </div>
           </div>
@@ -218,13 +219,6 @@ export default function ProfessionalPage() {
             <SectionHeading title="Career Objective" />
 
             <div className="space-y-4 text-base text-black">
-              <p>
-                I’m seeking an engineering role where I have the freedom and
-                responsibility to tackle complex technical problems through thoughtful
-                design and hands-on execution. I’m motivated by work that lets me own
-                real systems from concept through deployment.
-              </p>
-
               <p>
                 While I’m especially drawn to projects connected to the environment,
                 nature, and field-deployed systems, I’m not limited to any single
