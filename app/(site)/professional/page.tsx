@@ -220,6 +220,12 @@ export default function ProfessionalPage() {
 
             <div className="space-y-4 text-base text-black">
               <p>
+                I’m seeking an engineering role where I have the freedom and
+                responsibility to tackle complex technical problems through thoughtful
+                design and hands-on execution.
+              </p>
+
+              <p>
                 While I’m especially drawn to projects connected to the environment,
                 nature, and field-deployed systems, I’m not limited to any single
                 industry. I’m most interested in teams that value strong technical
