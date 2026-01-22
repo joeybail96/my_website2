@@ -63,7 +63,7 @@ export default function ProjectsPage() {
           </h1>
 
           <p className="max-w-3xl text-base text-black">
-            Click any project to read more about it.
+            (click any project to read more)
           </p>
         </header>
 
