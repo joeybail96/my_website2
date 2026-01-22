@@ -269,8 +269,8 @@ export default function ProfessionalPage() {
                 <span className="font-semibold">Atmospheric Modeling:</span> GEOS-Chem, STILT, HYSPLIT, FENGSHA
               </p>
               <p>
-                <span className="font-semibold">Remote Sensing / Instruments:</span> Optical Particle Counters, Nephelometer, PINE, SMPS, Droplet/Imaging
-                Probes, Radiosonde
+                <span className="font-semibold">Remote Sensing / Instruments:</span> Optical Particle Counters, Nephelometer, Droplet/Imaging
+                Probes, Radiosondes
               </p>
               <p>
                 <span className="font-semibold">Machining:</span> Woodworking, manual lathe, manual mill, power tools
