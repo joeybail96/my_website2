@@ -126,9 +126,10 @@ export default function ProfessionalPage() {
               <p>
                 I am a mechanical engineer with bachelor’s (Penn State) and master’s degrees (U of Utah) in
                 Mechanical Engineering and a master’s degree in Atmospheric Sciences.
+                Both degrees involved completing and publishing research theses, both of which involved hands-on fieldwork, 
+                data collection and processing, coding, modeling, presenting, and writing.
                 I also have several years of industry experience as a project mechanical engineer
-                leading large-scale capital engineering projects, and I apply that
-                same rigor to scientific and field-based systems. 
+                leading large-scale capital engineering projects. 
               </p>
 
               <p>
@@ -169,12 +170,12 @@ export default function ProfessionalPage() {
             <Photo
               src="/photos/snowclime-profile.jpg"
               alt="Deploying a probe at Storm Peak Lab"
-              overlay="Storm Peak Lab: field deployment + custom mounting hardware"
+              overlay="installing an cloud droplet imaging probe onto a custom mounting plate I designed"
             />
             <Photo
               src="/photos/buddys.jpg"
               alt="Aerosol inlet support structure"
-              overlay="Remote site build: inlet + structural support system"
+              overlay="clearing snow away from instruments that I helped install at a remote site within Steamboat Ski Resort"
             />
           </div>
 

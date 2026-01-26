@@ -174,8 +174,8 @@ export default function PersonalPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <Photo src="/photos/app-backpacking.jpg" alt="Backpacking" overlay="First multi-day backpacking trip on the App trail in 2015. Ill-prepared, scrappy, and stoked." />
-              <Photo src="/photos/mountain-profile.jpg" alt="Mountain" overlay="Summit of Mt Rainier in 2021 up Disappointment Cleaver. 3rd bagged peak of the trip!" />
+              <Photo src="/photos/app-backpacking.jpg" alt="Backpacking" overlay="first multi-day backpacking trip on the App trail in 2015. Ill-prepared, scrappy, and stoked." />
+              <Photo src="/photos/mountain-profile.jpg" alt="Mountain" overlay="summit of Mt Rainier in 2021 up Disappointment Cleaver. 3rd bagged peak of the trip!" />
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -205,8 +205,8 @@ export default function PersonalPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <Photo src="/photos/cncdesign-profile.jpg" alt="CNC design" overlay="One of my COVID projects: a custom CNC plotter." />
-              <Photo src="/photos/cncplotter-profile.jpg" alt="CNC plotter" overlay="My favorite part of engineering is seeing a design come to fruition!" />
+              <Photo src="/photos/cncdesign-profile.jpg" alt="CNC design" overlay="one of my COVID projects: a custom CNC plotter." />
+              <Photo src="/photos/cncplotter-profile.jpg" alt="CNC plotter" overlay="my favorite part of engineering is seeing a design come to fruition!" />
             </div>
           </div>
         </section>
