@@ -1,7 +1,9 @@
 import Image from "next/image";
 
+/* ------------------------ UI Helpers ------------------------ */
+
 function Divider() {
-  return <div className="my-10 h-px w-full bg-zinc-200 dark:bg-zinc-800" />;
+  return <div className="my-12 h-px w-full bg-zinc-200 dark:bg-zinc-800" />;
 }
 
 function Kicker({ children }: { children: React.ReactNode }) {
@@ -14,7 +16,7 @@ function Kicker({ children }: { children: React.ReactNode }) {
 
 function H2({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-2xl">
+    <h2 className="mt-2 text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-2xl">
       {children}
     </h2>
   );
@@ -26,27 +28,45 @@ function ImageBlock({
   label,
   hoverText,
   aspect = "16/9",
+  border = "black",
 }: {
   src: string;
   alt: string;
   label?: string;
   hoverText?: string;
-  aspect?: "16/9" | "4/3";
+  aspect?: "16/9" | "4/3" | "5/4" | "3952/905" | "2186/1191" | "3771/1902";
+  border?: "black" | "none";
 }) {
-  const aspectClass = aspect === "4/3" ? "aspect-[4/3]" : "aspect-[16/9]";
+  const aspectClass =
+    aspect === "4/3"
+      ? "aspect-[4/3]"
+      : aspect === "5/4"
+      ? "aspect-[5/4]"
+      : aspect === "3952/905"
+      ? "aspect-[3952/905]"
+      : aspect === "2186/1191"
+      ? "aspect-[2186/1191]"
+      : aspect === "3771/1902"
+      ? "aspect-[3771/1902]"
+      : "aspect-[16/9]";
+
+  const borderClass = border === "none" ? "border-transparent" : "border-black";
+
+  const isUrl = !!label && /^https?:\/\//i.test(label);
 
   return (
-    <figure>
+    <figure className="space-y-2">
       <div
-        className={`group relative w-full overflow-hidden rounded-xl bg-zinc-200 dark:bg-zinc-800 ${aspectClass}`}
+        className={`group relative w-full overflow-hidden rounded-xl border ${borderClass} bg-zinc-200 dark:bg-zinc-800 ${aspectClass}`}
         tabIndex={0}
       >
         <Image
           src={src}
           alt={alt}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.02] group-focus:scale-[1.02]"
+          className="object-cover" // no hover/focus zoom
           sizes="(min-width: 1024px) 800px, 100vw"
+          unoptimized={src.endsWith(".gif")}
         />
 
         {hoverText ? (
@@ -59,258 +79,322 @@ function ImageBlock({
       </div>
 
       {label ? (
-        <figcaption className="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-          {label}
+        <figcaption className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
+          {isUrl ? (
+            <a
+              href={label}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-blue-600"
+            >
+              Source: Salt Lake Tribune
+            </a>
+          ) : (
+            label
+          )}
         </figcaption>
       ) : null}
     </figure>
   );
 }
 
-function Card({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-      <p className="text-xs font-semibold uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
-        {title}
-      </p>
-      {/* IMPORTANT: keep text visible even if your dark mode is forcing black */}
-      <div className="mt-2 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-        {children}
-      </div>
-    </div>
-  );
-}
+/* ------------------------ Page ------------------------ */
 
 export default function Project2Page() {
   return (
-    <main className="mx-auto max-w-4xl px-4 py-12">
-      {/* Header */}
-      <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
-        (Thesis) Implementing Playa Dust as Sources for Particulate Chloride in GEOS-Chem
-      </h1>
-      <p className="mt-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-        University of Utah • Atmospheric chemistry modeling • Emissions + CTM development • Evaluation against field observations
-      </p>
+    <div className="flex justify-center bg-transparent px-3 py-10">
+      <main className="w-full max-w-4xl rounded-2xl border border-black bg-white/80 p-6 shadow-sm backdrop-blur-md dark:bg-zinc-950/50 sm:p-10">
+        {/* Header */}
+        <header className="space-y-2">
+          <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">
+            (Thesis) Implementing Playa Dust as Sources for Particulate Chloride
+            in GEOS-Chem
+          </h1>
+          <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+            University of Utah • Atmospheric chemistry modeling • Emissions + CTM
+            development • Evaluation against field observations
+          </p>
+        </header>
 
-      {/* Hero */}
-      <div className="mt-6">
-        <ImageBlock
-          src="/photos/geoschem-hero.jpg"
-          alt="GEOS-Chem modeling of playa dust and chloride chemistry"
-          label="Placeholder: Hero image (GEOS-Chem / dust / map / figure montage)"
-          hoverText="First implementation of inland playa dust as a particulate chloride source in GEOS-Chem to explore impacts on ClNO₂, N₂O₅, O₃, and PM chemistry."
-          aspect="16/9"
-        />
-      </div>
-
-      {/* Snapshot */}
-      <section className="mt-10 grid gap-5 sm:grid-cols-2">
-        <Card title="Project goal">
-          Build the first GEOS-Chem framework that treats saline playa dust as an inland
-          particulate chloride (pCl⁻) source, enabling heterogeneous chemistry that can
-          form nitryl chloride (ClNO₂) and alter oxidant budgets and air quality.
-        </Card>
-
-        <Card title="Impact">
-          As saline lakes shrink, chloride-rich lakebeds are exposed and emit dust.
-          Laboratory studies show playa dust can efficiently produce ClNO₂ when mixed with
-          urban NOₓ pollution. Large-scale atmospheric impacts remain poorly constrained—this work
-          built the modeling infrastructure to quantify them.
-        </Card>
-
-        <Card title="My role">
-          End-to-end developer of the workflow: playa mapping → dust emissions modeling →
-          GEOS-Chem/HEMCO integration → new tracers + chemistry parameterizations →
-          evaluation against NACHTT 2011 observations.
-        </Card>
-
-        <Card title="Project scope">
-          Western U.S. playa surface mapping, hourly emissions modeling, implementation of new
-          dust and chloride tracers, and paired base vs. modified GEOS-Chem simulations for
-          the NACHTT 2011 period with diurnal analysis.
-        </Card>
-      </section>
-
-      <Divider />
-
-      {/* Contributions */}
-      <section>
-        <Kicker>What I built</Kicker>
-        <H2>Core Contributions</H2>
-        <p className="mt-2 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-          A complete modeling pipeline that adds inland playa dust as a new chloride-bearing aerosol
-          class in GEOS-Chem—something not represented in the base model.
-        </p>
-
-        <div className="mt-6 grid gap-5 sm:grid-cols-2">
-          <Card title="1) Playa surface map (SSURGO → mask → regrid)">
-            <ul className="list-disc space-y-1 pl-4">
-              <li>Retrieved U.S. soil electrical conductivity from SSURGO.</li>
-              <li>Gridded the data and masked high-conductivity regions to identify saline playas.</li>
-              <li>Regridded the playa mask to the emissions model resolution for downstream use.</li>
-            </ul>
-          </Card>
-
-          <Card title="2) Playa dust emissions (FENGSHA + MERRA-2)">
-            <ul className="list-disc space-y-1 pl-4">
-              <li>Computed hourly playa dust fluxes over the western U.S. using FENGSHA.</li>
-              <li>Used MERRA-2 meteorology to match the GEOS-Chem driving fields.</li>
-              <li>Regridded emissions to GEOS-Chem offline dust resolution for HEMCO ingestion.</li>
-            </ul>
-          </Card>
-
-          <Card title="3) GEOS-Chem integration (HEMCO + new tracers)">
-            <ul className="list-disc space-y-1 pl-4">
-              <li>Introduced playa dust tracers (PLYA1–4) and playa chloride tracers (PLYACL1–4).</li>
-              <li>Distributed total emissions into GEOS-Chem dust size bins for consistency.</li>
-              <li>Ensured co-location with base dust to reuse aerosol physical properties (surface area, etc.).</li>
-            </ul>
-          </Card>
-
-          <Card title="4) Chemistry implementation (N₂O₅ uptake → ClNO₂)">
-            <ul className="list-disc space-y-1 pl-4">
-              <li>Enabled heterogeneous N₂O₅ uptake on playa chloride aerosols to produce ClNO₂.</li>
-              <li>Partitioned playa chloride across the sub-bin framework used by GEOS-Chem chemistry.</li>
-              <li>Applied lab-derived parameterizations with humidity-dependent branching behavior.</li>
-            </ul>
-          </Card>
-
-          <Card title="5) Evaluation (base vs modified + NACHTT 2011)">
-            <ul className="list-disc space-y-1 pl-4">
-              <li>Ran paired GEOS-Chem simulations (base and playa-enabled) for NACHTT 2011.</li>
-              <li>Compared modeled ClNO₂ and N₂O₅ to observations in the BAO tower grid cell.</li>
-              <li>Separated daytime vs nighttime behavior to capture diurnal chemistry sensitivity.</li>
-            </ul>
-          </Card>
-
-          <Card title="6) Outcomes of the first-pass implementation">
-            <ul className="list-disc space-y-1 pl-4">
-              <li>Showed playa dust can strongly enhance inland ClNO₂ and reduce N₂O₅ where introduced.</li>
-              <li>Base model substantially underpredicted inland ClNO₂; playa-enabled chemistry increased it.</li>
-              <li>Using upper-end parameters can overpredict, highlighting the need for improved constraints.</li>
-            </ul>
-          </Card>
-        </div>
-      </section>
-
-      <Divider />
-
-      {/* Proof of Work (visuals) */}
-      <section>
-        <Kicker>Proof of work</Kicker>
-        <H2>Maps, fluxes, and model impacts</H2>
-        <p className="mt-2 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-          Replace these placeholders with figures/GIFs that quickly communicate the workflow and results:
-          playa identification, emissions differences, and chemistry impacts.
-        </p>
-
-        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+        {/* Hero */}
+        <section className="mt-8">
           <ImageBlock
-            src="/photos/PROJECT2-playa-mask.png"
-            alt="Playa mask derived from SSURGO conductivity"
-            label="Placeholder: Playa mask (conductivity → threshold → mask → regrid)"
-            hoverText="Playa mapping: SSURGO soil conductivity gridded and masked to identify saline playa surfaces used as dust sources."
-            aspect="4/3"
+            src="/photos/geoschem-profile.jpg"
+            alt="GEOS-Chem modeling of playa dust and chloride chemistry"
+            label="Photo of Great Salt Lake playas off causeway to Antelope Island (taken August 2025)"
+            aspect="16/9"
           />
+        </section>
 
-          <ImageBlock
-            src="/photos/PROJECT2-emissions-compare.png"
-            alt="FENGSHA vs GEOS-Chem dust emissions"
-            label="Placeholder: Emissions comparison (FENGSHA playa vs base GEOS-Chem dust)"
-            hoverText="Emissions modeling: FENGSHA-derived playa fluxes compared to GEOS-Chem base dust inventory to show missing western sources."
-            aspect="4/3"
-          />
+        {/* Summary */}
+        <section className="mt-12 space-y-6">
+          <div className="rounded-2xl border border-black bg-white/75 p-6 shadow-sm backdrop-blur dark:bg-zinc-950/60">
+            <p className="text-xs font-semibold uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
+              Summary
+            </p>
 
-          <ImageBlock
-            src="/photos/PROJECT2-clno2-night.png"
-            alt="Nighttime ClNO2 difference map"
-            label="Placeholder: Nighttime ΔClNO₂ (modified − base)"
-            hoverText="Chemistry impact: nighttime ClNO₂ enhancements across the intermountain west where playa chloride chemistry is enabled."
-            aspect="4/3"
-          />
+            <p className="mt-3 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+              This thesis addressed a missing inland chlorine pathway in chemical
+              transport modeling: GEOS-Chem represents sea-salt chloride chemistry,
+              but does not represent chloride carried by mineral dust emitted from
+              saline playas. As saline lakes shrink and lakebeds are exposed, this
+              chloride-rich dust can mix with NOₓ pollution and drive heterogeneous
+              chemistry that forms ClNO₂ and alters oxidant budgets.
+            </p>
 
-          <ImageBlock
-            src="/photos/PROJECT2-diurnal.gif"
-            alt="Diurnal cycle time series or animation"
-            label="Placeholder GIF: diurnal cycles (N₂O₅ + ClNO₂) or model vs NACHTT"
-            hoverText="Evaluation: time series/GIF showing base vs modified diurnal patterns and comparison to NACHTT observations."
-            aspect="4/3"
-          />
-        </div>
-      </section>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+              I built an end-to-end pipeline to represent playa dust as a new
+              chloride-bearing aerosol class: mapping saline surfaces from SSURGO
+              conductivity, modeling hourly emissions using FENGSHA driven by
+              MERRA-2 meteorology, integrating new tracers through HEMCO, and
+              enabling N₂O₅ uptake and ClNO₂ formation on playa particulate
+              chloride. I evaluated paired base vs. modified simulations during
+              NACHTT 2011, focusing on nighttime chemistry where ClNO₂ production
+              is strongest.
+            </p>
 
-      <Divider />
+            <p className="mt-3 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+              The modified model produced strong inland ClNO₂ enhancements and
+              corresponding N₂O₅ depletion in regions influenced by playa dust,
+              demonstrating that saline lakebeds can be a meaningful driver of
+              inland halogen chemistry. The work also highlighted outcome
+              sensitivity to emissions and parameter choices—pinpointing what
+              needs tighter constraints in follow-on studies.
+            </p>
 
-      {/* Skills / Tools */}
-      <section className="grid gap-5 sm:grid-cols-2">
-        <Card title="Skills demonstrated">
-          <ul className="list-disc space-y-1 pl-4">
-            <li>Atmospheric chemistry reasoning (halogen/heterogeneous processes)</li>
-            <li>Emissions modeling (dust flux parameterization + domain setup)</li>
-            <li>GEOS-Chem development (new tracers, configuration, evaluation workflows)</li>
-            <li>Data engineering (NetCDF formatting, regridding, COARDS conventions)</li>
-            <li>Scientific validation (base vs modified, observation comparison, diurnal analysis)</li>
-          </ul>
-        </Card>
+            <div className="mt-5">
+              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
+                Skills Required &amp; Applied
+              </p>
 
-        <Card title="Tools">
-          <ul className="list-disc space-y-1 pl-4">
-            <li>GEOS-Chem + HEMCO</li>
-            <li>FENGSHA dust emission model</li>
-            <li>MERRA-2 meteorology</li>
-            <li>Python (analysis, preprocessing, plotting)</li>
-            <li>NetCDF tooling + HPC workflows</li>
-          </ul>
-        </Card>
-      </section>
+              <ul className="mt-2 grid gap-2 sm:grid-cols-2">
+                {[
+                  "Atmospheric chemistry reasoning (heterogeneous halogen processes)",
+                  "Emissions modeling (dust flux parameterization + domain setup)",
+                  "GEOS-Chem development (tracers, HEMCO config, chemistry hooks)",
+                  "Data engineering (NetCDF formatting, regridding, conventions)",
+                  "Scientific evaluation (base vs. modified, obs comparison, diurnal)",
+                  "Python analysis (preprocessing, plotting, QA/QC)",
+                  "HPC workflows (batch runs, storage, reproducibility)",
+                  "Model–measurement comparison (NACHTT 2011 focus)",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-2 text-sm text-zinc-900 dark:text-zinc-100"
+                  >
+                    <span className="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-zinc-900 dark:bg-zinc-100" />
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
 
-      <Divider />
+        <Divider />
 
-      {/* Project Description */}
-      <section className="grid gap-6 sm:grid-cols-[1.2fr_0.8fr] sm:items-start">
-        <div>
-          <Kicker>Project description</Kicker>
-          <H2>End-to-end modeling workflow</H2>
-
-          <p className="mt-2 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-            This thesis addressed a major limitation in inland air-quality modeling: while GEOS-Chem
-            supports sea-salt chloride chemistry, it does not represent chloride carried by mineral dust
-            emitted from saline playas. To close that gap, I derived a playa surface inventory using
-            SSURGO soil conductivity as a proxy for salt-rich lakebed sediments, then modeled hourly
-            playa dust emissions using FENGSHA driven by MERRA-2 meteorology to match GEOS-Chem forcing.
+        {/* Lakes shrinking */}
+        <section className="space-y-3">
+          <Kicker>Motivation</Kicker>
+          <H2>Saline lakes are shrinking, exposing new dust-emitting surfaces</H2>
+          <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+            Across the western U.S., saline lakes are shrinking as drought and
+            water diversion reduce inflows. As lake levels drop, large areas of
+            previously submerged lakebed become exposed. These newly exposed
+            surfaces can become significant dust sources, with consequences for
+            ecosystem health, nearby communities, and regional air quality.
           </p>
 
-          <p className="mt-3 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-            I integrated the emissions into GEOS-Chem via HEMCO using new tracers for playa dust and
-            playa particulate chloride. I then implemented heterogeneous N₂O₅ uptake and ClNO₂ production
-            on playa chloride aerosols using laboratory-derived parameterizations with humidity-dependent
-            branching. Paired base and modified simulations were evaluated against the NACHTT 2011 field
-            campaign, emphasizing nighttime chemistry where ClNO₂ production is strongest.
+          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+            <ImageBlock
+              src="/photos/shrinking_gsl.jpg"
+              alt="Shrunken Great Salt Lake extent"
+              label="Placeholder: Shrunken Great Salt Lake (satellite / before-after / shoreline retreat)"
+              aspect="4/3"
+            />
+            <ImageBlock
+              src="/photos/plot_gsl.jpg"
+              alt="Plot of declining Great Salt Lake levels over time"
+              label="Placeholder: declining lake levels (time series)"
+              aspect="2186/1191"
+              border="none" // <- NO border
+            />
+          </div>
+        </section>
+
+        <Divider />
+
+        {/* Dust emissions */}
+        <section className="space-y-3">
+          <Kicker>Health &amp; exposure</Kicker>
+          <H2>Shrinking saline lakes generate unhealthy dust</H2>
+          <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+            When strong winds blow across exposed lakebeds, they can loft fine
+            particulate matter that travels downwind into population centers. This
+            dust can contribute to elevated PM concentrations and respiratory
+            health risks, especially during frequent wind events.
           </p>
 
-          <p className="mt-3 text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-            The modified model produced strong inland ClNO₂ enhancements and corresponding N₂O₅ depletion
-            in regions influenced by playa dust, demonstrating that saline lakebeds are a plausible driver
-            of inland halogen chemistry. The results also highlighted the sensitivity of outcomes to
-            emission magnitudes and chemical parameter choices—pointing directly to what needs refinement
-            in follow-on work.
-          </p>
-        </div>
+          <div className="mt-6">
+            <ImageBlock
+              src="/photos/owens.gif"
+              alt="Dust being blown from exposed playa"
+              label="https://www.sltrib.com/news/environment/2022/10/10/how-owens-lake-became-disaster/"
+              aspect="16/9"
+            />
+          </div>
+        </section>
 
-        <ImageBlock
-          src="/photos/PROJECT2-workflow.png"
-          alt="Workflow diagram placeholder"
-          label="Placeholder: workflow diagram (map → emissions → HEMCO → tracers → chemistry → evaluation)"
-          hoverText="One-slide summary: mapping → emissions → model integration → chemistry → evaluation."
-          aspect="4/3"
-        />
-      </section>
-    </main>
+        <Divider />
+
+        {/* Chloride chemistry context */}
+        <section className="space-y-3">
+          <Kicker>Chemistry beyond emissions</Kicker>
+          <H2>Saline dust carries chloride that can amplify air-quality impacts</H2>
+          <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+            Saline lake dust can contain substantial particulate chloride. Chloride
+            is known to participate in heterogeneous chemistry that interacts with
+            NOₓ-rich pollution typical of dense communities—creating pathways that
+            can worsen air quality beyond the direct effects of dust emissions.
+          </p>
+
+          <div className="mt-6">
+            <ImageBlock
+              src="/photos/chem_mechanism.jpg"
+              alt="Illustration or figure showing particulate chloride chemistry interacting with NOx-rich pollution"
+              label="Placeholder: chloride + NOₓ heterogeneous chemistry context"
+              aspect="3771/1902"
+              border="none" // <- NO border
+            />
+          </div>
+        </section>
+
+        <Divider />
+
+        {/* GEOS-Chem + additions */}
+        <section className="space-y-3">
+          <Kicker>Model development</Kicker>
+          <H2>Using GEOS-Chem to represent dust transport and halogen chemistry</H2>
+          <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+            GEOS-Chem is a global chemical transport model (CTM) used to simulate
+            atmospheric chemistry and the transport of aerosols and trace gases.
+            To better represent inland saline dust, I added functionality that
+            improves dust transport from dried saline lake regions and introduced
+            an inventory for particulate chloride from particularly saline
+            surfaces. I then edited GEOS-Chem so this new chloride-bearing dust
+            participates in appropriate halogen reactions in the model.
+          </p>
+
+          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+            <ImageBlock
+              src="/photos/PROJECT2-dust-before.gif"
+              alt="Dust emissions visualization before changes"
+              label="Placeholder GIF: dust emissions before model updates"
+              hoverText="Baseline emissions/transport representation prior to playa-specific updates."
+              aspect="16/9"
+            />
+            <ImageBlock
+              src="/photos/PROJECT2-dust-after.gif"
+              alt="Dust emissions visualization after changes"
+              label="Placeholder GIF: dust emissions after model updates"
+              hoverText="After: improved saline lake dust representation + particulate chloride inventory."
+              aspect="16/9"
+            />
+          </div>
+        </section>
+
+        <Divider />
+
+        {/* Chemistry summary + schematic */}
+        <section className="space-y-3">
+          <Kicker>Chemistry implementation</Kicker>
+          <H2>Heterogeneous N₂O₅ uptake and ClNO₂ formation on particulate chloride</H2>
+          <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+            In the updated model, particulate chloride associated with saline dust
+            provides a reactive surface for nighttime chemistry. The primary
+            pathway implemented enables heterogeneous N₂O₅ uptake on chloride-bearing
+            aerosols with branching that produces ClNO₂. This shifts nocturnal
+            nitrogen oxide reservoirs and can alter oxidant budgets after sunrise
+            when ClNO₂ photolyzes.
+          </p>
+
+          <div className="mt-6">
+            <ImageBlock
+              src="/photos/PROJECT2-chemistry-graphic.png"
+              alt="Graphic detailing the implemented halogen chemistry"
+              label="Placeholder: chemistry schematic (N₂O₅ uptake → ClNO₂; downstream radicals)"
+              hoverText="Schematic of the implemented chemistry and its link to nocturnal reservoirs and morning radical production."
+              aspect="16/9"
+            />
+          </div>
+        </section>
+
+        <Divider />
+
+        {/* N2O5 panels */}
+        <section className="space-y-3">
+          <Kicker>Results</Kicker>
+          <H2>N₂O₅: before, after, and difference</H2>
+          <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+            These panels summarize how the updated saline dust and chloride
+            chemistry impacted modeled N₂O₅.
+          </p>
+
+          <div className="mt-6 grid gap-6 sm:grid-cols-3">
+            <ImageBlock
+              src="/photos/PROJECT2-n2o5-before.png"
+              alt="N2O5 before changes map"
+              label="N₂O₅ (before)"
+              aspect="4/3"
+            />
+            <ImageBlock
+              src="/photos/PROJECT2-n2o5-after.png"
+              alt="N2O5 after changes map"
+              label="N₂O₅ (after)"
+              aspect="4/3"
+            />
+            <ImageBlock
+              src="/photos/PROJECT2-n2o5-diff.png"
+              alt="N2O5 difference map (after - before)"
+              label="ΔN₂O₅ (after − before)"
+              aspect="4/3"
+            />
+          </div>
+        </section>
+
+        <Divider />
+
+        {/* ClNO2 panels */}
+        <section className="space-y-3">
+          <Kicker>Results</Kicker>
+          <H2>ClNO₂: before, after, and difference</H2>
+          <p className="text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
+            These panels summarize how the updated saline dust and chloride
+            chemistry impacted modeled ClNO₂.
+          </p>
+
+          <div className="mt-6 grid gap-6 sm:grid-cols-3">
+            <ImageBlock
+              src="/photos/PROJECT2-clno2-before.png"
+              alt="ClNO2 before changes map"
+              label="ClNO₂ (before)"
+              aspect="4/3"
+            />
+            <ImageBlock
+              src="/photos/PROJECT2-clno2-after.png"
+              alt="ClNO2 after changes map"
+              label="ClNO₂ (after)"
+              aspect="4/3"
+            />
+            <ImageBlock
+              src="/photos/PROJECT2-clno2-diff.png"
+              alt="ClNO2 difference map (after - before)"
+              label="ΔClNO₂ (after − before)"
+              aspect="4/3"
+            />
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }
