@@ -79,7 +79,7 @@ export default function ProjectsPage() {
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover transition duration-300 group-hover:scale-105"
+                  className="object-cover"
                   sizes="(min-width: 768px) 50vw, 100vw"
                 />
               </div>
