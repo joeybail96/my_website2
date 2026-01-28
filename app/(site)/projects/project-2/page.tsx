@@ -478,9 +478,9 @@ export default function Project2Page() {
           <Kicker>Methods</Kicker>
           <H2>How I implemented playa dust & chloride chemistry into GEOS-Chem</H2>
           <p className="text-sm leading-relaxed text-black">
-            GEOS-Chem is a global chemical transport model that simulates atmospheric chemistry 
-            and the transport of aerosols and trace gases. To implement playa dust as a source 
-            of inland particulate chloride within GEOS-Chem's framework and to model the associated chemistry, I followed 
+            GEOS-Chem is a global chemical transport model that simulates atmospheric chemistry
+            and the transport of aerosols and trace gases. To implement playa dust as a source
+            of inland particulate chloride within GEOS-Chem's framework and to model the associated chemistry, I followed
             the steps below:
           </p>
 
@@ -514,28 +514,57 @@ export default function Project2Page() {
         <section className="space-y-3">
           <Kicker>Step 1 • Map Playas</Kicker>
           <H2>Mapping playas into a model-ready source mask</H2>
+
           <p className="text-sm leading-relaxed text-black">
-            I generated a high-resolution CONUS playa mask by combining soil/salinity
-            indicators and post-processing into a model-ready grid. This product
-            was used to identify likely saline dust source regions and to support
-            downstream emissions modeling and chloride inventory mapping.
+            To identify where playa dust can be emitted, I first mapped the spatial
+            distribution of playa surfaces across the United States using data from the
+            SSURGO soil database. SSURGO provides high-resolution information on soil
+            properties, including electrical conductivity.
+          </p>
+
+          <p className="text-sm leading-relaxed text-black">
+            Because playa surfaces are typically salt-rich, they tend to exhibit elevated
+            electrical conductivity. By organizing the SSURGO data into a uniform,
+            high-resolution grid in QGIS and isolating regions with consistently high
+            conductivity, I was able to distinguish playas from surrounding soil types and
+            create a model-ready playa source mask.
           </p>
 
           {/* stacked (2x1), full-width */}
           <div className="mt-6 space-y-6">
             <ImageBlock
               src="/photos/ssurgo.jpg"
-              alt="High-resolution map of U.S. playas (product 1)"
-              label="Placeholder: high-res CONUS playa mask"
+              alt="High-resolution map of U.S. playas derived from SSURGO electrical conductivity"
+              label="High-resolution map of electrical conductivity over the United States"
               aspect="846/505"
               hiRes
               priority
               border="none"
             />
+
+            <p className="text-sm leading-relaxed text-black">
+              Once playa locations were identified, the next challenge was representing
+              their dust emissions within GEOS-Chem. The model relies on precomputed,
+              offline dust emission inventories, but its native dust sources and emission
+              framework are too simplified and spatially inaccurate to realistically
+              represent dust emitted from inland playa surfaces.
+            </p>
+
+            <p className="text-sm leading-relaxed text-black">
+              To overcome this limitation, I generated a new offline dust emission
+              inventory using FENGSHA, a more physically based dust emission model. I
+              constrained FENGSHA to emit dust only from grid boxes identified as playas,
+              then formatted and integrated this inventory into GEOS-Chem’s existing dust
+              framework. This approach allowed playa dust to be transported and deposited
+              using standard model processes, while also enabling the playa dust to
+              participate in chemical reaction pathways rather than being treated as
+              chemically benign.
+            </p>
+
             <ImageBlock
               src="/photos/fengsha.jpg"
-              alt="High-resolution map of U.S. playas (product 2)"
-              label="Placeholder: zoomed/annotated playa regions"
+              alt="Playa dust source regions used within the FENGSHA dust emission framework"
+              label="Map of playa grid boxes used to constrain the FENGSHA model to calculate playa dust emissions, exclusively"
               aspect="836/475"
               hiRes
               priority
@@ -547,25 +576,33 @@ export default function Project2Page() {
         <Divider />
 
         {/* Step 2: Build Emission Inventory */}
-        <section className="space-y-3">
+        <section className="space-y-6">
           <Kicker>Step 2 • Build Emission Inventory</Kicker>
           <H2>Using GEOS-Chem to transport playa dust and ingest the inventory</H2>
-          <p className="text-sm leading-relaxed text-black">
-            GEOS-Chem is a global chemical transport model that simulates atmospheric chemistry 
-            and the transport of aerosols and trace gases. To represent inland saline dust, I 
-            mapped playa dust source regions, calculated dust emissions from these surfaces, and 
-            modified the model’s existing dust emissions inventory to include and chemically 
-            speciate playa dust. I then integrated these chloride-bearing particles into relevant 
-            heterogeneous and photochemical reaction pathways (R1–R5) to evaluate their impacts on 
-            atmospheric chemistry.
-          </p>
+
+          {/* ⬆️ two-column text row */}
+          <div className="grid gap-6 md:grid-cols-2">
+            <p className="text-sm leading-relaxed text-black">
+              The left animation shows dust emissions from the base GEOS-Chem model during a
+              period when playa dust was known to be elevated across the western United
+              States due to strong westerly wind events over playa regions. Even under these
+              favorable conditions, the model produces relatively weak dust emissions.
+            </p>
+
+            <p className="text-sm leading-relaxed text-black">
+              The right animation shows dust emissions after integrating a playa-specific
+              emission inventory generated using FENGSHA during the same period. Emissions
+              are more widespread and better aligned with known playa source regions,
+              resulting in substantially stronger and more realistic dust emission patterns.
+            </p>
+          </div>
 
           {/* ✅ synced GIF row */}
           <SyncedGifPair
             left={{
               src: "/photos/dst_daily_mass_map_20110215_20110315.gif",
               alt: "Dust emissions visualization before changes",
-              label: "Daily dust mass maps (baseline)",
+              label: "Baseline dust emission map",
               hoverText:
                 "Baseline emissions/transport representation prior to playa-specific updates.",
               aspect: "1020/660",
@@ -576,7 +613,7 @@ export default function Project2Page() {
             right={{
               src: "/photos/dstmod_daily_mass_map_20110215_20110315.gif",
               alt: "Dust emissions visualization after changes",
-              label: "Daily dust mass maps (with playa chloride)",
+              label: "Modified dust emission map (w/FENGSHA playa emissions)",
               hoverText:
                 "After: improved saline lake dust representation + particulate chloride inventory.",
               aspect: "1020/660",
@@ -592,21 +629,20 @@ export default function Project2Page() {
         {/* Step 3: Chemistry implementation */}
         <section className="space-y-3">
           <Kicker>Step 3 • Chemistry implementation</Kicker>
-          <H2>Heterogeneous N₂O₅ uptake and ClNO₂ formation on particulate chloride</H2>
+          <H2>Adding chemical reaction pathways for new playa dust species</H2>
           <p className="text-sm leading-relaxed text-black">
-            In the updated model, particulate chloride associated with saline dust
-            provides a reactive surface for nighttime chemistry. The primary
-            pathway implemented enables heterogeneous N₂O₅ uptake on chloride-bearing
-            aerosols with branching that produces ClNO₂. This shifts nocturnal
-            nitrogen oxide reservoirs and can alter oxidant budgets after sunrise
-            when ClNO₂ photolyzes.
+            With the dust emission scheme modified to include playa dust species, I enabled
+            chemical pathways that allow the chloride content of playa dust to participate
+            in atmospheric reactions. When playa dust is emitted or transported into a grid
+            box that also contains dinitrogen pentoxide (N₂O₅), GEOS-Chem can produce nitryl
+            chloride (ClNO₂) within that grid box.
           </p>
 
           <div className="mt-6">
-            <p className="text-sm leading-relaxed text-zinc-700">
-              Below is a concise reaction list describing the nighttime NOₓ reservoir
-              chemistry, heterogeneous N₂O₅ uptake on chloride-containing aerosol,
-              and morning photolysis steps that release reactive chlorine.
+            <p className="text-sm leading-relaxed text-black">
+              Below is a concise reaction list illustrating nighttime NOₓ reservoir
+              chemistry, heterogeneous N₂O₅ uptake on chloride-containing playa dust aerosols, and the
+              subsequent photolysis (sunlight) reactions that releases reactive chlorine (ClNO₂).
             </p>
 
             {/* ✅ UPDATED: centered block + fixed label column so R1→R5 align vertically */}
@@ -687,17 +723,27 @@ export default function Project2Page() {
         {/* Step 4: Run & Evaluate */}
         <section className="space-y-3">
           <Kicker>Step 4 • Run &amp; Evaluate</Kicker>
-          <H2>N₂O₅: before, after, and difference</H2>
+          <H2>Playa dust's impact on NOₓ chemistry</H2>
           <p className="text-sm leading-relaxed text-black">
-            These panels summarize how the updated saline dust and chloride
-            chemistry impacted modeled N₂O₅.
+            These maps show how my modifications to GEOS-Chem introduce a new loss pathway
+            for N₂O₅ through reactions with playa dust. I evaluated the model during a
+            period with elevated dust emissions, when playa dust was actively emitted from
+            drying saline lakes. In these regions, playa dust reacts with N₂O₅ and removes
+            it from the atmosphere, leading to slightly lower N₂O₅ concentrations downwind of playa
+            source areas.
+          </p>
+
+          <p className="text-sm leading-relaxed text-black">
+            With this loss mechanism established, it can be further refined alongside
+            improved N₂O₅ representations. This provides a pathway toward more accurate
+            treatment of playa dust emissions and N₂O₅ chemistry within GEOS-Chem.
           </p>
 
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             <ImageBlock
               src="/photos/SpeciesConcVV_N2O5_US_night_MST_base_column.png"
               alt="N2O5 before changes map"
-              label="N₂O₅ (before)"
+              label="Modeled N₂O₅ over CONUS without including playa dust chemistry"
               aspect="1665/1089"
               hiRes
               border="none"
@@ -705,7 +751,7 @@ export default function Project2Page() {
             <ImageBlock
               src="/photos/SpeciesConcVV_N2O5_US_night_MST_mod_column.png"
               alt="N2O5 after changes map"
-              label="N₂O₅ (after)"
+              label="Modeled N₂O₅ over CONUS with playa dust & chemistry included"
               aspect="1665/1089"
               hiRes
               border="none"
@@ -716,7 +762,7 @@ export default function Project2Page() {
             <ImageBlock
               src="/photos/SpeciesConcVV_N2O5_US_night_MST_diff_column.png"
               alt="N2O5 difference map (after - before)"
-              label="ΔN₂O₅ (after − before)"
+              label="ΔN₂O₅ over CONUS between my modified model and the base GEOS-Chem model"
               aspect="1690/1060"
               hiRes
               border="none"
@@ -731,15 +777,20 @@ export default function Project2Page() {
           <Kicker>Step 4 • Results</Kicker>
           <H2>ClNO₂: before, after, and difference</H2>
           <p className="text-sm leading-relaxed text-black">
-            These panels summarize how the updated saline dust and chloride
-            chemistry impacted modeled ClNO₂.
+            In contrast to the N₂O₅ trends, my modifications to GEOS-Chem introduce a new
+            production pathway for ClNO₂. During the same modeling period, ClNO₂
+            concentrations increase as expected as playa dust participates in this
+            chemistry. With this production pathway established, playa dust emissions and
+            their influence on ClNO₂ can be further refined, allowing the downwind air-quality
+            impacts of ClNO₂ to be more clearly linked to dust from shrinking saline
+            lakebeds.
           </p>
 
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             <ImageBlock
               src="/photos/SpeciesConcVV_ClNO2_US_night_MST_base_column.png"
               alt="ClNO2 before changes map"
-              label="ClNO₂ (before)"
+              label="Modeled ClNO₂ over CONUS without including playa dust chemistry"
               aspect="1665/1089"
               hiRes
               border="none"
@@ -747,7 +798,7 @@ export default function Project2Page() {
             <ImageBlock
               src="/photos/SpeciesConcVV_ClNO2_US_night_MST_mod_column.png"
               alt="ClNO2 after changes map"
-              label="ClNO₂ (after)"
+              label="Modeled ClNO₂ over CONUS with playa dust & chemistry included"
               aspect="1665/1089"
               hiRes
               border="none"
@@ -758,7 +809,7 @@ export default function Project2Page() {
             <ImageBlock
               src="/photos/SpeciesConcVV_ClNO2_US_night_MST_diff_column.png"
               alt="ClNO2 difference map (after - before)"
-              label="ΔClNO₂ (after − before)"
+              label="ΔClNO₂ over CONUS between my modified model and the base GEOS-Chem model"
               aspect="1690/1060"
               hiRes
               border="none"
@@ -768,11 +819,60 @@ export default function Project2Page() {
 
         <Divider />
 
+        {/* ✅ NEW: Conclusion & Next Steps (inserted after Step 4 and before References) */}
+        <section className="mt-10 space-y-3">
+          <H2>Conclusions & Future Work</H2>
+          <div className="space-y-4">
+            <p className="text-sm leading-relaxed text-black">
+              This work establishes a new framework in GEOS-Chem for representing the
+              secondary-chemistry impacts of shrinking saline lakes. By introducing playa
+              dust emissions into the model and allowing chloride carried by these particles
+              to participate in atmospheric chemistry, the model can now capture chemical
+              pathways that were not previously represented.
+            </p>
+
+            <p className="text-sm leading-relaxed text-black">
+              While particulate chloride has traditionally been represented in GEOS-Chem
+              through sea-salt aerosols, this work extends that capability inland by explicitly
+              representing chloride carried by dust emitted from drying saline lakebeds. This
+              distinction is critical, as shrinking saline lakes emit dust directly into
+              populated continental regions, where it can interact with pollution in ways
+              that marine sources alone cannot capture.
+            </p>
+
+            <p className="text-sm leading-relaxed text-black">
+              As saline lakes continue to decline due to climate change and water diversion,
+              the secondary chemical impacts of playa dust are expected to become more
+              important for regional air quality. This framework improves the ability to
+              quantify these impacts, supporting more complete assessments of environmental
+              and public-health consequences and providing scientific context for future
+              research, water management, and air-quality policy decisions.
+            </p>
+          </div>
+          </section>
+
+
+
+
+        <Divider />
+
         <section className="mt-10 space-y-3">
           <Kicker>Sources</Kicker>
           <H2>References</H2>
 
           <ul className="mt-3 space-y-2 text-sm leading-relaxed text-black">
+            <li>
+              <span className="font-medium">Thesis (forthcoming publication):</span>{" "}
+              <a
+                href="https://scholar.google.com/citations?hl=en&user=jc_bJg4AAAAJ&view_op=list_works&authuser=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-blue-600"
+              >
+                Will be published and linked to my Google Scholar profile
+              </a>
+            </li>
+
             <li>
               <span className="font-medium">
                 Modified chemical transport model (my branch):
@@ -798,7 +898,7 @@ export default function Project2Page() {
                 className="underline underline-offset-2 hover:text-blue-600"
               >
                 github.com/joeybail96/FENGSHA_python
-              </a>{" "}
+              </a>
             </li>
 
             <li>
@@ -851,8 +951,9 @@ export default function Project2Page() {
           </ul>
 
           <p className="pt-2 text-xs text-zinc-600">
-            Note: This is a concise, web-friendly reference list. Full citations will
-            be included in the published thesis and associated journal articles.
+            Note: This is a concise, web-friendly reference list. Full citations will be
+            included in the forthcoming thesis (currently under review) and associated
+            journal articles.
           </p>
         </section>
       </main>
