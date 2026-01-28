@@ -333,14 +333,14 @@ export default function Project2Page() {
 
               <ul className="mt-2 grid gap-2 sm:grid-cols-2">
                 {[
-                  "Atmospheric chemistry reasoning (heterogeneous halogen processes)",
-                  "Emissions modeling (dust flux parameterization + domain setup)",
-                  "GEOS-Chem development (tracers, HEMCO config, chemistry hooks)",
-                  "Data engineering (NetCDF formatting, regridding, conventions)",
-                  "Scientific evaluation (base vs. modified, obs comparison, diurnal)",
-                  "Python analysis (preprocessing, plotting, QA/QC)",
-                  "HPC workflows (batch runs, storage, reproducibility)",
-                  "Model–measurement comparison (NACHTT 2011 focus)",
+                  "Atmospheric chemistry",
+                  "Dust emission/saltation theory",
+                  "Modeling (GEOS-Chem, FENGSHA, STILT, HEMCO)",
+                  "Large data (Vector/Raster Files, NetCDF, xarray)",
+                  "Scientific/model evaluation",
+                  "Coding (Fortran, Python, R, Batch, Linux)",
+                  "HPC workflows",
+                  "Communication (conferences, poster, presentations)",
                 ].map((item) => (
                   <li key={item} className="flex gap-2 text-sm text-black">
                     <span className="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-black" />
