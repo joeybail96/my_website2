@@ -51,7 +51,7 @@ export default function ContactPage() {
       {/* Direct contact options */}
       <div className="mt-6">
         <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-          You can also reach me via any of these mediums:
+          You can also reach me directly via any of these mediums:
         </p>
 
         <ul className="mt-3 space-y-2 text-sm">
