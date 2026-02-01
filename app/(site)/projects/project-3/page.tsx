@@ -39,8 +39,13 @@ function ImageBlock({
   hoverText,
   aspect = "16/9",
   customAspect,
-  hiRes = false,
+  hiRes = true,
   priority = false,
+  fullBleed = false,
+  border = true,
+  cropSides = false,
+  cropScale = 1.6, // 1.4 subtle, 1.6 medium, 1.8 aggressive
+  className = "",
 }: {
   src: string;
   alt: string;
@@ -51,32 +56,68 @@ function ImageBlock({
   customAspect?: string;
   hiRes?: boolean;
   priority?: boolean;
+  /** Make the image request full viewport width (inside the container, it will still be constrained by parent) */
+  fullBleed?: boolean;
+  /** Black border on wrapper */
+  border?: boolean;
+  /** Visually crop left/right by making the media wider than the container */
+  cropSides?: boolean;
+  /** How much wider to render the media (1.0 = none). */
+  cropScale?: number;
+  /** Extra classes applied to the image wrapper div (lets you cap width/height per-image) */
+  className?: string;
 }) {
   const aspectRatio =
     customAspect ??
     (aspect === "4/3" ? "4 / 3" : aspect === "5/4" ? "5 / 4" : "16 / 9");
 
-  // higher-res request for desktop when hiRes is true
-  const sizes = hiRes
+  // High-res by default; keep fullBleed behavior the same
+  const sizes = fullBleed
+    ? "100vw"
+    : hiRes
     ? "(min-width: 1024px) 1200px, 100vw"
     : "(min-width: 1024px) 900px, 100vw";
 
+  const isGif = src.toLowerCase().endsWith(".gif");
+
+  const wrapperClass =
+    "group relative w-full overflow-hidden rounded-xl bg-zinc-200" +
+    (border ? " border border-black" : "") +
+    (className ? ` ${className}` : "");
+
   return (
     <figure className="space-y-2">
-      <div
-        className="group relative w-full overflow-hidden rounded-xl bg-zinc-200"
-        style={{ aspectRatio }}
-        tabIndex={0}
-      >
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          className="object-cover"
-          quality={hiRes ? 100 : 75}
-          sizes={sizes}
-          priority={priority}
-        />
+      <div className={wrapperClass} style={{ aspectRatio }} tabIndex={0}>
+        {cropSides ? (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div
+              className="relative h-full"
+              style={{ width: `${Math.max(1, cropScale) * 100}%` }}
+            >
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                className="object-cover"
+                quality={hiRes ? 100 : 85}
+                sizes={sizes}
+                priority={priority}
+                unoptimized={isGif}
+              />
+            </div>
+          </div>
+        ) : (
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            className="object-cover"
+            quality={hiRes ? 100 : 85}
+            sizes={sizes}
+            priority={priority}
+            unoptimized={isGif}
+          />
+        )}
 
         {hoverText ? (
           <div className="pointer-events-none absolute inset-0 flex items-end bg-black/0 p-4 opacity-0 transition duration-200 group-hover:bg-black/55 group-hover:opacity-100 group-focus:bg-black/55 group-focus:opacity-100">
@@ -144,13 +185,14 @@ export default function ProjectMechThesisPage() {
         {/* Hero (placeholder) */}
         <section className="mt-8">
           <ImageBlock
-            src="/photos/ME-thesis-hero.jpg"
+            src="/photos/brain_vessel.bmp"
             alt="Biomechanics testing of a cerebral artery (placeholder)"
             label="Placeholder: hero image (tester + vessel, or a montage of key figures)"
             hoverText="Project focus: compare sub-yield overstretch softening to softening caused by controlled collagen digestion."
-            aspect="16/9"
+            customAspect="1280 / 1024"
             hiRes
             priority
+            border
           />
         </section>
 
@@ -162,15 +204,16 @@ export default function ProjectMechThesisPage() {
             </p>
 
             <p className="mt-3 text-sm leading-relaxed text-black">
-              Cerebral arteries can mechanically "soften" after sub-failure loading, even though they
-              do not show any physical signals of damage. Because collagen is a major load-bearing ingredient in the artery wall,
-              a common assumption is that softening is caused by collagen “damage.”
+              Cerebral arteries can mechanically "soften" after sub-failure loading,
+              even though they do not show any physical signals of damage. Because
+              collagen is a major load-bearing ingredient in the artery wall, a common
+              assumption is that softening is caused by collagen “damage.”
             </p>
 
             <p className="mt-3 text-sm leading-relaxed text-black">
-              In this project, I tested that idea using a simple comparison: I measured how vessels
-              soften after quasi-static overstretch, and compared that behavior to
-              softening caused by controlled collagen removal using collagenase
+              In this project, I tested that idea using a simple comparison: I measured
+              how vessels soften after quasi-static overstretch, and compared that
+              behavior to softening caused by controlled collagen removal using collagenase
               (an enzyme that targets collagen).
             </p>
 
@@ -209,21 +252,21 @@ export default function ProjectMechThesisPage() {
 
           <p className="text-sm leading-relaxed text-black">
             Cerebral blood vessels are often overstretched during traumatic brain injuries and
-            surgical procedures. Even without rupture, these events can cause the vessel to "soften". 
-            This kind of sub-failure damage is not typically accounted for in injury models or clinical discussions,
-            despite evidence that vascular dysfunction after TBI may contribute to ischemic stroke risk.
+            surgical procedures. Even without rupture, these events can cause the vessel to "soften".
+            This kind of sub-failure damage is not typically accounted for when treating TBI,
+            despite evidence that vascular damage can occur during TBI may contribute to ischemic stroke risk.
           </p>
 
           <p className="text-sm leading-relaxed text-black">
-            Previous work has suggested this softening effect is a result of collagen fibers becoming 
-            damaged and "denaturing" at sub-failure vessel stretch limits. However, other work has 
-            reported collagen fiber damage to occur at higher strains than where vessel softening begins. 
+            Previous work suggested this softening effect is a result of collagen fibers becoming
+            damaged and "denaturing" at sub-failure vessel stretch limits. However, other work has
+            reported collagen fiber damage to occur at higher strains than where vessel softening begins.
           </p>
 
           <p className="text-sm leading-relaxed text-black">
-            My thesis was aimed to further understand and confirm collagen’s role in vessel softening 
-            by directly changing the collagen content of brain vessels and testing how that changes the mechanical outcome. 
-            We hypothesized that if collagen is driving sub-yield softening, then partial collagen degradation should measurably 
+            My thesis was aimed to further understand and confirm collagen’s role in vessel softening
+            by directly changing the collagen content of brain vessels and testing how that changes the mechanical outcome.
+            We hypothesized that if collagen is driving sub-yield softening, then partial collagen degradation should measurably
             shift the softening response even if the collagen is not showing signs of damage/denaturation.
           </p>
 
@@ -231,18 +274,19 @@ export default function ProjectMechThesisPage() {
             <ImageBlock
               src="/photos/elastin_collagen_curve.jpg"
               alt="Placeholder: artery wall constituents"
-              label="Placeholder: vessel wall schematic (elastin vs collagen regimes)"
+              label="This is a plot I made for my thesis to help visualize how elastin and collagen make up the structural integrity of a brain vessel."
               hoverText="Place a clean schematic: elastin-dominated vs collagen-dominated stretch regimes."
               customAspect="1048 / 720"
               hiRes
+              border={false}
             />
             <ImageBlock
               src="/photos/softening.jpg"
               alt="Placeholder: conceptual softening plot"
-              label="Placeholder: baseline stress–stretch curves before/after overstretch"
-              hoverText="A simple plot: Baseline 1 vs Baseline 2 (post-insult) showing softening."
+              label="Here is an example of one of my results that show the evolving stress-strain curve for a brain vessel that is experiencing softening damage."
               customAspect="2129 / 2044"
               hiRes
+              border={false}
             />
           </div>
         </section>
@@ -256,9 +300,9 @@ export default function ProjectMechThesisPage() {
 
           <p className="text-sm leading-relaxed text-black">
             I tested our hypothesis following two sets of experiments: (1) I compared overstretch-induced softening
-            in native vs collagen-digested brain vessels, and (2) I continously digested brain vessels of their 
-            collagen and measured for corresponding softening effects. The preparation of vessels and processing of the data were 
-            distinct between the sets of experiments; however, both sets of experiments followed the same general 
+            in native vs collagen-digested brain vessels, and (2) I continously digested brain vessels of their
+            collagen and measured for corresponding softening effects. The preparation of vessels and processing of the data were
+            distinct between the sets of experiments; however, both sets of experiments followed the same general
             testing protocol:
           </p>
 
@@ -279,20 +323,18 @@ export default function ProjectMechThesisPage() {
               kicker="Step 1"
               title="Mount and baseline-test vessels"
               images={
-                <div className="grid gap-6 sm:grid-cols-2">
+                <div className="space-y-6">
+                  {/* NO BORDER for testsetup.jpg */}
                   <ImageBlock
-                    src="/photos/ME-step1-tester.jpg"
-                    alt="Placeholder: tester overview"
+                    src="/photos/testsetup.jpg"
+                    alt="Testing system overview"
                     label="Placeholder: testing system overview"
                     hoverText="Bath + cannulation needles + axial actuation + force + pressure sensors."
-                    aspect="4/3"
-                  />
-                  <ImageBlock
-                    src="/photos/ME-step1-mounting.jpg"
-                    alt="Placeholder: mounting detail"
-                    label="Placeholder: cannulation + fixation detail"
-                    hoverText="Needles, sutures, and fixation details (grooves, adhesive) for repeatable tests."
-                    aspect="4/3"
+                    customAspect="964 / 381"
+                    hiRes
+                    fullBleed
+                    border={false}
+                    priority
                   />
                 </div>
               }
@@ -313,20 +355,26 @@ export default function ProjectMechThesisPage() {
               kicker="Step 2"
               title="Apply the sub-failure damage condition"
               images={
-                <div className="grid gap-6 sm:grid-cols-2">
+                <div className="grid gap-6 sm:grid-cols-[minmax(0,220px)_minmax(0,1fr)] items-start">
                   <ImageBlock
-                    src="/photos/ME-step2-overstretch.jpg"
-                    alt="Placeholder: overstretch protocol"
-                    label="Placeholder: axial overstretch protocol"
+                    src="/photos/vessel_test.gif"
+                    alt="Axial overstretch protocol"
+                    label="Axial overstretch protocol"
                     hoverText="Baseline curves → overstretch to λ (e.g., 1.1–1.4) → repeat baseline curves."
-                    aspect="4/3"
+                    customAspect="552 / 1188"
+                    hiRes
+                    border
+                    className="mx-auto max-w-[220px] max-h-[70vh]"
                   />
+
                   <ImageBlock
-                    src="/photos/ME-step2-digestion.jpg"
-                    alt="Placeholder: collagenase protocol"
+                    src="/photos/experiment2_setup.jpg"
+                    alt="Collagenase protocol setup"
                     label="Placeholder: collagenase exposure protocol"
                     hoverText="Digestion conditions (enzyme concentration, temperature, time) + repeat baselines."
-                    aspect="4/3"
+                    customAspect="620 / 323"
+                    hiRes
+                    border
                   />
                 </div>
               }
@@ -354,18 +402,22 @@ export default function ProjectMechThesisPage() {
               images={
                 <div className="grid gap-6 sm:grid-cols-2">
                   <ImageBlock
-                    src="/photos/ME-step3-curves.jpg"
+                    src="/photos/mechanical_tests.png"
                     alt="Placeholder: representative curves"
                     label="Placeholder: Baseline 1 vs Baseline 2 stress–stretch curves"
                     hoverText="Show representative curves for multiple overstretch magnitudes."
-                    aspect="4/3"
+                    customAspect="1106 / 1964"
+                    hiRes
+                    border
                   />
                   <ImageBlock
-                    src="/photos/ME-step3-metrics.jpg"
+                    src="/photos/normalized_tests.png"
                     alt="Placeholder: softening metrics"
                     label="Placeholder: metric definitions / summary"
                     hoverText="Examples: stress reduction at in vivo length, stiffness measures, strain energy."
-                    aspect="4/3"
+                    customAspect="1083 / 1966"
+                    hiRes
+                    border
                   />
                 </div>
               }
@@ -387,29 +439,18 @@ export default function ProjectMechThesisPage() {
               title="Imaging Damaged Collagen using CHP"
               images={
                 <div className="space-y-6">
+                  {/* CHP image: add border (requested) */}
                   <ImageBlock
-                    src="/photos/ME-step4-chp.jpg"
-                    alt="Placeholder: CHP images"
-                    label="Placeholder: CHP fluorescence (native vs digested; pre/post where relevant)"
-                    hoverText="If you include CHP: keep the figure clean and directly tied to the question."
-                    aspect="16/9"
+                    src="/photos/chp.jpg"
+                    alt="CHP fluorescence imaging"
+                    label="CHP fluorescence imaging"
+                    hoverText="CHP binds to unfolded collagen strands, providing a readout of collagen disruption."
+                    customAspect="695 / 204"
+                    hiRes
+                    fullBleed
+                    border
+                    priority
                   />
-                  <div className="grid gap-6 sm:grid-cols-2">
-                    <ImageBlock
-                      src="/photos/ME-step4-imaging-setup.jpg"
-                      alt="Placeholder: imaging workflow"
-                      label="Placeholder: staining + imaging workflow"
-                      hoverText="Stain, rinse, mount, confocal imaging (or your actual imaging modality)."
-                      aspect="4/3"
-                    />
-                    <ImageBlock
-                      src="/photos/ME-step4-quant.jpg"
-                      alt="Placeholder: image quantification"
-                      label="Placeholder: CHP summary / quantification"
-                      hoverText="Only include if it supports a specific point in the results."
-                      aspect="4/3"
-                    />
-                  </div>
                 </div>
               }
             >
@@ -447,31 +488,34 @@ export default function ProjectMechThesisPage() {
 
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             <ImageBlock
-              src="/photos/ME-results-overstretch-trends.jpg"
+              src="/photos/mechanical_softening.png"
               alt="Placeholder: overstretch trends"
               label="Placeholder: overstretch-induced softening vs stretch magnitude (native vs collagen-digested)"
               hoverText="Headline plot: softening measures grouped by overstretch (e.g., λ=1.1–1.4)."
-              aspect="4/3"
+              customAspect="2033 / 1430"
               hiRes
+              border
             />
             <ImageBlock
-              src="/photos/ME-results-digestion-time.jpg"
+              src="/photos/digested_softening.png"
               alt="Placeholder: digestion time trends"
               label="Placeholder: mechanical property changes during continuous digestion"
               hoverText="Show response over time (e.g., 0–60 min) with the cleanest metric set."
-              aspect="4/3"
+              customAspect="2265 / 1620"
               hiRes
+              border
             />
           </div>
 
           <div className="mt-6">
             <ImageBlock
-              src="/photos/ME-results-summary.jpg"
+              src="/photos/comparison.png"
               alt="Placeholder: summary graphic"
               label="Placeholder: summary figure (native vs digested; raw vs normalized)"
               hoverText="Good place for a compact summary: magnitude shifts, shape similarity, and what you conclude from that."
-              aspect="16/9"
+              customAspect="2022 / 1509"
               hiRes
+              border
             />
           </div>
         </section>
@@ -496,15 +540,7 @@ export default function ProjectMechThesisPage() {
             damage models that can reproduce observed softening without hard-coding denaturation as the only pathway.
           </p>
 
-          <div className="mt-6">
-            <ImageBlock
-              src="/photos/ME-futurework.jpg"
-              alt="Placeholder: future work mechanism diagram"
-              label="Placeholder: future work schematic (collagen recruitment / organization changes)"
-              hoverText="Keep it simple: one figure that matches whatever you actually argue as the likely mechanism."
-              aspect="16/9"
-            />
-          </div>
+          {/* conclusion image removed per request */}
         </section>
 
         <Divider />

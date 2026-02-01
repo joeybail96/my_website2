@@ -25,7 +25,7 @@ const projects = [
     role: "Experimental Design, Data, & Visualization",
     description:
       "Developed data processing and modeling tools to quantify softening behavior of cerebral vessels from experimental and imaging-based measurements.",
-    image: "/photos/vessel-profile.jpg",
+    image: "/photos/brain_vessel.bmp",
   },
   {
     slug: "project-4",
