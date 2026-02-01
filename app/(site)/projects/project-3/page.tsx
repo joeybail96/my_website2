@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 /* ------------------------ UI Helpers ------------------------ */
@@ -32,6 +33,103 @@ function H3({ children }: { children: React.ReactNode }) {
   );
 }
 
+/* ------------------------ Lightbox ------------------------ */
+
+type LightboxPayload = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
+function Lightbox({
+  open,
+  onClose,
+  payload,
+}: {
+  open: boolean;
+  onClose: () => void;
+  payload: LightboxPayload | null;
+}) {
+  useEffect(() => {
+    if (!open) return;
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    document.addEventListener("keydown", onKey);
+
+    // prevent background scroll
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [open, onClose]);
+
+  if (!open || !payload) return null;
+
+  const isGif = payload.src.toLowerCase().endsWith(".gif");
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Expanded image"
+      onMouseDown={(e) => {
+        // close if clicking the backdrop
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-5xl">
+        <button
+          onClick={onClose}
+          className="absolute -top-12 right-0 rounded-lg bg-white/90 px-3 py-1 text-sm font-medium text-black shadow-sm hover:bg-white"
+          aria-label="Close expanded image"
+          type="button"
+        >
+          Close
+        </button>
+
+        <div className="overflow-hidden rounded-2xl border border-black bg-white shadow-lg">
+          <div className="relative w-full bg-zinc-100">
+            {/* Use a responsive ratio block; image contains to avoid cropping */}
+            <div className="relative h-[70vh] w-full">
+              <Image
+                src={payload.src}
+                alt={payload.alt}
+                fill
+                className="object-contain"
+                quality={100}
+                sizes="100vw"
+                priority
+                unoptimized={isGif}
+              />
+            </div>
+          </div>
+
+          {(payload.caption || payload.alt) && (
+            <div className="border-t border-zinc-200 px-5 py-4">
+              <p className="text-sm font-medium text-black">
+                {payload.caption ?? payload.alt}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------ Image Block ------------------------ */
+
 function ImageBlock({
   src,
   alt,
@@ -46,6 +144,7 @@ function ImageBlock({
   cropSides = false,
   cropScale = 1.6, // 1.4 subtle, 1.6 medium, 1.8 aggressive
   className = "",
+  onOpen,
 }: {
   src: string;
   alt: string;
@@ -66,6 +165,8 @@ function ImageBlock({
   cropScale?: number;
   /** Extra classes applied to the image wrapper div (lets you cap width/height per-image) */
   className?: string;
+  /** Called when user clicks/activates the image */
+  onOpen?: (p: LightboxPayload) => void;
 }) {
   const aspectRatio =
     customAspect ??
@@ -85,9 +186,34 @@ function ImageBlock({
     (border ? " border border-black" : "") +
     (className ? ` ${className}` : "");
 
+  const canOpen = typeof onOpen === "function";
+
+  const open = () => {
+    if (!canOpen) return;
+    // Prefer label as the caption in the enlarged view (requested)
+    onOpen({ src, alt, caption: label });
+  };
+
   return (
     <figure className="space-y-2">
-      <div className={wrapperClass} style={{ aspectRatio }} tabIndex={0}>
+      <div
+        className={
+          wrapperClass +
+          (canOpen ? " cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-black/40" : "")
+        }
+        style={{ aspectRatio }}
+        tabIndex={canOpen ? 0 : -1}
+        role={canOpen ? "button" : undefined}
+        aria-label={canOpen ? "Open enlarged image" : undefined}
+        onClick={open}
+        onKeyDown={(e) => {
+          if (!canOpen) return;
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            open();
+          }
+        }}
+      >
         {cropSides ? (
           <div className="absolute inset-0 flex items-center justify-center">
             <div
@@ -167,8 +293,26 @@ function StepSection({
 /* ------------------------ Page ------------------------ */
 
 export default function ProjectMechThesisPage() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxPayload, setLightboxPayload] = useState<LightboxPayload | null>(
+    null
+  );
+
+  const openLightbox = (p: LightboxPayload) => {
+    setLightboxPayload(p);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    // keep payload briefly (fine either way); leaving it makes reopen instant
+    // setLightboxPayload(null);
+  };
+
   return (
     <div className="flex justify-center bg-transparent px-3 py-10">
+      <Lightbox open={lightboxOpen} onClose={closeLightbox} payload={lightboxPayload} />
+
       {/* Match Project2 styling: light panels, black borders, no dark-mode panels */}
       <main className="w-full max-w-4xl rounded-2xl border border-black bg-white/80 p-6 shadow-sm backdrop-blur-md sm:p-10">
         {/* Header */}
@@ -193,6 +337,7 @@ export default function ProjectMechThesisPage() {
             hiRes
             priority
             border
+            onOpen={openLightbox}
           />
         </section>
 
@@ -279,6 +424,7 @@ export default function ProjectMechThesisPage() {
               customAspect="1048 / 720"
               hiRes
               border={false}
+              onOpen={openLightbox}
             />
             <ImageBlock
               src="/photos/softening.jpg"
@@ -287,6 +433,7 @@ export default function ProjectMechThesisPage() {
               customAspect="2129 / 2044"
               hiRes
               border={false}
+              onOpen={openLightbox}
             />
           </div>
         </section>
@@ -335,6 +482,7 @@ export default function ProjectMechThesisPage() {
                     fullBleed
                     border={false}
                     priority
+                    onOpen={openLightbox}
                   />
                 </div>
               }
@@ -365,6 +513,7 @@ export default function ProjectMechThesisPage() {
                     hiRes
                     border
                     className="mx-auto max-w-[220px] max-h-[70vh]"
+                    onOpen={openLightbox}
                   />
 
                   <ImageBlock
@@ -375,6 +524,7 @@ export default function ProjectMechThesisPage() {
                     customAspect="620 / 323"
                     hiRes
                     border
+                    onOpen={openLightbox}
                   />
                 </div>
               }
@@ -409,6 +559,7 @@ export default function ProjectMechThesisPage() {
                     customAspect="1106 / 1964"
                     hiRes
                     border
+                    onOpen={openLightbox}
                   />
                   <ImageBlock
                     src="/photos/normalized_tests.png"
@@ -418,6 +569,7 @@ export default function ProjectMechThesisPage() {
                     customAspect="1083 / 1966"
                     hiRes
                     border
+                    onOpen={openLightbox}
                   />
                 </div>
               }
@@ -450,6 +602,7 @@ export default function ProjectMechThesisPage() {
                     fullBleed
                     border
                     priority
+                    onOpen={openLightbox}
                   />
                 </div>
               }
@@ -495,6 +648,7 @@ export default function ProjectMechThesisPage() {
               customAspect="2033 / 1430"
               hiRes
               border
+              onOpen={openLightbox}
             />
             <ImageBlock
               src="/photos/digested_softening.png"
@@ -504,6 +658,7 @@ export default function ProjectMechThesisPage() {
               customAspect="2265 / 1620"
               hiRes
               border
+              onOpen={openLightbox}
             />
           </div>
 
@@ -516,6 +671,7 @@ export default function ProjectMechThesisPage() {
               customAspect="2022 / 1509"
               hiRes
               border
+              onOpen={openLightbox}
             />
           </div>
         </section>
