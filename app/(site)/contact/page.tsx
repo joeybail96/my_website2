@@ -68,10 +68,10 @@ export default function ContactPage() {
             </svg>
 
             <a
-              href="mailto:joey.bail@gmail.com"
+              href="mailto:jdbail2018@gmail.com"
               className="underline-offset-4 hover:underline text-zinc-900 dark:text-zinc-100"
             >
-              joey.bail@gmail.com
+              jdbail2018@gmail.com
             </a>
           </li>
 
