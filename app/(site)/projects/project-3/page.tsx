@@ -38,7 +38,7 @@ function ImageBlock({
   label,
   hoverText,
   aspect = "16/9",
-  border = "black",
+  customAspect,
   hiRes = false,
   priority = false,
 }: {
@@ -47,23 +47,25 @@ function ImageBlock({
   label?: string;
   hoverText?: string;
   aspect?: "16/9" | "4/3" | "5/4";
-  border?: "black" | "none";
+  /** Exact ratio string like "2129 / 2044" or "1048 / 720" */
+  customAspect?: string;
   hiRes?: boolean;
   priority?: boolean;
 }) {
-  const aspectClass =
-    aspect === "4/3"
-      ? "aspect-[4/3]"
-      : aspect === "5/4"
-      ? "aspect-[5/4]"
-      : "aspect-[16/9]";
+  const aspectRatio =
+    customAspect ??
+    (aspect === "4/3" ? "4 / 3" : aspect === "5/4" ? "5 / 4" : "16 / 9");
 
-  const borderClass = border === "none" ? "border-transparent" : "border-black";
+  // higher-res request for desktop when hiRes is true
+  const sizes = hiRes
+    ? "(min-width: 1024px) 1200px, 100vw"
+    : "(min-width: 1024px) 900px, 100vw";
 
   return (
     <figure className="space-y-2">
       <div
-        className={`group relative w-full overflow-hidden rounded-xl border ${borderClass} bg-zinc-200 ${aspectClass}`}
+        className="group relative w-full overflow-hidden rounded-xl bg-zinc-200"
+        style={{ aspectRatio }}
         tabIndex={0}
       >
         <Image
@@ -72,11 +74,7 @@ function ImageBlock({
           fill
           className="object-cover"
           quality={hiRes ? 100 : 75}
-          sizes={
-            hiRes
-              ? "(min-width: 1024px) 1200px, 100vw"
-              : "(min-width: 1024px) 900px, 100vw"
-          }
+          sizes={sizes}
           priority={priority}
         />
 
@@ -231,19 +229,19 @@ export default function ProjectMechThesisPage() {
 
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             <ImageBlock
-              src="/photos/ME-background-figure1.jpg"
+              src="/photos/elastin_collagen_curve.jpg"
               alt="Placeholder: artery wall constituents"
               label="Placeholder: vessel wall schematic (elastin vs collagen regimes)"
               hoverText="Place a clean schematic: elastin-dominated vs collagen-dominated stretch regimes."
-              aspect="4/3"
+              customAspect="1048 / 720"
               hiRes
             />
             <ImageBlock
-              src="/photos/ME-background-figure2.jpg"
+              src="/photos/softening.jpg"
               alt="Placeholder: conceptual softening plot"
               label="Placeholder: baseline stress–stretch curves before/after overstretch"
               hoverText="A simple plot: Baseline 1 vs Baseline 2 (post-insult) showing softening."
-              aspect="4/3"
+              customAspect="2129 / 2044"
               hiRes
             />
           </div>
