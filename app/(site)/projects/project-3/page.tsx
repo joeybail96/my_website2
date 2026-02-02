@@ -796,7 +796,7 @@ export default function ProjectMechThesisPage() {
             <ImageBlock
               src="/photos/comparison.png"
               alt="Placeholder: summary graphic"
-              label="Placeholder: summary figure (native vs digested; raw vs normalized)"
+              label="How digestion softening results compared to overstretch-induced softening"
               customAspect="2022 / 1509"
               hiRes
               border
