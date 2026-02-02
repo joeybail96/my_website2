@@ -459,9 +459,17 @@ export default function ProjectCNCPlotterPage() {
           <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-start">
             <div className="space-y-3">
               <p className="text-sm leading-relaxed text-black">
-                Here the plotter is drawing my dog Pippin. You can see a fuller video of this 
-                here https://www.youtube.com/watch?v=E39LJF87FLg.
+                Here the plotter is drawing my dog Pippin. You can see a fuller video of this{" "}
+                <a
+                  href="https://www.youtube.com/watch?v=E39LJF87FLg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-blue-600 hover:text-blue-800"
+                >
+                  here
+                </a>.
               </p>
+
             </div>
 
             <ImageBlock
