@@ -7,7 +7,7 @@ const projects = [
     title: "Design & Deployment of a Remote Aerosol Research Facility",
     role: "Design, Machining, & Field Install Work",
     description:
-      "End-to-end development of a remote aerosol research facility, including design and fabrication of a custom inlet system, construction of a container-based lab, and installation of the inlet, structural supports, and instruments at a remote site in the Wasatch Mountains.",
+      "Designed and led construction of a 30-ft inlet and support structure for remote aerosol laboratory in the Wasatch Mountains",
     image: "/photos/snowscape-profile.jpg",
   },
   {
@@ -16,7 +16,7 @@ const projects = [
       "(Thesis) Modeling Secondary Air Quality Impacts of Shrinking Saline Lakes",
     role: "Fortran programming, Chemistry Modeling, & Analysis",
     description:
-      "Extended the GEOS-Chem global air-quality model to simulate chloride-rich dust from shrinking saline lakes, and used the framework I developed to quantify how chloride-rich dust from shrinking saline lakes might be altering regional air-quality in the western United States.",
+      "Created the framework for an atmospheric chemistry model to include the playa dust in its chemistry schemes, so we can begin to better understand the secondary chemistry impact of shrinking saline lakes, such as the Great Salt Lake.",
     image: "/photos/geoschem-profile.jpg",
   },
   {
@@ -24,7 +24,7 @@ const projects = [
     title: "(Thesis) Analyzing the Softening Behavior of Brain Vessels",
     role: "Experimental Design, Data, & Visualization",
     description:
-      "Developed data processing and modeling tools to quantify softening behavior of cerebral vessels from experimental and imaging-based measurements.",
+      "Developed and executed experiments to further understand how brain vessels become damaged during traumatic brain injury events",
     image: "/photos/brain_vessel.bmp",
   },
   {
@@ -32,7 +32,7 @@ const projects = [
     title: "Subaru Camper",
     role: "Mechanical Design & Fabrication",
     description:
-      "Designed and built a modular camper system inside a Subaru, including a raised sleeping platform, integrated storage, and vehicle-safe mounting hardware for extended road trips and field travel.",
+      "Designed and built a custom camping and storage setup in the trunk of my Subaru Outback.",
     image: "/photos/camper-profile.jpg",
   },
   {
@@ -40,7 +40,7 @@ const projects = [
     title: "CNC Plotter",
     role: "Mechatronics & Prototyping",
     description:
-      "Built a desktop CNC plotter using stepper motors, belt drives, and a microcontroller to convert digital vector drawings into precise physical motion.",
+      "Built a desktop CNC plotter that could generate physical marker drawings of any image",
     image: "/photos/cncplotter-profile.jpg",
   },
   {
