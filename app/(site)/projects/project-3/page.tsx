@@ -199,7 +199,9 @@ function ImageBlock({
       <div
         className={
           wrapperClass +
-          (canOpen ? " cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-black/40" : "")
+          (canOpen
+            ? " cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-black/40"
+            : "")
         }
         style={{ aspectRatio }}
         tabIndex={canOpen ? 0 : -1}
@@ -311,7 +313,11 @@ export default function ProjectMechThesisPage() {
 
   return (
     <div className="flex justify-center bg-transparent px-3 py-10">
-      <Lightbox open={lightboxOpen} onClose={closeLightbox} payload={lightboxPayload} />
+      <Lightbox
+        open={lightboxOpen}
+        onClose={closeLightbox}
+        payload={lightboxPayload}
+      />
 
       {/* Match Project2 styling: light panels, black borders, no dark-mode panels */}
       <main className="w-full max-w-4xl rounded-2xl border border-black bg-white/80 p-6 shadow-sm backdrop-blur-md sm:p-10">
@@ -321,23 +327,26 @@ export default function ProjectMechThesisPage() {
             (Thesis) Analyzing the Softening Behavior of Brain Vessels
           </h1>
           <p className="text-sm font-medium text-zinc-700">
-            University of Utah • Biomechanics • Experimental mechanics • Tissue
-            microstructure
+            University of Utah • Biomechanics • Mechanical Engineering• Experimental Design & Execution
           </p>
         </header>
 
-        {/* Hero (placeholder) */}
+        {/* Hero (scaled down) */}
         <section className="mt-8">
           <ImageBlock
             src="/photos/brain_vessel.bmp"
             alt="Biomechanics testing of a cerebral artery (placeholder)"
-            label="Placeholder: hero image (tester + vessel, or a montage of key figures)"
-            hoverText="Project focus: compare sub-yield overstretch softening to softening caused by controlled collagen digestion."
+            label="Microscopic image of one of the cerebral blood vessels I tested. You can
+            see that I've sutured all the branches off the main vessel axis, so the vessel may be
+            pressurized on our tester."
             customAspect="1280 / 1024"
             hiRes
             priority
             border
             onOpen={openLightbox}
+            /* ↓ This is the only change you asked for:
+               cap the hero width + reduce vertical dominance, while keeping responsive */
+            className="mx-auto max-w-[520px] sm:max-w-[600px] lg:max-w-[640px]"
           />
         </section>
 
@@ -350,16 +359,33 @@ export default function ProjectMechThesisPage() {
 
             <p className="mt-3 text-sm leading-relaxed text-black">
               Cerebral arteries can mechanically "soften" after sub-failure loading,
-              even though they do not show any physical signals of damage. Because
-              collagen is a major load-bearing ingredient in the artery wall, a common
-              assumption is that softening is caused by collagen “damage.”
+              even though they do not show any physical signals of damage. This type of 
+              damage is likely occurring during traumatic brain injuries (TBI). However, because the 
+              damage is difficult to deteect, sub-failure vessel damage is largely untreated and likely
+              causing the long-term, fatal health concerns that are poorly-understood, but known consequences
+              of TBI.
             </p>
 
             <p className="mt-3 text-sm leading-relaxed text-black">
-              In this project, I tested that idea using a simple comparison: I measured
-              how vessels soften after quasi-static overstretch, and compared that
-              behavior to softening caused by controlled collagen removal using collagenase
-              (an enzyme that targets collagen).
+              In this thesis, I further investigated the mechanics underlying sub-failure damage in cerebral blood vessels.
+              I designed, executed, and reported a series of experiments providing evidence that collagen fiber damage
+              occurs at sub-failure stretch levels and contributes to the softening behavior observed in brain vessels
+              under these conditions. 
+            </p>
+
+            <p className="mt-3 text-sm leading-relaxed text-black">
+              This project page provides a simplified version of my thesis and key takeaways.
+              More detailed information can be found in my{" "}
+              <a
+                href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=jc_bJg4AAAAJ&authuser=1&citation_for_view=jc_bJg4AAAAJ:u5HHmVD_uO8C"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-blue-600"
+              >
+                published thesis
+              </a>.
+              Follow-up work for this research effort has been completed since my defense, and I am also in the process of
+              submitting this work to the <em>Journal of Biomechanics</em> as a first author (expected release 2026).
             </p>
 
             <div className="mt-5">
@@ -369,8 +395,8 @@ export default function ProjectMechThesisPage() {
 
               <ul className="mt-2 grid gap-2 sm:grid-cols-2">
                 {[
-                  "Ex vivo arterial testing & specimen handling",
-                  "Protocol & experiment design",
+                  "Protocol & experimental design",
+                  "Data collection & management",
                   "Coding (MATLAB, LabView)",
                   "Image processing (motion-tracking, feature detection)",
                   "Quantitative comparisons + statistics",
@@ -420,7 +446,6 @@ export default function ProjectMechThesisPage() {
               src="/photos/elastin_collagen_curve.jpg"
               alt="Placeholder: artery wall constituents"
               label="This is a plot I made for my thesis to help visualize how elastin and collagen make up the structural integrity of a brain vessel."
-              hoverText="Place a clean schematic: elastin-dominated vs collagen-dominated stretch regimes."
               customAspect="1048 / 720"
               hiRes
               border={false}
@@ -429,7 +454,9 @@ export default function ProjectMechThesisPage() {
             <ImageBlock
               src="/photos/softening.jpg"
               alt="Placeholder: conceptual softening plot"
-              label="Here is an example of one of my results that show the evolving stress-strain curve for a brain vessel that is experiencing softening damage."
+              label="Here is an example of one of my results that show the evolving stress-strain curve for a brain vessel that is experiencing softening damage. 
+              Softening effectively means the vessel is getting weaker when stretched to lengths below failure limits, as demonstrated
+              by a shallowing stress-strain curve"
               customAspect="2129 / 2044"
               hiRes
               border={false}
@@ -475,8 +502,43 @@ export default function ProjectMechThesisPage() {
                   <ImageBlock
                     src="/photos/testsetup.jpg"
                     alt="Testing system overview"
-                    label="Placeholder: testing system overview"
-                    hoverText="Bath + cannulation needles + axial actuation + force + pressure sensors."
+                    label={
+                      <>
+                        Schematic of the vessel testing system with labeled components:
+                        <ul className="mt-2 list-disc pl-5 space-y-1">
+                          <li>
+                            <strong>(A) Cannulas:</strong> Secure the vessel and supply saline fluid to the lumen.
+                          </li>
+                          <li>
+                            <strong>(B) 3D translation stage:</strong> Allows fine axial alignment to ensure the vessel is mounted straight.
+                          </li>
+                          <li>
+                            <strong>(C) Fluid inlet:</strong> Cannula delivering fluid into the vessel.
+                          </li>
+                          <li>
+                            <strong>(D) Fluid outlet:</strong> Carries fluid out of the vessel and can be opened or closed to control pressurization.
+                          </li>
+                          <li>
+                            <strong>(E) P1 pressure transducer:</strong> Measures pressure upstream of the vessel.
+                          </li>
+                          <li>
+                            <strong>(F) P2 pressure transducer:</strong> Measures downstream pressure, allowing pressure differentials to be calculated.
+                          </li>
+                          <li>
+                            <strong>(G) Actuator guide:</strong> Provides slow, precise axial displacement to stretch the vessel, driven by a stepper motor.
+                          </li>
+                          <li>
+                            <strong>(H) Load cell:</strong> Measures axial force with high precision for stress calculations.
+                          </li>
+                          <li>
+                            <strong>(I) Thermocouple:</strong> Monitors bath temperature during collagenase experiments.
+                          </li>
+                          <li>
+                            <strong>(J) Heating pad:</strong> Operates in a feedback loop with the thermocouple to maintain target bath temperature.
+                          </li>
+                        </ul>
+                      </>
+                    }
                     customAspect="964 / 381"
                     hiRes
                     fullBleed
@@ -489,13 +551,8 @@ export default function ProjectMechThesisPage() {
             >
               <p>
                 Sheep MCAs were cannulated on hypodermic needles in a PBS bath and secured with sutures
-                (and fixation as needed) to prevent slip during axial loading. The setup provides axial
+                and special, benign glue to prevent slip during axial loading. The setup provides axial
                 displacement and force, internal pressure, and synchronized video for deformation tracking.
-              </p>
-              <p>
-                The point of the setup is not novelty—it’s repeatability. The study relies on baseline curves
-                being comparable before and after an intervention, so mounting stability and consistent test
-                conditions were treated as first-order requirements.
               </p>
             </StepSection>
 
@@ -507,8 +564,7 @@ export default function ProjectMechThesisPage() {
                   <ImageBlock
                     src="/photos/vessel_test.gif"
                     alt="Axial overstretch protocol"
-                    label="Axial overstretch protocol"
-                    hoverText="Baseline curves → overstretch to λ (e.g., 1.1–1.4) → repeat baseline curves."
+                    label="Example of stretch/loading procedure"
                     customAspect="552 / 1188"
                     hiRes
                     border
@@ -518,9 +574,8 @@ export default function ProjectMechThesisPage() {
 
                   <ImageBlock
                     src="/photos/experiment2_setup.jpg"
-                    alt="Collagenase protocol setup"
-                    label="Placeholder: collagenase exposure protocol"
-                    hoverText="Digestion conditions (enzyme concentration, temperature, time) + repeat baselines."
+                    alt="Sideview schematic of tester for Experiment 2"
+                    label="Sideview schematic of tester for Experiment 2"
                     customAspect="620 / 323"
                     hiRes
                     border
@@ -530,32 +585,27 @@ export default function ProjectMechThesisPage() {
               }
             >
               <p>
-                <strong>Experiment 1 (overstretch):</strong> native and collagen-digested MCAs were axially
-                stretched to prescribed stretch ratios and then re-tested. Softening was compared between groups
-                at each overstretch magnitude.
+                <strong>Experiment 1 (overstretch):</strong> I extracted cerebral vessels from sheep brains, and digested 
+                half of the vessels in collagenase- a biochemical solution that targets and digests collagen fibers. I charactertized
+                a vessel's baseline strength by stretching to its natural length and recorded the force. I 
+                then axially overstretched the vessels to 1.1 to 1.4 times the in vivo length 
+                and then recharacterized the baseline strength of vessel.
               </p>
               <p>
-                <strong>Experiment 2 (continuous digestion):</strong> separate MCAs were exposed to collagenase
-                while mechanical response was measured repeatedly over time to characterize how stiffness and
-                energy storage evolve with progressive collagen reduction.
-              </p>
-              <p>
-                Digestion conditions were selected to reduce collagen while maintaining mountability and testability.
-                Over-digestion makes samples too fragile for the handling required in the tester, so the protocol is
-                intentionally constrained.
+                <strong>Experiment 2 (continuous digestion):</strong> separate cerebral vessels were collected and exposed to collagenase
+                while mechanical response was measured repeatedly over time to characterize how softening occurs with progressive collagen reduction.
               </p>
             </StepSection>
 
             <StepSection
               kicker="Step 3"
-              title="Re-test baseline response"
+              title="Evaluation for Softening"
               images={
                 <div className="grid gap-6 sm:grid-cols-2">
                   <ImageBlock
                     src="/photos/mechanical_tests.png"
                     alt="Placeholder: representative curves"
-                    label="Placeholder: Baseline 1 vs Baseline 2 stress–stretch curves"
-                    hoverText="Show representative curves for multiple overstretch magnitudes."
+                    label="RAW Baseline 1 vs Baseline 2 stress–stretch curves"
                     customAspect="1106 / 1964"
                     hiRes
                     border
@@ -564,8 +614,7 @@ export default function ProjectMechThesisPage() {
                   <ImageBlock
                     src="/photos/normalized_tests.png"
                     alt="Placeholder: softening metrics"
-                    label="Placeholder: metric definitions / summary"
-                    hoverText="Examples: stress reduction at in vivo length, stiffness measures, strain energy."
+                    label="NORMALIZED Baseline 1 vs Baseline 2 stress–stretch curves"
                     customAspect="1083 / 1966"
                     hiRes
                     border
@@ -575,14 +624,17 @@ export default function ProjectMechThesisPage() {
               }
             >
               <p>
-                Softening was computed from the change between sequential baseline curves. Metrics were intentionally
-                redundant and curve-based (not a single derivative-heavy scalar) so conclusions didn’t depend on one
-                fragile number.
+                Softening was evident in the progressive shallowing of the baseline stress–stretch curves for samples
+                subjected to higher overstretch limits. As expected, collagen-digested vessels exhibited substantially
+                lower stress values across all tests. However, after normalizing the stress–stretch data, both native
+                and digested samples displayed very similar softening behavior.
               </p>
               <p>
-                In the paper/thesis, examples include stress reduction at in vivo length, stiffness-style measures over a
-                defined stretch window, and strain energy changes over the same window. Statistical comparisons were then
-                performed between native and digested groups at matched overstretch levels.
+                These results further support collagen’s role in governing vessel softening. The reduced stress
+                magnitudes observed in digested vessels reflect a decrease in load-bearing collagen content. Because
+                digestion was partial, we proposed that the remaining collagen fibers were still dominating the
+                mechanical response, producing softening behavior consistent with that observed in native vessels,
+                as revealed by the normalized data.
               </p>
             </StepSection>
 
@@ -595,8 +647,7 @@ export default function ProjectMechThesisPage() {
                   <ImageBlock
                     src="/photos/chp.jpg"
                     alt="CHP fluorescence imaging"
-                    label="CHP fluorescence imaging"
-                    hoverText="CHP binds to unfolded collagen strands, providing a readout of collagen disruption."
+                    label="Example of CHP staining sequence and result"
                     customAspect="695 / 204"
                     hiRes
                     fullBleed
@@ -608,12 +659,14 @@ export default function ProjectMechThesisPage() {
               }
             >
               <p>
-                Collagen volume fraction was estimated in separate samples to connect digestion time to collagen loss.
-                CHP staining/imaging was used as an additional collagen-related readout where applicable.
+                Collagen Hybridizing Peptide (CHP) is a molecule that is engineered to bind with damaged collagen fibers.
+                Under a microscopic laser with specific wavelengths, CHP is fluorescent and can be imaged. The intensity
+                of the fluorescence can be correlated with a percentage of damaged collagen fibers.
               </p>
               <p>
-                Practically: CHP is a measurement with constraints. If you show it, keep it in its lane—use it to support
-                what it can support, not as a gatekeeper for whether collagen is involved in the mechanics.
+                For this work, we leveraged CHP's abilities, following protocol of other work, to bind CHP to undamaged 
+                vessels (control) and our tested vessels (test). The relative increase in intensity of the tested 
+                samples were further proof that collagen fibers were damaged.
               </p>
             </StepSection>
           </div>
@@ -627,9 +680,13 @@ export default function ProjectMechThesisPage() {
           <H2>Main findings</H2>
 
           <p className="text-sm leading-relaxed text-black">
-            The overstretch experiment reproduced the expected pattern: softening increases with overstretch magnitude.
-            Collagen-digested vessels showed substantially lower stress levels and reduced softening magnitude, but the
-            normalized softening pattern versus overstretch remained similar across groups.
+            Beyond visualizing the obvious softening occurring between the baseline tests of experiment 1, I 
+            quantified softening using common parameterization strategies. Namely, I derived % change in strain energy, in vivo stiffness,
+            dynamic modulus, and in vivo stress after overstretch. The % reduction of these parameters has been shown to correlate strongly with softening 
+            in previous work and are standard metrics for quanitifying softening. As expected, the digested vessels 
+            showed softening trends practically identical to the native vessels when normalized (see plots in upper right
+            corners). However, the raw softening metrics are much lower in magntitude when compared to the native vessels,
+            which is likely a result of fewer fibers being available to contribute to higher, natural stress values.
           </p>
 
           <p className="text-sm leading-relaxed text-black">
@@ -643,8 +700,7 @@ export default function ProjectMechThesisPage() {
             <ImageBlock
               src="/photos/mechanical_softening.png"
               alt="Placeholder: overstretch trends"
-              label="Placeholder: overstretch-induced softening vs stretch magnitude (native vs collagen-digested)"
-              hoverText="Headline plot: softening measures grouped by overstretch (e.g., λ=1.1–1.4)."
+              label="Overstretch-induced softening in native and collagen-depleted brain vessels"
               customAspect="2033 / 1430"
               hiRes
               border
@@ -653,8 +709,8 @@ export default function ProjectMechThesisPage() {
             <ImageBlock
               src="/photos/digested_softening.png"
               alt="Placeholder: digestion time trends"
-              label="Placeholder: mechanical property changes during continuous digestion"
-              hoverText="Show response over time (e.g., 0–60 min) with the cleanest metric set."
+              label="Softening occurring in brain vessels that were continously tested in a collagenase base that was depelting 
+              the vessels of their collagen content with time"
               customAspect="2265 / 1620"
               hiRes
               border
@@ -662,18 +718,35 @@ export default function ProjectMechThesisPage() {
             />
           </div>
 
-          <div className="mt-6">
-            <ImageBlock
-              src="/photos/comparison.png"
-              alt="Placeholder: summary graphic"
-              label="Placeholder: summary figure (native vs digested; raw vs normalized)"
-              hoverText="Good place for a compact summary: magnitude shifts, shape similarity, and what you conclude from that."
-              customAspect="2022 / 1509"
-              hiRes
-              border
-              onOpen={openLightbox}
-            />
-          </div>
+
+
+            {/* TEXT (between the 1 image and the comparison figure) */}
+            <div className="mt-6 space-y-3 text-sm leading-relaxed text-black">
+              <p>
+                When these time-dependent digestion trends are compared alongside the overstretch results, the key pattern
+                was found to be consistent: reducing effective collagen contribution shifts the absolute mechanical response downward
+                and reduces the magnitude of softening, while preserving the overall shape of the response under sub-failure
+                conditions.
+              </p>
+              <p>
+                The comparison figure below summarizes how native vs digested behavior relates across the two experimental
+                approaches, highlighting the interpretation that collagen governs the dominant load-sharing behavior driving
+                softening in these vessels.
+              </p>
+            </div>
+
+            {/* COMPARISON IMAGE (now INSIDE the experiment 2 section) */}
+            <div className="mt-6">
+              <ImageBlock
+                src="/photos/comparison.png"
+                alt="Placeholder: summary graphic"
+                label="Placeholder: summary figure (native vs digested; raw vs normalized)"
+                customAspect="2022 / 1509"
+                hiRes
+                border
+                onOpen={openLightbox}
+              />
+            </div>
         </section>
 
         <Divider />
@@ -691,9 +764,7 @@ export default function ProjectMechThesisPage() {
           </p>
 
           <p className="text-sm leading-relaxed text-black">
-            Next steps are about tightening the mechanics–microstructure link under controlled conditions: improved digestion
-            calibration, better alignment between mechanical test states and imaging/biochemical measurements, and constitutive
-            damage models that can reproduce observed softening without hard-coding denaturation as the only pathway.
+            This work is currently being submitted (as of February 2026) for publication to the Journal of Biomechanics.
           </p>
 
           {/* conclusion image removed per request */}
