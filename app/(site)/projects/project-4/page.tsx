@@ -277,11 +277,9 @@ export default function ProjectSubaruCamperPage() {
           <H2>Building the Rig</H2>
 
           <p className="text-sm leading-relaxed text-black">
-            After finalizing the layout, I built the platform from plywood with a
-            simple internal skeleton for stiffness. The order mattered: get the
-            base panels cut and fitting correctly first, level the base, build the
-            skeleton, then add access ports and drawer hardware, and dial in the
-            storage layout.
+            After finalizing the design, I bought the wood and hardward and began building.
+            Here, I've included a few pictures of the process, but it was honestly all 
+            pretty straightfoward woodworking (e.g., sawing and assembling with screws and nails).
           </p>
 
           <div className="mt-8 space-y-10">
@@ -291,26 +289,17 @@ export default function ProjectSubaruCamperPage() {
                 1) Cutting the base panels
               </p>
 
-              <p className="text-sm leading-relaxed text-black">
-                I started by cutting the main floor panels and keeping everything
-                square and repeatable. These pieces define the footprint, so I
-                treated them like the “datum” for the whole rig. I dry-fit early
-                and often to catch mistakes before they got baked in.
-              </p>
-
               <div className="grid gap-6 sm:grid-cols-2">
                 <ImageBlock
                   src="/photos/cutting_panels.jpg"
                   alt="Cutting out the base panels for the camper platform"
                   label="Base panels cut from plywood"
-                  hoverText="Start with clean, accurate panel geometry so everything downstream fits."
                   aspect="4/3"
                 />
                 <ImageBlock
                   src="/photos/placing_panels.jpg"
                   alt="Test-fitting base panels inside the Outback"
                   label="Test fit inside the car"
-                  hoverText="Quick fit checks prevented compounding errors later."
                   aspect="4/3"
                 />
               </div>
@@ -325,16 +314,15 @@ export default function ProjectSubaruCamperPage() {
               <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-start">
                 <div className="space-y-3">
                   <p className="text-sm leading-relaxed text-black">
-                    The trunk isn’t a flat datum, so I adjusted the base until it
-                    sat level and didn’t rock. If this step is off, you feel it
-                    every single night sleeping on it — and the rest of the build
-                    starts fighting itself.
+                    I wanted the platform to be relatively flat and level for comfortability. 
+                    I measured the level of the driveway and tried to match that as best as I could to 
+                    try and make my sleeping platform parallel with the ground. 
                   </p>
-
                   <p className="text-sm leading-relaxed text-black">
-                    I was mainly watching for wobble, contact points, and anything
-                    that would squeak once weight was on it. Getting this right
-                    early made everything else go together cleaner.
+                    Obviously, this step 
+                    was not too critical since I did not anticipate that I would ever be parking my car on a perfectly level 
+                    surface, but whatever! The leveling base boards under my bed system also created a 
+                    nice storage slot for shoes.
                   </p>
                 </div>
 
@@ -342,7 +330,6 @@ export default function ProjectSubaruCamperPage() {
                   src="/photos/leveled.jpg"
                   alt="Leveling the camper base platform"
                   label="Leveling and dialing in the base"
-                  hoverText="Make it level now so the rest of the build stays square."
                   aspect="4/3"
                 />
               </div>
@@ -354,26 +341,17 @@ export default function ProjectSubaruCamperPage() {
                 3) Constructing the skeleton
               </p>
 
-              <p className="text-sm leading-relaxed text-black">
-                This is the structural core. I used just enough framing to kill
-                flex and squeaks, while keeping the layout open for storage,
-                access ports, and drawer clearance. I test-fit as I built so the
-                “bench-square” frame still matched the actual car geometry.
-              </p>
-
               <div className="grid gap-6 sm:grid-cols-2">
                 <ImageBlock
                   src="/photos/assembling_skeleton.jpg"
                   alt="Internal skeleton frame of the camper platform"
-                  label="Skeleton frame"
-                  hoverText="Internal framing adds stiffness without much weight."
+                  label="Skeleton frame showing different storage compartments"
                   aspect="4/3"
                 />
                 <ImageBlock
                   src="/photos/top_platform.jpg"
                   alt="Top panels installed on the camper platform"
                   label="Top panels installed"
-                  hoverText="Once the top is on, the platform becomes rigid and quiet."
                   aspect="4/3"
                 />
               </div>
@@ -385,34 +363,23 @@ export default function ProjectSubaruCamperPage() {
                 4) Access ports for small items
               </p>
 
-              <p className="text-sm leading-relaxed text-black">
-                These were for the random stuff that otherwise ends up floating
-                around the car: headlamp, cords, toiletries, batteries, etc. I
-                placed them where they stayed reachable even when the main storage
-                was packed so I didn’t have to unpack everything to find one small
-                thing.
-              </p>
-
               <div className="grid gap-6 sm:grid-cols-3">
                 <ImageBlock
                   src="/photos/accessport1.jpg"
                   alt="Access port build photo 1"
-                  label="Access port — cutouts"
-                  hoverText="Cut and fit the openings before final assembly."
+                  label="Cutting out shelves for toiletries"
                   aspect="4/3"
                 />
                 <ImageBlock
                   src="/photos/accessport2.jpg"
                   alt="Access port build photo 2"
-                  label="Access port — hardware/fit-up"
-                  hoverText="Dialing in hinges/latches so it’s easy to use."
+                  label="Covered and finished!"
                   aspect="4/3"
                 />
                 <ImageBlock
                   src="/photos/side_port.jpg"
                   alt="Final access port in the completed build"
-                  label="Access port — finished"
-                  hoverText="In the final rig, these stayed useful every day."
+                  label="Getting put to use!"
                   aspect="4/3"
                 />
               </div>
@@ -425,32 +392,29 @@ export default function ProjectSubaruCamperPage() {
               </p>
 
               <p className="text-sm leading-relaxed text-black">
-                The drawer was the main “live out of it” feature. I sized it for
-                clothes + cooking gear and focused on smooth, quiet travel. Slide
-                alignment was the whole game here — get it right and it feels
-                effortless; get it wrong and it binds forever.
+                The drawer was a very simple design. Basically, it was just a totally independent
+                drawer that could slide in and out of a slot within the camper build. I cut out 
+                and built a counter platform on the end of the drawer to function as a cooking surface, 
+                which proved to be very comfortable and useful throughout my travels.
               </p>
 
               <div className="grid gap-6 sm:grid-cols-3">
                 <ImageBlock
                   src="/photos/drawer.jpg"
                   alt="Drawer system construction photo 1"
-                  label="Drawer box + slide layout"
-                  hoverText="Full-length drawer sized for clothes + cooking gear."
+                  label="Independent drawer built"
                   aspect="4/3"
                 />
                 <ImageBlock
                   src="/photos/drawer_installed.jpg"
                   alt="Drawer system construction photo 2"
-                  label="Slides installed + smooth travel"
-                  hoverText="Dialed in alignment so it runs quietly and doesn’t bind."
+                  label="Drawer installed"
                   aspect="4/3"
                 />
                 <ImageBlock
                   src="/photos/drawer_open.jpg"
                   alt="Finished drawer in the completed rig"
-                  label="Finished drawer"
-                  hoverText="Final fit-up: stable, smooth travel, and easy access."
+                  label="Finished drawer (in cooking mode)"
                   aspect="4/3"
                 />
               </div>
@@ -463,9 +427,10 @@ export default function ProjectSubaruCamperPage() {
               </p>
 
               <p className="text-sm leading-relaxed text-black">
-                I wanted a dedicated spot for clothes so they didn’t end up in
-                grocery bags or scattered through the rig. This compartment kept
-                the sleeping area clean and made packing/unpacking faster.
+                I wanted my clothes to be easily accessible from my bed/mattress, so I cut out a "closet" that accesses
+                a compartment within the camper build. The compartment could be accessed by simply opening a covering 
+                panel. When closed, the panel is still load bearing to hold my weight or whatever else I needed to store 
+                in my trunk.
               </p>
 
               <div className="grid gap-6 sm:grid-cols-2">
@@ -473,14 +438,12 @@ export default function ProjectSubaruCamperPage() {
                   src="/photos/clothes_closed.jpg"
                   alt="Clothes compartment closed"
                   label="Closet closed"
-                  hoverText="Everything packed and secured for driving."
                   aspect="4/3"
                 />
                 <ImageBlock
                   src="/photos/clothes_open.jpg"
                   alt="Clothes compartment open"
                   label="Closet open"
-                  hoverText="Quick access without tearing the setup apart."
                   aspect="4/3"
                 />
               </div>
@@ -492,19 +455,11 @@ export default function ProjectSubaruCamperPage() {
                 7) Finished product
               </p>
 
-              <p className="text-sm leading-relaxed text-black">
-                Once everything was assembled, I did a final fit check, made sure
-                nothing rattled, and verified that the drawer and access points
-                were usable with the car packed. After that, it was ready to get
-                abused on the road.
-              </p>
-
               <div className="mt-2">
                 <ImageBlock
                   src="/photos/finished.jpg"
                   alt="Completed Subaru Outback camper build"
-                  label="Completed build"
-                  hoverText="Final setup: bed surface, working drawer, and organized storage."
+                  label="Completed build. Ready for takeoff."
                   aspect="16/9"
                 />
               </div>
@@ -522,11 +477,9 @@ export default function ProjectSubaruCamperPage() {
           <H2>Using the Rig</H2>
 
           <p className="text-sm leading-relaxed text-black">
-            The whole point was practicality. I lived out of this setup for real
-            travel: sleeping comfortably, staying organized, and keeping the car
-            functional day-to-day. Once you’re doing it every night, the small
-            decisions (drawer access, compartment layout, quick packing) end up
-            mattering way more than aesthetics.
+            My friend and I convoyed out west in our respective trusty steeds on a fully-loaded roadtrip. 
+            We took our diy campers through the mountains, deserts, rainforests, and coasts from PA to Washington with 
+            a lot of stops along the way.
           </p>
 
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
@@ -534,29 +487,25 @@ export default function ProjectSubaruCamperPage() {
             <ImageBlock
               src="/photos/olympic.jpg"
               alt="Subaru camper build being used on a trip photo 1"
-              label="In action — camp setup"
-              hoverText="Quick setup and teardown made it easy to use every day."
+              label="Olympic NP, WA"
               aspect="4/3"
             />
             <ImageBlock
               src="/photos/tensleep.jpg"
               alt="Subaru camper build being used on a trip photo 2"
-              label="In action — sleeping mode"
-              hoverText="Level sleeping surface that actually feels comfortable."
+              label="Ten Sleep, WY"
               aspect="4/3"
             />
             <ImageBlock
               src="/photos/gas_station2.jpg"
               alt="Subaru camper build being used on a trip photo 3"
-              label="In action — storage access"
-              hoverText="Storage stays accessible without unloading the car."
+              label="Somewhere in South Dakota"
               aspect="4/3"
             />
             <ImageBlock
               src="/photos/me_and_car.png"
               alt="Subaru camper build being used on a trip photo 4"
-              label="In action — road life"
-              hoverText="Built to be used, not babied."
+              label="Finishing the trip in Glacier NP, MT"
               aspect="4/5"
             />
           </div>
