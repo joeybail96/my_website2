@@ -206,8 +206,7 @@ export default function ProjectCNCPlotterPage() {
             CNC Plotter
           </h1>
           <p className="text-sm font-medium text-zinc-700">
-            Personal machine build • Mechanical design, motion systems, and image → G-code
-            pipeline
+            Personal project • Mechanical Design • Laser Cutting • 3D Printing • Mechatronics
           </p>
         </header>
 
@@ -216,8 +215,7 @@ export default function ProjectCNCPlotterPage() {
           <ImageBlock
             src="/photos/cncplotter-profile.jpg"
             alt="CNC plotter drawing an image"
-            label="CNC plotter in operation"
-            hoverText="Custom two-axis plotter executing G-code generated from edge-detected images."
+            label="Finished CNC Plotter"
             customAspect="4032/3024"
           />
         </section>
@@ -226,16 +224,17 @@ export default function ProjectCNCPlotterPage() {
         <section className="mt-12 space-y-6">
           <Panel title="Summary">
             <p className="text-sm leading-relaxed text-black">
-              This project is a custom-built CNC plotter that converts photographs into
-              marker drawings. The workflow takes an input image, detects edges, converts
-              those edges into vector paths, generates G-code, and then executes the
-              toolpaths on a two-axis motion system.
+              I designed, built, and programmed this CNC Plotter while quarantined during COVID. I 
+              have always been fascinated with 3D printers and CNC machines. In college, I worked a 
+              lot with FDM printers and gained some familiarity with
+              CNC machines as part of class projects and working in a machine shop as a member of the Formula SAE team. 
             </p>
 
             <p className="mt-3 text-sm leading-relaxed text-black">
-              The machine was designed in SolidWorks and built from plywood, T-slot
-              aluminum, stepper motors, and ball screws. Most of the design decisions were
-              driven by simplicity and repeatability with limited tooling.
+              While a plotter is not exactly useful. It is effectively an overcomplicated, worse ink printer. 
+              I still chose to design and build my 
+              own. I figured it would be a fun project to exercise my engineering skills and refamiliarize 
+              myself with g-code. 
             </p>
 
             <div className="mt-5">
@@ -245,14 +244,14 @@ export default function ProjectCNCPlotterPage() {
 
               <ul className="mt-2 grid gap-2 sm:grid-cols-2">
                 {[
-                  "CAD modeling (SolidWorks)",
-                  "Packaging + motion layout",
-                  "Ball screw + linear guide integration",
-                  "Stepper motor sizing + mechanics",
+                  "CAD modeling (Autodesk Inventor)",
+                  "Resource constraints ($$$ and tools)",
+                  "Mechatronics (GRBL, Arduino, stepper motors, etc.)",
                   "Design for assembly with limited tools",
-                  "Prototype iteration + fit-up refinement",
-                  "3D printing (custom pen holder)",
-                  "Image processing → toolpath workflow",
+                  "Prototype iteration",
+                  "3D printing",
+                  "Image processing",
+                  "Coding (g-code, Python)",
                 ].map((item) => (
                   <li key={item} className="flex gap-2 text-sm text-black">
                     <span className="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-black" />
@@ -272,18 +271,28 @@ export default function ProjectCNCPlotterPage() {
           <H2>Mechanical Design</H2>
 
           <p className="text-sm leading-relaxed text-black">
-            I designed the plotter around a stiff but simple frame, a two-axis gantry, and
-            ball screw actuation for precise, repeatable motion. The goal was reliable
-            positioning without relying on heavy machining — just off-the-shelf components,
-            clean packaging, and straightforward assembly.
+            I fully designed the CNC plotter with the constraints of limited tools in mind. Because I was restricted
+            to simple hand tools, the assembly was intentionally based on straightforward, modular components.
+            The structure primarily uses standard aluminum extrusion, eliminating the need for additional cutting
+            or machining after delivery. Particle board was selected for the platforms to ensure flat, stable
+            surfaces critical for accurate plotting.
           </p>
+
+          <p className="text-sm leading-relaxed text-black">
+            Laser-cut acrylic served as the primary structural interface between the aluminum extrusions.
+            The acrylic sheets were custom cut with precisely located holes, allowing the frame to be assembled
+            accurately and repeatably. Maintaining near-perfect alignment was essential, as the plotter’s control
+            system depends on precise motion across three orthogonal axes. Using laser-cut acrylic provided a
+            low-cost and highly effective solution for achieving this level of precision with limited at-home
+            fabrication resources.
+          </p>
+
 
           <div className="mt-6">
             <ImageBlock
               src="/photos/cnc_assembly.jpg"
               alt="Rendered CAD model of the CNC plotter"
-              label="Rendered CAD model (SolidWorks)"
-              hoverText="Full assembly model used to validate clearances, travel, and component layout."
+              label="Here is a screenshot of the model loaded in Solidworks (originally designed in Autodesk Inventor)"
               customAspect="1058/643"
             />
           </div>
@@ -299,23 +308,25 @@ export default function ProjectCNCPlotterPage() {
           <div className="mt-4 grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-start">
             <div className="space-y-3">
               <p className="text-sm leading-relaxed text-black">
-                Early prototypes focused on proving the ball screw actuation concept and
-                dialing in alignment. The biggest priorities were eliminating binding,
-                keeping motion smooth across the travel, and making the assembly forgiving
-                enough that it could be built with basic tools.
+                I evaluated several actuation options for translating each axis and ultimately selected a
+                ball screw mechanism due to its high positional accuracy and reduced risk of slip compared
+                to pulley-based systems.
               </p>
 
               <p className="text-sm leading-relaxed text-black">
-                Once the concept worked, I iterated the mounting approach and stiffness
-                until the system felt repeatable and didn’t drift or rack under load.
+                Shown here is an early prototype built to evaluate ball screw control and overall feasibility.
+                I initially had concerns that the ball screw might be too slow, prone to binding if the woodworking
+                tolerances were not tight enough, or limited by stepper motor torque. The prototype performed
+                reliably and validated the design approach, giving me confidence to proceed with the ball
+                screw actuation strategy.
               </p>
+
             </div>
 
             <ImageBlock
               src="/photos/prototype1.jpg"
               alt="Initial ball screw actuation concept prototype"
               label="Initial ball screw actuation concept"
-              hoverText="Early proof-of-concept focused on alignment and smooth travel."
               customAspect="4032/3024"
             />
           </div>
@@ -325,16 +336,14 @@ export default function ProjectCNCPlotterPage() {
             <ImageBlock
               src="/photos/ballscrew_final.jpg"
               alt="Final ball screw design implemented photo 1"
-              label="Final ball screw implementation (1)"
-              hoverText="Stiffer mounts + improved alignment reduced binding."
+              label="Ball screw X and Y axes"
               customAspect="4032/3024"
             />
 
             <GifBlock
               src="/photos/actuating.gif"
               alt="Final ball screw actuation shown in motion"
-              label="Final ball screw implementation (2) — GIF"
-              hoverText="Animated clip of the final ball screw system in motion."
+              label="Animation of X and Y actuation (sorry...this gif is kind of poor)"
               customAspect="854/480"
               cacheBust={false}
             />
@@ -343,11 +352,15 @@ export default function ProjectCNCPlotterPage() {
           {/* body text followed by pen holder + z-axis */}
           <div className="mt-10 space-y-3">
             <p className="text-sm leading-relaxed text-black">
-              After the main motion system was stable, I built out the tool interface: a
-              custom pen holder and a simple Z-axis actuator to manage contact and lift.
-              The goal was consistent pressure and clean pen-up / pen-down behavior while
-              still allowing quick swaps between different markers.
+              The pen holder concept I designed and produced using an SLA 3D printer turned out exceptionally well.
+              The holder fits a Sharpie comfortably and clamps securely to a custom acrylic mount using two screws.
+              A key feature of the design is adjustability: it allows the Sharpie to be set anywhere from vertical
+              to a 45° angle of attack.
+              I also designed the plate to accept a press-fit rack (for a rack-and-pinion system), which interfaces
+              with a stepper motor and gear to raise and lower the Sharpie during plotting. This mechanism functions
+              as the plotter’s Z-axis actuation system.
             </p>
+
 
             {/* Pen holder (2 photos) */}
             <div className="mt-6">
@@ -359,15 +372,13 @@ export default function ProjectCNCPlotterPage() {
                 <ImageBlock
                   src="/photos/straight_orientation.jpg"
                   alt="Custom pen holder photo showing straight orientation"
-                  label="Straight orientation"
-                  hoverText="Straight configuration for consistent contact and repeatable setup."
+                  label="Pen holder - straight orientation"
                   aspect="4/3"
                 />
                 <ImageBlock
                   src="/photos/Angled_Orientation.jpg"
                   alt="Custom pen holder photo showing angled orientation"
-                  label="Angled orientation"
-                  hoverText="Angled configuration for tuning stroke style and contact behavior."
+                  label="Pen holder - angled orientation"
                   aspect="4/3"
                 />
               </div>
@@ -382,24 +393,15 @@ export default function ProjectCNCPlotterPage() {
               <div className="mt-4 grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-start">
                 <div className="space-y-3">
                   <p className="text-sm leading-relaxed text-black">
-                    The Z-axis mechanism handles pen-up / pen-down motion so the plotter can
-                    move between strokes without dragging ink. I kept it intentionally
-                    simple: reliable lift, consistent return position, and minimal slop so
-                    the pen touches down the same way every time.
-                  </p>
-                  <p className="text-sm leading-relaxed text-black">
-                    This also let me tune contact pressure (and therefore line weight)
-                    without changing the XY motion system. Once this was dialed in, the
-                    drawing quality improved a lot — fewer skips, cleaner corners, and more
-                    consistent shading in high-density regions.
+                    Here, you can see a closer image of how the Z-axis mechanism handles pen-up / pen-down motion so the plotter can
+                    move between strokes without dragging ink.
                   </p>
                 </div>
 
                 <ImageBlock
                   src="/photos/zaxis.jpg"
                   alt="Z-axis actuator mechanism for pen up/down"
-                  label="Pen-up / pen-down lift mechanism"
-                  hoverText="Simple lift mechanism for reliable pen-up and pen-down control."
+                  label="Rack and pinion Z-axis mechanism"
                   aspect="4/3"
                 />
               </div>
@@ -415,18 +417,16 @@ export default function ProjectCNCPlotterPage() {
           <H2>Programming</H2>
 
           <p className="text-sm leading-relaxed text-black">
-            On the software side, I built a lightweight pipeline to turn an image into
-            drawable paths: edge detection, vectorization into line segments, and G-code
-            generation tuned for smooth plotting. The output is standard G-code that the
-            motion controller can execute directly.
+            On the software side, I wrote a few simple programs that could take a photo, apply some 
+            simple filters to smooth minor features and emphasize key contrast edges, detect those edges, and 
+            convert those edges into g-code. Here, I have a few screenshots of this pipeline.
           </p>
 
           <div className="mt-6">
             <ImageBlock
               src="/photos/series_of_pippins.png"
               alt="Diagram showing edge detection to G-code algorithm"
-              label="Edge detection → vector paths → G-code"
-              hoverText="Processing pipeline from image input to motion instructions."
+              label="Original photo → filtered and smoothed → edges detected → converted to g-code for plotting"
               customAspect="1297/518"
             />
           </div>
@@ -443,23 +443,15 @@ export default function ProjectCNCPlotterPage() {
             <ImageBlock
               src="/photos/aang.gif"
               alt="GIF of the plotter drawing Aang"
-              label="Plotting example: Aang"
-              hoverText="Executing generated G-code to draw a line-art portrait."
+              label="Drawing Aang from The Last Airbender"
               aspect="4/3"
             />
 
             <div className="space-y-3">
               <p className="text-sm leading-relaxed text-black">
                 Once the tuning was dialed in, the plotter could reliably reproduce
-                edge-detected portraits as clean marker drawings. Most of the quality came
-                down to balancing speed, pen pressure, and simplifying the path density so
-                the machine didn’t overdraw or chatter.
-              </p>
-
-              <p className="text-sm leading-relaxed text-black">
-                The “feel” of the drawing (bold vs. sketchy) was adjustable by changing
-                edge thresholds and how aggressively vectors were simplified before
-                generating G-code.
+                edge-detected portraits as clean marker drawings. Here is a gif of the plotter 
+                making a drawing of Aang from Avatar the Last Airbender. 
               </p>
             </div>
           </div>
@@ -467,18 +459,15 @@ export default function ProjectCNCPlotterPage() {
           <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-start">
             <div className="space-y-3">
               <p className="text-sm leading-relaxed text-black">
-                For a real-world test, I ran the pipeline on a photo of my dog Pippin. This
-                was a good stress test because fur texture can generate noisy edges — so it
-                forced me to tune the algorithm toward cleaner, more intentional linework
-                instead of raw edge density.
+                Here the plotter is drawing my dog Pippin. You can see a fuller video of this 
+                here https://www.youtube.com/watch?v=E39LJF87FLg.
               </p>
             </div>
 
             <ImageBlock
               src="/photos/pippin.gif"
               alt="GIF of the plotter drawing Pippin the dog"
-              label="Plotting example: Pippin"
-              hoverText="Edge-detected photo converted into G-code and plotted as a marker drawing."
+              label="Drawing my dog, Pippin"
               aspect="4/3"
             />
           </div>
@@ -492,32 +481,24 @@ export default function ProjectCNCPlotterPage() {
           <H2>Takeaways</H2>
 
           <p className="text-sm leading-relaxed text-black">
-            The biggest lessons from this build were all about repeatability: mechanical
-            alignment matters more than “precision parts,” and software results are only as
-            good as the assumptions baked into the pipeline. The best improvements came from
-            iterating between the physical machine and the algorithm — tightening up motion,
-            then simplifying toolpaths until the machine could draw smoothly and consistently.
+            One persistent issue I had with this design iteration was that the stepper motor for the 
+            z-axis would burn out. As a result, the plotter did not always lift up the sharpie between strokes. Instead, 
+            the marker would stay pressed on the paper, and it would generate lines connecting features that should 
+            have been isolated from each other. I once thought I would someday like to upgrade the z-axis motor to be more robust to 
+            address this issue. More than likely, I won't ever do this! I would like to embark on a whole new cnc project 
+            that is more capable, now that I have grown my machining resources and skillset!
           </p>
-
-          <p className="text-sm leading-relaxed text-black">
-            If I were to iterate again, I’d focus on faster setup/calibration, more consistent
-            pen pressure control, and a cleaner vector simplification step to reduce overdraw
-            on high-texture photos.
-          </p>
-
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             <ImageBlock
               src="/photos/aang.jpg"
               alt="Finished Aang drawing produced by the plotter"
-              label="Finished drawing (Aang)"
-              hoverText="Final marker drawing produced from the generated toolpath."
+              label="Finished drawing of Aang"
               aspect="4/3"
             />
             <ImageBlock
               src="/photos/Pippin_finished_copy.jpg"
               alt="Finished Pippin drawing produced by the plotter"
-              label="Finished drawing (Pippin)"
-              hoverText="Final marker drawing produced from the generated toolpath."
+              label="Finished drawing of Pippin"
               aspect="4/3"
             />
           </div>
