@@ -131,24 +131,11 @@ export default function ProjectSubaruCamperPage() {
         <section className="mt-12 space-y-6">
           <Panel title="Summary">
             <p className="text-sm leading-relaxed text-black">
-              I built this camper so I could move out west and live out of my car
-              while road-tripping through South Dakota, Wyoming, Washington, and
-              Utah. The goal was a clean, level sleeping platform with organized
-              storage that fit perfectly inside my Subaru Outback and could be
-              installed/removed without modifying the vehicle.
-            </p>
-
-            <p className="mt-3 text-sm leading-relaxed text-black">
-              I modeled the interior envelope in SolidWorks, designed a flat bed
-              surface with under-platform storage, and added a full-length pull-out
-              drawer for clothes, tools, and cooking gear. Then I built it from
-              plywood with simple hardware and drawer slides in my garage.
-            </p>
-
-            <p className="mt-3 text-sm leading-relaxed text-black">
-              This wasn’t a showpiece — it was built to be used. I slept in it,
-              lived out of it, and put real miles on it. It stayed quiet, held up,
-              and made the trip genuinely comfortable.
+              In 2021, I bought a Subaru Outback, designed a camper build for it using Autodesk Inventor, 
+              bought the wood and hardware, built it in my parents' driveway, and left for a 2-month 
+              roadtrip with a friend. I did this all within a week. It remains one of my favorite home projects. 
+              I got to bring a design to fruition and use it immediately, and it helped me experience
+              many cool places on my way to my new home in Utah.
             </p>
 
             <div className="mt-5">
@@ -158,14 +145,11 @@ export default function ProjectSubaruCamperPage() {
 
               <ul className="mt-2 grid gap-2 sm:grid-cols-2">
                 {[
-                  "CAD modeling (SolidWorks)",
-                  "Measurement + packaging constraints",
-                  "Design for assembly (simple, repeatable cuts)",
-                  "Material selection (plywood, fasteners, slides)",
-                  "Basic woodworking + shop tools",
-                  "Hardware planning + BOM mindset",
-                  "Iteration + fit-up troubleshooting",
-                  "Real-world testing + refinement",
+                  "CAD modeling (Autodesk Inventor)",
+                  "Design for easy assembly (only simple hand tools)",
+                  "Basic woodworking",
+                  "Budgeting",
+                  "Tight time constraints",
                 ].map((item) => (
                   <li key={item} className="flex gap-2 text-sm text-black">
                     <span className="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-black" />
@@ -187,10 +171,10 @@ export default function ProjectSubaruCamperPage() {
           <H2>Measuring the Space</H2>
 
           <p className="text-sm leading-relaxed text-black">
-            I started by getting the trunk geometry locked down: usable length,
-            width between trim, seat-back angle effects, and where the platform
-            could sit flat without rocking or binding. The goal was a tight fit
-            that still installs and removes easily.
+            As soon as I bought my car, I brought it home and started measuring the trunk geometry. 
+            I wanted my design to maximize its use of the limited, compact space of my trunk. The wheel 
+            wells prevented me from using a simple rectangular approach, so I made sure to take 
+            careful measurements around each well. 
           </p>
 
           {/* 3 photos of trunk space (4032x3024 => 4:3) */}
@@ -198,22 +182,19 @@ export default function ProjectSubaruCamperPage() {
             <ImageBlock
               src="/photos/trunk_space.jpg"
               alt="Trunk space view 1 inside the Subaru Outback"
-              label="Trunk space — overall envelope"
-              hoverText="Establishing the real usable footprint (not the brochure dimensions)."
+              label="total trunk space"
               aspect="4/3"
             />
             <ImageBlock
               src="/photos/wheel_well1.jpg"
               alt="Trunk space view 2 showing seat/trim constraints"
-              label="Trim + seat constraints"
-              hoverText="Clearances around trim and seat geometry drove the layout."
+              label="right wheel well"
               aspect="4/3"
             />
             <ImageBlock
               src="/photos/wheel_well2.jpg"
               alt="Trunk space view 3 showing measurement references"
-              label="Reference points + measurements"
-              hoverText="Picking consistent reference points kept the CAD honest."
+              label="left wheel well"
               aspect="4/3"
             />
           </div>
@@ -222,18 +203,12 @@ export default function ProjectSubaruCamperPage() {
           <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-start">
             <div className="space-y-3">
               <p className="text-sm leading-relaxed text-black">
-                Once I had clean reference dimensions, I started translating the
-                envelope into a design layout. I kept the platform split into
-                simple panels so it could be built with basic cuts, assembled
-                quickly, and still come apart cleanly when I needed the back seats
-                again.
+                Once I had reliable reference dimensions, I used my sketches to design a full
+                assembly of my camper idea in Autodesk Inventor. I kept the platform split into simple panels so
+                it could be built with basic cuts, assembled quickly, and still come apart
+                cleanly whenever I needed the back seats again.
               </p>
 
-              <p className="text-sm leading-relaxed text-black">
-                The big design constraints were: keep the sleeping surface level,
-                preserve usable storage volume below, and make sure the drawer
-                travel was practical from the hatch without snagging on trim.
-              </p>
             </div>
 
             {/* measuring photos are 4032x3024 => 4:3 */}
@@ -257,11 +232,13 @@ export default function ProjectSubaruCamperPage() {
           <H2>Modeling the Build</H2>
 
           <p className="text-sm leading-relaxed text-black">
-            With the envelope mapped, I modeled the platform in SolidWorks and
-            iterated until the layout made sense for both storage and assembly.
-            I kept the geometry simple: flat sleeping surface, under-bed
-            compartments, and a full-length drawer that’s easy to access from the
-            hatch.
+            I wanted the build to do more than just provide a sleeping platform and basic unorganized
+            storage. I designed a clothes compartment accessible from the mattress,
+            simple shelving for toiletries, and a drawer system that doubles as a cooking
+            counter with quick access to supplies. CAD made it much easier to integrate
+            these features, check clearances, and make sure everything worked together.
+            Since I was also working with a constrained budget, I also used CAD to generate a
+            bill of materials and stay on top of costs throughout the build.
           </p>
 
           {/* modeling photos are 1677x848 => ~2:1 (closest supported is 16:9) */}
