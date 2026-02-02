@@ -112,7 +112,7 @@ export default function ProjectSubaruCamperPage() {
             Subaru Outback Camper Build
           </h1>
           <p className="text-sm font-medium text-zinc-700">
-            Personal build • CAD → wood → road-tested
+            Woodworking • Solidworks • Budgeting • Adventure
           </p>
         </header>
 
@@ -121,8 +121,7 @@ export default function ProjectSubaruCamperPage() {
           <ImageBlock
             src="/photos/camper-profile.jpg"
             alt="Camper inside a Subaru Outback"
-            label="Camper installed in the Outback (finished build)"
-            hoverText="A removable camper platform that turns an Outback into a simple road-trip sleeping + storage rig."
+            label="Cooking some dinner by our trusty steeds in the Winds, WY"
             aspect="16/9"
           />
         </section>
