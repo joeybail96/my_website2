@@ -271,7 +271,7 @@ export default function HomePage() {
               />
               <MiniPhoto
                 href="/contact"
-                src="/photos/outreach.jpg"
+                src="/photos/outreach_blurred.jpg"
                 alt="Contact"
                 overlay="contact me"
               />
