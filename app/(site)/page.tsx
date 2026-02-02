@@ -228,18 +228,22 @@ export default function HomePage() {
             <h2 className="text-2xl font-semibold tracking-tight text-black">
               Welcome to my website!
             </h2>
+            <p className="mt-3 text-base leading-relaxed text-black">
+              I am a mechanical engineer with a background in both applied engineering and
+              academic research, with a consistent focus on translating complex requirements
+              into well-executed designs. I recently completed my Master’s thesis in air
+              quality while also helping lead the engineering effort to design and construct
+              a remote mountain laboratory involving a high degree of hands-on engineering
+              design and fabrication.
+            </p>
 
             <p className="mt-3 text-base leading-relaxed text-black">
-              I am a mechanical engineer with a background in atmospheric science
-              and air quality science. My experience spans both engineering and
-              research, with a consistent focus on understanding project
-              requirements in depth and driving work from planning to design to
-              execution. I am currently seeking an engineering role where I can
-              contribute as a strong, practical engineer. While I am
-              particularly motivated by air quality challenges, I am eager to
-              work on teams tackling a broad range of real-world engineering
-              problems.
+              I am currently seeking an engineering role where I can
+              continue to contribute as a strong, practical engineer. While I am especially motivated by
+              air quality challenges, I am excited to work on a broad range of real-world
+              engineering problems.
             </p>
+
             <p className="mt-3 text-base leading-relaxed text-black">
               I have designed this website to share some of my professional
               experience, a little bit about my personal interests, and a sample
