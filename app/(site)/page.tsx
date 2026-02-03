@@ -229,16 +229,17 @@ export default function HomePage() {
               Welcome to my website!
             </h2>
             <p className="mt-3 text-base leading-relaxed text-black">
-              I am a mechanical engineer with a background in both applied engineering and
-              academic research, with a consistent focus on translating complex requirements
-              into well-executed designs. I recently completed my Master’s thesis in air
-              quality while also helping lead the engineering effort to design and construct
-              a remote mountain laboratory involving a high degree of hands-on engineering
-              design and fabrication.
+              I’m a mechanical engineer with experience in applied engineering and academic
+              research, focused on designing and building practical solutions to complex
+              problems. My background spans planning, CAD, prototyping, testing, and
+              implementation, with an emphasis on work that carries ideas all the way from
+              concept to execution.
             </p>
 
+
             <p className="mt-3 text-base leading-relaxed text-black">
-              I am currently seeking an engineering role where I can
+              I recently completed my MS thesis in Atmospheric Sciences, focusing 
+              on air quality research. I am currently seeking an engineering role where I can
               continue to contribute as a strong, practical engineer. While I am especially motivated by
               air quality challenges, I am excited to work on a broad range of real-world
               engineering problems.
