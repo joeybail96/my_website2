@@ -124,13 +124,15 @@ export default function ProfessionalPage() {
 
             <div className="space-y-4 text-base text-black">
               <p>
-                I am a mechanical engineer with bachelor’s (Penn State) and master’s degrees (U of Utah) in
-                Mechanical Engineering and a master’s degree in Atmospheric Sciences.
-                Both degrees involved completing and publishing research theses, both of which involved hands-on fieldwork, 
-                data collection and processing, coding, modeling, presenting, and writing.
-                I also have several years of industry experience as a project mechanical engineer
-                leading large-scale capital engineering projects. 
+                I am a mechanical engineer with a bachelor’s degree in Mechanical Engineering from Penn State,
+                a master’s degree in Mechanical Engineering from the University of Utah,
+                and a master’s degree in Atmospheric Sciences from the University of Utah.
+                Both master’s programs required completing and publishing research theses with substantial hands-on
+                fieldwork, data collection and processing, coding, modeling, presenting, and technical writing.
+                I also have several years of industry experience as a project mechanical engineer,
+                leading large-scale capital engineering projects.
               </p>
+
 
               <p>
                 I am most motivated by engineering work that combines strong fundamentals with

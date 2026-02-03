@@ -238,12 +238,13 @@ export default function HomePage() {
 
 
             <p className="mt-3 text-base leading-relaxed text-black">
-              I recently completed my MS thesis in Atmospheric Sciences, focusing 
-              on air quality research. I am currently seeking an engineering role where I can
-              continue to contribute as a strong, practical engineer. While I am especially motivated by
-              air quality challenges, I am excited to work on a broad range of real-world
-              engineering problems.
+              I recently completed my MS thesis in Atmospheric Sciences, focused on air quality research
+              with substantial hands-on work in instrument installation, operation, and laboratory construction.
+              I am currently seeking an engineering role where I can continue contributing as a practical,
+              detail-oriented engineer. While air quality challenges especially motivate me, I am excited to
+              work on a broad range of real-world engineering problems.
             </p>
+
 
             <p className="mt-3 text-base leading-relaxed text-black">
               I have designed this website to share some of my professional
