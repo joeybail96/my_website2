@@ -125,10 +125,11 @@ export default function PersonalPage() {
               </p>
 
               <p>
-                Ever since I was a kid, I was infatuated with nature and the
-                mountains of the western United States. In 2021, I took action
-                and moved west to join a Mechanical Engineering lab at the
-                University of Utah focused on studying the mechanical failure
+                In addition to my passion for building, I have always been infatuated with nature 
+                and mountains, in particular. In 2021, I took action
+                and moved west to live among the Wasatch Mountains and begin working on my first Master's thesis
+                within a Mechanical Engineering lab at the
+                University of Utah, focused on studying the mechanical failure
                 mechanisms of brain vessels during traumatic brain injuries.
               </p>
 
