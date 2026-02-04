@@ -250,7 +250,7 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="underline decoration-black/40 underline-offset-2 transition hover:decoration-black"
                   >
-                    Wasatch cloud-seeding field campaign setup
+                    Wasatch cloud-seeding field campaign setup (Snowscape)
                   </Link>
                 </li>
 
