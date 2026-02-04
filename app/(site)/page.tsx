@@ -238,11 +238,18 @@ export default function HomePage() {
 
 
             <p className="mt-3 text-base leading-relaxed text-black">
-              I recently completed my MS thesis in Atmospheric Sciences, focused on air quality research
-              with substantial hands-on work in instrument installation, operation, and laboratory construction.
-              I am currently seeking an engineering role where I can continue contributing as a practical,
-              detail-oriented engineer. While air quality challenges especially motivate me, I am excited to
-              work on a broad range of real-world engineering problems.
+              I recently completed my MS thesis in Atmospheric Sciences focused on air quality research. While my
+              thesis centered on atmospheric chemistry and climate modeling, I naturally became heavily involved
+              in field campaign work that required engineering skillsets, which I had already developed through my education,
+              industry experience, and personal projects. This work included instrument installation, data
+              collection and management, and the design and construction of a remote, mobile mountain laboratory.
+            </p>
+
+
+            <p className="mt-3 text-base leading-relaxed text-black">
+              I am currently seeking an engineering role where I can contribute as a practical, detail-oriented
+              engineer. While air quality challenges strongly motivate me, I am excited to work on a broad range
+              of real-world engineering problems.
             </p>
 
 
