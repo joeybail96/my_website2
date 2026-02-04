@@ -634,8 +634,6 @@ export default function Project2Page() {
               src: "/photos/dst_daily_mass_map_20110215_20110315.gif",
               alt: "Dust emissions visualization before changes",
               label: "Baseline dust emission map",
-              hoverText:
-                "Baseline emissions/transport representation prior to playa-specific updates.",
               aspect: "1020/660",
               hiRes: true,
               zoom: 1.18,
@@ -645,8 +643,6 @@ export default function Project2Page() {
               src: "/photos/dstmod_daily_mass_map_20110215_20110315.gif",
               alt: "Dust emissions visualization after changes",
               label: "Modified dust emission map (w/FENGSHA playa emissions)",
-              hoverText:
-                "After: improved saline lake dust representation + particulate chloride inventory.",
               aspect: "1020/660",
               hiRes: true,
               zoom: 1.18,
