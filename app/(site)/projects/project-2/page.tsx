@@ -111,7 +111,7 @@ function ImageBlock({
 }: {
   src: string;
   alt: string;
-  label?: string;
+  label?: React.ReactNode; // ✅ allow JSX (links) in labels
   hoverText?: string;
   aspect?:
     | "16/9"
@@ -385,37 +385,38 @@ export default function Project2Page() {
               alt="Shrunken Great Salt Lake extent"
               label={
                 <>
-                  Satellite view of how much the Great Salt Lake has desiccated since humans
-                  began diverting inlet river systems. Image adapted from{" "}
+                  Satellite view of how much the Great Salt Lake has desiccated since
+                  humans began diverting inlet river systems. Image adapted from{" "}
                   <a
                     href="https://science.nasa.gov/earth/earth-observatory/the-great-shrinking-lake-150187/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline hover:opacity-80"
+                    className="underline underline-offset-2 hover:text-blue-600"
                   >
                     NASA Earth Observatory
-                  </a>.
+                  </a>
+                  .
                 </>
               }
               aspect="4/3"
               hiRes
             />
-
             <ImageBlock
               src="/photos/plot_gsl.jpg"
               alt="Plot of declining Great Salt Lake levels over time"
               label={
                 <>
                   Time series of the declining Great Salt Lake&apos;s levels compared to
-                  predicted, natural levels. Data adapted from{" "}
+                  predicted, natural levels. Image adapted from{" "}
                   <a
                     href="https://collections.lib.utah.edu/ark:/87278/s6qw8qhv"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline hover:opacity-80"
+                    className="underline underline-offset-2 hover:text-blue-600"
                   >
-                    University of Utah collections
-                  </a>.
+                    University of Utah Collections
+                  </a>
+                  .
                 </>
               }
               aspect="2186/1191"
@@ -423,7 +424,6 @@ export default function Project2Page() {
               hiRes
             />
           </div>
-
         </section>
 
         <Divider />
@@ -508,30 +508,33 @@ export default function Project2Page() {
           <p className="text-sm leading-relaxed text-black">
             GEOS-Chem is a global chemical transport model that simulates atmospheric chemistry
             and the transport of aerosols and trace gases. To implement playa dust as a source
-            of inland particulate chloride within GEOS-Chem's framework and to model the associated chemistry, I followed
+            of inland particulate chloride within GEOS-Chem&apos;s framework and to model the associated chemistry, I followed
             the steps below:
           </p>
 
           <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-black">
             <li>
-              <strong>Map playas across United States.</strong> Build a high-resolution playa mask
-              (CONUS) from salinity/soil indicators and convert it into a
-              model-ready gridded product.
+              <strong>Mapped playa surfaces across the United States.</strong> I created a high-resolution
+              playa mask from USDA soil and salinity survey data and formatted it into a gridded dataset.
             </li>
+
             <li>
-              <strong>Build an emissions inventory.</strong> Create a dust
-              emission inventory from mapped playa sources and format it for
-              GEOS-Chem/HEMCO ingestion.
+              <strong>Built a playa dust emissions inventory.</strong> I modeled/calculated dust emissions from the gridded
+              playa sources using meteorological reanalysis data and then formatted and integrated the gridded emission results
+              for use in GEOS-Chem.
             </li>
+
             <li>
-              <strong>Enable specific chemistry pathways</strong> Integrate playa dust
-              particulate chloride into halogen heterogeneous chemistry so N₂O₅
-              uptake can produce ClNO₂.
+              <strong>Enabled chloride and halogen chemistry pathways.</strong> I linked emitted playa dust
+              to NOx-related chemical pathways, allowing particulate chloride to participate in halogen
+              chemistry relevant to regional air quality.
             </li>
+
             <li>
-              <strong>Run base and modified model &amp; evaluate.</strong> Debug tracer/HEMCO/
-              chemistry wiring, run base vs. modified simulations, and visualize
-              differences to interpret impacts.
+              <strong>Ran baseline and modified simulations and evaluated impacts.</strong> I compared dust
+              and chemistry results between base and modified model runs and evaluated the models against available
+              field measurements to assess model performance and the influence of playa dust on secondary
+              chemistry.
             </li>
           </ol>
         </section>
@@ -692,7 +695,8 @@ export default function Project2Page() {
                     {
                       left: (
                         <>
-                          N₂O₅ + Cl<sup>−</sup><sub>(aq)</sub>
+                          N₂O₅ + Cl<sup>−</sup>
+                          <sub>(aq)</sub>
                         </>
                       ),
                       right: <>φClNO₂ + (1 − φ)HNO₃</>,
@@ -751,7 +755,7 @@ export default function Project2Page() {
         {/* Step 4: Run & Evaluate */}
         <section className="space-y-3">
           <Kicker>Step 4 • Run &amp; Evaluate</Kicker>
-          <H2>Playa dust's impact on NOₓ chemistry</H2>
+          <H2>Playa dust&apos;s impact on NOₓ chemistry</H2>
           <p className="text-sm leading-relaxed text-black">
             These maps show how my modifications to GEOS-Chem introduce a new loss pathway
             for N₂O₅ through reactions with playa dust. I evaluated the model during a
@@ -877,10 +881,7 @@ export default function Project2Page() {
               research, water management, and air-quality policy decisions.
             </p>
           </div>
-          </section>
-
-
-
+        </section>
 
         <Divider />
 
