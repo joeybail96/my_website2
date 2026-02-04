@@ -126,7 +126,7 @@ export default function PersonalPage() {
 
               <p>
                 In addition to my passion for building, I have always been infatuated with nature 
-                and mountains, in particular. In 2021, I took action
+                and the environement, mountains in particular. In 2021, I took action
                 and moved west to live among the Wasatch Mountains and begin working on my first Master's thesis
                 within a Mechanical Engineering lab at the
                 University of Utah, focused on studying the mechanical failure
