@@ -117,7 +117,7 @@ export default function PersonalPage() {
             <div className="space-y-4 text-base text-black">
               <p>
                 I grew up in Carlisle, Pennsylvania. Like most budding engineers, a large
-                portion of my childhood was spent tinkering with Legos and slowly
+                portion of my childhood was spent tinkering with Lego and slowly
                 evolving into more ambitious woodworking and Arduino projects.
                 This early curiosity led me to earn my Bachelor's degree in
                 Mechanical Engineering at Penn State in 2018 and work as a
