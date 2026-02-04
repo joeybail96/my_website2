@@ -223,8 +223,8 @@ export default function ProfessionalPage() {
 
             <div className="space-y-4 text-base text-black">
               <p>
-                I’m seeking an engineering role where I have the freedom and
-                responsibility to tackle complex technical problems through thoughtful
+                I am seeking an engineering role where I have the freedom and
+                responsibility to continue taking on complex technical problems through thoughtful
                 design and hands-on execution.
               </p>
 
