@@ -200,7 +200,7 @@ export default function PersonalPage() {
                 works. That cycle of design, build, test, and improve is what
                 keeps me excited about engineering, whether I am working on
                 large field systems, research equipment, or personal projects in
-                my own shop.
+                my own "workshop".
               </p>
             </div>
 
