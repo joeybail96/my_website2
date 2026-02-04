@@ -231,7 +231,7 @@ export default function HomePage() {
             <p className="mt-3 text-base leading-relaxed text-black">
               I’m a mechanical engineer with experience in applied engineering and academic
               research. I am passionate about designing and building practical solutions to complex
-              problems. My background spans planning, CAD, prototyping, testing, and
+              problems. My background spans drafting project proposals, CAD, prototyping, testing, and
               implementation, with an emphasis on work that carries ideas all the way from
               concept to execution.
             </p>
