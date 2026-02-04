@@ -393,7 +393,7 @@ export default function Project2Page() {
                     rel="noopener noreferrer"
                     className="underline underline-offset-2 hover:text-blue-600"
                   >
-                    NASA Earth Observatory
+                    NASA
                   </a>
                   .
                 </>
@@ -414,7 +414,7 @@ export default function Project2Page() {
                     rel="noopener noreferrer"
                     className="underline underline-offset-2 hover:text-blue-600"
                   >
-                    University of Utah Collections
+                    Results of Great Salt Lake Dust Plume Study
                   </a>
                   .
                 </>
