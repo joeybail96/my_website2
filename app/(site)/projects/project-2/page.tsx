@@ -383,19 +383,47 @@ export default function Project2Page() {
             <ImageBlock
               src="/photos/shrinking_gsl.jpg"
               alt="Shrunken Great Salt Lake extent"
-              label="Satellite view of how much the Great Salt Lake has desiccated since hmans began diverting inlet river systems"
+              label={
+                <>
+                  Satellite view of how much the Great Salt Lake has desiccated since humans
+                  began diverting inlet river systems. Image adapted from{" "}
+                  <a
+                    href="https://science.nasa.gov/earth/earth-observatory/the-great-shrinking-lake-150187/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:opacity-80"
+                  >
+                    NASA Earth Observatory
+                  </a>.
+                </>
+              }
               aspect="4/3"
               hiRes
             />
+
             <ImageBlock
               src="/photos/plot_gsl.jpg"
               alt="Plot of declining Great Salt Lake levels over time"
-              label="Time series of the declining Great Salt Lake's levels compared to predicted, natural levels"
+              label={
+                <>
+                  Time series of the declining Great Salt Lake&apos;s levels compared to
+                  predicted, natural levels. Data adapted from{" "}
+                  <a
+                    href="https://collections.lib.utah.edu/ark:/87278/s6qw8qhv"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:opacity-80"
+                  >
+                    University of Utah collections
+                  </a>.
+                </>
+              }
               aspect="2186/1191"
               border="none"
               hiRes
             />
           </div>
+
         </section>
 
         <Divider />
